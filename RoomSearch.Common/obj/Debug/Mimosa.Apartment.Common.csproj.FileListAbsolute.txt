@@ -1,0 +1,13 @@
+D:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.dll
+D:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.pdb
+D:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.dll
+D:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.pdb
+D:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.csprojResolveAssemblyReference.cache
+F:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.dll
+F:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.pdb
+F:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.dll
+F:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.pdb
+E:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.dll
+E:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.pdb
+E:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.dll
+E:\Chanh\Solution\Mimosa\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.pdb

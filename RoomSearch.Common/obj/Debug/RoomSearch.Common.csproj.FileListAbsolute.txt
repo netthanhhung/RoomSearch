@@ -1,0 +1,4 @@
+E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.pdb
+E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.dll
+E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.pdb
+E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.dll
