@@ -12,3 +12,17 @@ E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Business\bin\Debug\Mimosa.Apartmen
 E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Business\bin\Debug\Mimosa.Apartment.Data.pdb
 E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Business\obj\Debug\RoomSearch.Business.csprojResolveAssemblyReference.cache
 E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Business\obj\Debug\Mimosa.Apartment.Business.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Mimosa.Apartment.Business.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Mimosa.Apartment.Business.pdb
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Mimosa.Apartment.Common.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Mimosa.Apartment.Data.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Microsoft.Practices.Unity.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Microsoft.Practices.Unity.Interception.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Mimosa.Apartment.Common.pdb
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\bin\Debug\Mimosa.Apartment.Data.pdb
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\obj\Debug\RoomSearch.Business.csprojResolveAssemblyReference.cache
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\obj\Debug\Mimosa.Apartment.Business.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Business\obj\Debug\Mimosa.Apartment.Business.pdb

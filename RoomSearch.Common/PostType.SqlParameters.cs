@@ -3,15 +3,14 @@ using System.Data.SqlClient;
 
 namespace RoomSearch.Common
 {
-    public partial class RoomType
+    public partial class PostType
     {
         public override SqlParameter[] SqlParameters()
         {
             return new SqlParameter[]
 			{
-				Utilities.MakeInputOutputParameter(ColumnNames.RoomTypeId, NullableRecordId)
+				Utilities.MakeInputOutputParameter(ColumnNames.PostTypeId, NullableRecordId)
                 , Utilities.MakeInputParameter(ColumnNames.Name, Name)
-                , Utilities.MakeInputParameter(ColumnNames.Description, Description)
 			};
         }
     }

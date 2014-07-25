@@ -4,19 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Security;
+using Telerik.Web.UI;
+using System.IO;
+using RoomSearch.Common;
 
 namespace RoomSearch.Web.UI
 {
-    public partial class DefaultPage : System.Web.UI.Page
+    public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MembershipUser user = Membership.GetUser();
-            if (user == null)
-            {
-                Response.Redirect("Logon.aspx");
-            }
+            Response.Redirect("~/SearchRoomPage.aspx");
         }
+
+       
     }
 }

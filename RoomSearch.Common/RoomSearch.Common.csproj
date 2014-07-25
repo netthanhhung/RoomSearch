@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mimosa.Apartment.Common</RootNamespace>
     <AssemblyName>Mimosa.Apartment.Common</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -48,6 +48,10 @@
     <Compile Include="ContactType.cs" />
     <Compile Include="City.Generated.cs" />
     <Compile Include="City.SqlParameters.cs" />
+    <Compile Include="Post.Generated.cs" />
+    <Compile Include="Post.SqlParameters.cs" />
+    <Compile Include="PostType.Generated.cs" />
+    <Compile Include="PostType.SqlParameters.cs" />
     <Compile Include="District.Generated.cs" />
     <Compile Include="District.SqlParameters.cs" />
     <Compile Include="Enums.cs" />
@@ -60,9 +64,6 @@
     <Compile Include="Room.SqlParameters.cs" />
     <Compile Include="Country.Generated.cs" />
     <Compile Include="Country.SqlParameters.cs" />
-    <Compile Include="Customer.Extended.cs" />
-    <Compile Include="Customer.Generated.cs" />
-    <Compile Include="Customer.SqlParameters.cs" />
     <Compile Include="DeploymentInfo.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

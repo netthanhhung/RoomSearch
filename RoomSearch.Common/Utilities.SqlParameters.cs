@@ -6,25 +6,25 @@ namespace RoomSearch.Common
 {
     public static partial class Utilities
     {
-        [System.Diagnostics.DebuggerStepThrough()]
+        
         public static SqlParameter MakeInputOutputParameter<T>(string parameterName, T value)
         {
             return MakeParameter(parameterName, value, ParameterDirection.InputOutput);
         }
 
-        [System.Diagnostics.DebuggerStepThrough()]
+        
         public static SqlParameter MakeInputParameter<T>(string parameterName, T value)
         {
             return MakeParameter(parameterName, value, ParameterDirection.Input);
         }
 
-        [System.Diagnostics.DebuggerStepThrough()]
+        
         public static SqlParameter MakeOutputParameter<T>(string parameterName, T value)
         {
             return MakeParameter(parameterName, value, ParameterDirection.Output);
         }
 
-        [System.Diagnostics.DebuggerStepThrough()]
+        
         public static SqlParameter MakeParameter<T>(string parameterName, T value, ParameterDirection direction)
         {
             SqlParameter ret = null;

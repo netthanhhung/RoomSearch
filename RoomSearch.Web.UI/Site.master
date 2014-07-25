@@ -1,49 +1,80 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="RoomSearch.Web.UI.Site" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="csstransforms no-csstransforms3d csstransitions">
 <head runat="server">
-    <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>Tìm và cho thuê phòng trọ</title>
+    <link rel="stylesheet" type="text/css" href="Styles/CSS/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="Styles/CSS/menu.css"/>
+    <script type="text/javascript" src="Styles/JS/jquery.js"></script>
+    <script type="text/javascript" src="Styles/JS/function.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form runat="server">
-    <div class="page">
-        <div class="header">
-            <div class="title">
-                <h1>
-                    My ASP.NET Application
-                </h1>
+    <form id="form1" runat="server">
+    <div>
+        <img src="Styles/Images/MasterHeaderBackground.png" alt="fresh design web" width="100%"/>
+        <%--<div style="background: #0099cc; font-size: 22px; text-align: center; color: #FFF;
+            font-weight: bold; height: 70px; padding-top: 20px;">
+            Responsive Drop Down Menu jQuery CSS3 Using Icon Symbol</div>--%>
+        <div id="wrap">
+            <header>
+            <div class="inner relative">
+                <a class="logo">
+                    <img src="Styles/Images/HTLogo.png" height="50px" alt="fresh design web"/></a> <a id="menu-toggle" class="button dark"
+                        href="#"><i class="icon-reorder"></i></a>
+                <nav id="navigation">
+				<ul id="main-menu">
+					<li class="current-menu-item"><a href="SearchRoomPage.aspx">Tìm Phòng</a></li>
+                    <li class="current-menu-item"><a href="PostRoom.aspx">Đăng Cho Thuê</a></li>
+                    
+					<li class="parent">
+						<a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Ở Ghép</a>
+						<ul class="sub-menu">
+							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
+							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-credit-card"></i>Đăng Tin</a></li>
+							<%--<li>
+								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
+								<ul class="sub-menu">
+									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Full Width</a></li>
+									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Left Sidebar</a></li>
+									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Right Sidebar</a></li>
+									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Double Sidebar</a></li>
+								</ul>
+							</li>--%>
+						</ul>
+					</li>
+                    <li class="parent">
+						<a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Mua Bán Nhà</a>
+						<ul class="sub-menu">
+							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-wrench"></i>Tìm Mua Nhà</a></li>
+							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-credit-card"></i>Đăng Bán Nhà</a></li>
+						</ul>
+					</li>
+				</ul>
+			    </nav>
+                <div class="clear">
+                </div>
             </div>
-            <div class="loginDisplay">
-                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
-                    <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
-                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
-                    </LoggedInTemplate>
-                </asp:LoginView>
-            </div>
-            <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
-                    </Items>
-                </asp:Menu>
-            </div>
+            </header>
         </div>
-        <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="footer">
+        <table>
+            <tr>
+                <td style="width: 300px" align="left">
+                    <asp:Label ID="lblLeft" runat="server" Text="LEFT PANEL" />
+                </td>
+                <td style="width: 70%" align="left">
+                    <asp:ContentPlaceHolder ID="centreContentPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </td>
+                <td style="width: 300px" align="right">
+                    <asp:Label ID="lblRight" runat="server" Text="Right PANEL" />
+                </td>
+            </tr>
+        </table>
         
     </div>
     </form>
