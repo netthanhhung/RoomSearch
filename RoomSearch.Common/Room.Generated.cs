@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace RoomSearch.Common
 {
+    [Serializable]
     [DataContract]
     public partial class Room : Record
     {

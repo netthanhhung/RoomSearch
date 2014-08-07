@@ -157,12 +157,14 @@ namespace RoomSearch.Business
         #region Post
         public static List<Post> SearchPost(int postTypeId,
                                     int? roomTypeId,
+                                    int? realestateId,
                                     int? countryId,
                                     int? cityId,
                                     int? districtId,
                                     string personName,
                                     string phoneNumber,
                                     string email,
+                                    int? gender,
                                     decimal? priceFrom,
                                     decimal? pPriceTo,
                                     DateTime? dateFrom,
@@ -171,7 +173,7 @@ namespace RoomSearch.Business
                                     decimal? meterSquareTo,
                                     bool showLegacy)
         {
-            return new DataLayer().SearchPost(postTypeId, roomTypeId, countryId, cityId, districtId, personName, phoneNumber, email,
+            return new DataLayer().SearchPost(postTypeId, roomTypeId, realestateId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
                 priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy);
         }
 
@@ -179,8 +181,10 @@ namespace RoomSearch.Business
         {
             if (saveItem != null)
             {
+                bool isUpdate = saveItem.PostId > 0;
                 SaveRecord(saveItem);
-                if (saveItem.ImageList != null && saveItem.ImageList.Count > 0)
+
+                if (!isUpdate && saveItem.ImageList != null && saveItem.ImageList.Count > 0)
                 {
                     foreach (Image image in saveItem.ImageList)
                     {
@@ -188,17 +192,44 @@ namespace RoomSearch.Business
                         SaveRecord(image);
                     }
                 }
+                else
+                {
+                    List<Image> oldImages = ListImage(null, saveItem.PostId, (int)ImageType.Room, 0);
+                    foreach (Image oldItem in oldImages)
+                    {
+                        if (saveItem.ImageList == null || saveItem.ImageList.Count(i => i.ImageId == oldItem.ImageId) == 0)
+                        {
+                            DeleteRecord(oldItem);
+                        }
+                    }
+
+                    if (saveItem.ImageList != null)
+                    {
+                        foreach (Image image in saveItem.ImageList)
+                        {
+                            if (image.ImageId <= 0)
+                            {
+                                image.ItemId = saveItem.PostId = Convert.ToInt32(saveItem.RecordId);
+                                SaveRecord(image);
+                            }
+                        }
+                    }
+
+                }
+
             }
         }
 
         public static int CountPost(int postTypeId,
                                     int? roomTypeId,
+                                   int? realestateTypeId,
                                     int? countryId,
                                     int? cityId,
                                     int? districtId,
                                     string personName,
                                     string phoneNumber,
                                     string email,
+                                   int? gender,
                                     decimal? priceFrom,
                                     decimal? pPriceTo,
                                     DateTime? dateFrom,
@@ -207,18 +238,20 @@ namespace RoomSearch.Business
                                     decimal? meterSquareTo,
                                     bool showLegacy)
         {
-            return new DataLayer().CountPost(postTypeId, roomTypeId, countryId, cityId, districtId, personName, phoneNumber, email,
+            return new DataLayer().CountPost(postTypeId, roomTypeId, realestateTypeId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
                 priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy);
         }
 
         public static List<Post> SearchPostPaging(int postTypeId,
                                    int? roomTypeId,
+                                   int? realestateTypeId,
                                    int? countryId,
                                    int? cityId,
                                    int? districtId,
                                    string personName,
                                    string phoneNumber,
                                    string email,
+                                   int? gender,
                                    decimal? priceFrom,
                                    decimal? pPriceTo,
                                    DateTime? dateFrom,
@@ -228,9 +261,21 @@ namespace RoomSearch.Business
                                    bool showLegacy,
                                    int pageSize, int pageNumber, string sortOrder, string sortOrderInvert)
         {
-            return new DataLayer().SearchPostPaging(postTypeId, roomTypeId, countryId, cityId, districtId, personName, phoneNumber, email,
+            return new DataLayer().SearchPostPaging(postTypeId, roomTypeId, realestateTypeId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
                 priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy,
                 pageSize, pageNumber, sortOrder, sortOrderInvert);
+        }
+
+        public static Post GetPost(int postId, int loadType)
+        {
+            DataLayer dataLayer = new DataLayer();
+            List<Post> result = dataLayer.GetPost(postId);
+            if (result != null && result.Count > 0)
+            {
+                result[0].ImageList = dataLayer.ListImage(null, result[0].PostId, (int)ImageType.Room, loadType);
+                return result[0];
+            }
+            return null;
         }
         #endregion
 

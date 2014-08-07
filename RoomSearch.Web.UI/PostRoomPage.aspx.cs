@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using System.IO;
 using RoomSearch.Common;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace RoomSearch.Web.UI
 {
@@ -71,11 +73,13 @@ namespace RoomSearch.Web.UI
             saveItem.PersonName = txtPersonName.Text;
             saveItem.PhoneNumber = txtPhoneNumber.Text;
             saveItem.Email = txtEmail.Text;
+            saveItem.CountryId = 232;
             saveItem.CityId = Convert.ToInt32(cbbCity.SelectedValue);
             saveItem.DistrictId = Convert.ToInt32(cbbDistrict.SelectedValue);
             saveItem.Address = txtAddress.Text;
             saveItem.RoomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
             saveItem.MeterSquare = Convert.ToDecimal(txtMeterSQuare.Value);
+            saveItem.AvailableRooms = txtAvailableRooms.Value.HasValue ? Convert.ToInt32(txtAvailableRooms.Value) : 1;
             saveItem.Price = Convert.ToDecimal(txtPrice.Value);
             saveItem.Description = txtDescription.Text;
             saveItem.PostTypeId = (int)PostTypes.Room;
@@ -86,14 +90,16 @@ namespace RoomSearch.Web.UI
             {
                 string fileName = file.GetName();
                 System.Web.UI.WebControls.Image imageSource = new System.Web.UI.WebControls.Image();
-                Stream imageStream = file.InputStream;
+                Stream imageStream = file.InputStream;                
                 int bufferSize = Convert.ToInt32(imageStream.Length);
                 byte[] byteArray = new byte[bufferSize];
                 imageStream.Read(byteArray, 0, bufferSize);
 
+                MemoryStream resizedStream = UtilityHelper.ResizeFromStream(400, imageStream);
+                
                 Common.Image newImage = new Common.Image();
                 newImage.ImageContent = byteArray;
-                newImage.ImageSmallContent = byteArray;
+                newImage.ImageSmallContent = resizedStream.ToArray(); ;
                 newImage.DisplayIndex = displayIndex++;
                 newImage.ImageTypeId = (int)Common.ImageType.Room;
                 newImage.FileName = fileName;
@@ -106,6 +112,7 @@ namespace RoomSearch.Web.UI
             return saveItem;
 
         }
+
 
         protected void OnBtnSave_Clicked(object sender, EventArgs e)
         {

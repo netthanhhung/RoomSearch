@@ -4,6 +4,7 @@ using System.ComponentModel;
 
 namespace RoomSearch.Common
 {
+    [Serializable]
     [DataContract]
     public abstract partial class Record : INotifyPropertyChanged
 	{

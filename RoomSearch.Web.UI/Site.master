@@ -29,20 +29,24 @@
                 <nav id="navigation">
 				<ul id="main-menu">
 					<li class="current-menu-item"><a href="SearchRoomPage.aspx">Tìm Phòng</a></li>
-                    <li class="current-menu-item"><a href="PostRoom.aspx">Đăng Cho Thuê</a></li>
+                    <li class="parent">
+                        <a>Đăng Cho Thuê</a>
+                        <ul class="sub-menu">
+							<li><a href="PostRoomPage.aspx"><i class="icon-wrench"></i>Đăng Tin</a></li>
+							<li><a href="SearcRoomPostPage.aspx"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
+						</ul>
+                    </li>
                     
 					<li class="parent">
-						<a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Ở Ghép</a>
+						<a >Ở Ghép</a>
 						<ul class="sub-menu">
-							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
-							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-credit-card"></i>Đăng Tin</a></li>
+							<li><a ><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
+							<li><a ><i class="icon-credit-card"></i>Đăng Tin</a></li>
 							<%--<li>
 								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
 								<ul class="sub-menu">
-									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Full Width</a></li>
-									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Left Sidebar</a></li>
-									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Right Sidebar</a></li>
-									<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Double Sidebar</a></li>
+									<li><a href="">Full Width</a></li>
+									<li><a href="">Left Sidebar</a></li>
 								</ul>
 							</li>--%>
 						</ul>

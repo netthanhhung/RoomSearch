@@ -1,10 +1,11 @@
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace RoomSearch.Common
 {
+    [Serializable]
     [DataContract]
     public partial class Post : Record
     {
@@ -23,6 +24,7 @@ namespace RoomSearch.Common
             public const string PersonName = "PersonName";
             public const string PhoneNumber = "PhoneNumber";
             public const string Email = "Email";
+            public const string Gender = "Gender";
 
             public const string Floor = "Floor";
             public const string Address = "Address";
@@ -35,7 +37,9 @@ namespace RoomSearch.Common
 
             public const string AvailableRooms = "AvailableRooms";
             public const string RoomTypeId = "RoomTypeId";
-            public const string RoomType = "RoomType";            
+            public const string RoomType = "RoomType";
+            public const string RealestateTypeId = "RealestateTypeId";
+            public const string RealestateType = "RealestateType";
             public const string Description = "Description";
             public const string MeterSquare = "MeterSquare";            
             public const string Price = "Price";
@@ -65,6 +69,10 @@ namespace RoomSearch.Common
         private string _email;
         [DataMember]
         public string Email { get { return _email; } set { if (!object.ReferenceEquals(this.Email, value)) { _email = value; RaisePropertyChanged("Email"); } } }
+
+        private int? _gender;
+        [DataMember]
+        public int? Gender { get { return _gender; } set { if (!this.Gender.Equals(value)) { _gender = value; RaisePropertyChanged("Gender"); } } }
 
         private string _address;
         [DataMember]
@@ -110,6 +118,14 @@ namespace RoomSearch.Common
         [DataMember]
         public string RoomType { get { return _roomType; } set { if (!object.ReferenceEquals(this.RoomType, value)) { _roomType = value; RaisePropertyChanged("RoomType"); } } }
 
+        private int? _realestateTypeId;
+        [DataMember]
+        public int? RealestateTypeId { get { return _realestateTypeId; } set { if (!this.RealestateTypeId.Equals(value)) { _realestateTypeId = value; RaisePropertyChanged("RealestateTypeId"); } } }
+
+        private string _realestateType;
+        [DataMember]
+        public string RealestateType { get { return _realestateType; } set { if (!object.ReferenceEquals(this.RealestateType, value)) { _realestateType = value; RaisePropertyChanged("RealestateType"); } } }
+
         private bool _isLegacy;
         [DataMember]
         public bool IsLegacy { get { return _isLegacy; } set { if (!this.IsLegacy.Equals(value)) { _isLegacy = value; RaisePropertyChanged("IsLegacy"); } } }
@@ -125,6 +141,24 @@ namespace RoomSearch.Common
         private decimal? _price;
         [DataMember]
         public decimal? Price { get { return _price; } set { if (!this.Price.Equals(value)) { _price = value; RaisePropertyChanged("Price"); } } }
+
+        [DataMember]
+        public string PriceString
+        {
+            get
+            {
+                return Price.HasValue ? (Price.Value.ToString("0.0") + " (tr đ)") : string.Empty;
+            }
+        }
+
+        [DataMember]
+        public string ShortDescription
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(this.Description) && this.Description.Length > 74 ? (Description.Substring(0, 74) + "...."): Description;
+            }
+        }
 
         private List<Image> _imageList;
         [DataMember]

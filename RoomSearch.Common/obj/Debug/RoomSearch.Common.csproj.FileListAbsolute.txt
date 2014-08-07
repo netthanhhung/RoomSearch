@@ -2,7 +2,7 @@ E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.
 E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.dll
 E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\bin\Debug\Mimosa.Apartment.Common.pdb
 E:\Chanh\Solution\RoomSearch\Mimosa.Apartment.Common\obj\Debug\Mimosa.Apartment.Common.dll
-E:\Chanh\Solution\RoomSearch\RoomSearch.Common\bin\Debug\Mimosa.Apartment.Common.dll
-E:\Chanh\Solution\RoomSearch\RoomSearch.Common\bin\Debug\Mimosa.Apartment.Common.pdb
-E:\Chanh\Solution\RoomSearch\RoomSearch.Common\obj\Debug\Mimosa.Apartment.Common.dll
-E:\Chanh\Solution\RoomSearch\RoomSearch.Common\obj\Debug\Mimosa.Apartment.Common.pdb
+E:\Chanh\Solution\RoomSearch\RoomSearch.Common\bin\Debug\RoomSearch.Common.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Common\bin\Debug\RoomSearch.Common.pdb
+E:\Chanh\Solution\RoomSearch\RoomSearch.Common\obj\Debug\RoomSearch.Common.dll
+E:\Chanh\Solution\RoomSearch\RoomSearch.Common\obj\Debug\RoomSearch.Common.pdb

@@ -123,12 +123,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SearcRoomPostPage.aspx" />
+    <Content Include="PostDetailPopup.aspx" />
     <Content Include="clientaccesspolicy.xml" />
     <Content Include="SearchRoomPage.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="PostRoomPage.aspx" />
     <Content Include="Styles\CSS\appstyle.css" />
     <Content Include="Styles\Images\arrow.png" />
+    <Content Include="Styles\Images\delete.png" />
     <Content Include="Styles\Images\HTLogo.png" />
     <Content Include="Styles\Images\MasterHeaderBackground.png" />
     <Content Include="Styles\Images\plus-gray.png" />
@@ -139,11 +142,28 @@
     <Content Include="Styles\JS\function.js" />
     <Content Include="Styles\JS\jquery.js" />
     <Content Include="Styles\JS\utils.js" />
+    <Content Include="UserControls\PostPanel.ascx" />
+    <Content Include="UserControls\ImagePanel.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="code\UtilityHelper.cs" />
+    <Compile Include="SearcRoomPostPage.aspx.cs">
+      <DependentUpon>SearcRoomPostPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearcRoomPostPage.aspx.designer.cs">
+      <DependentUpon>SearcRoomPostPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PostDetailPopup.aspx.cs">
+      <DependentUpon>PostDetailPopup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostDetailPopup.aspx.designer.cs">
+      <DependentUpon>PostDetailPopup.aspx</DependentUpon>
+    </Compile>
     <Compile Include="code\CommonSettings.cs" />
     <Compile Include="code\CommonSettingsShared.cs" />
     <Compile Include="SearchRoomPage.aspx.cs">
@@ -175,6 +195,20 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PostPanel.ascx.cs">
+      <DependentUpon>PostPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\PostPanel.ascx.designer.cs">
+      <DependentUpon>PostPanel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImagePanel.ascx.cs">
+      <DependentUpon>ImagePanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ImagePanel.ascx.designer.cs">
+      <DependentUpon>ImagePanel.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

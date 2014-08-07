@@ -11,6 +11,7 @@ namespace RoomSearch.Common
         House = 3
     }
 
+    [Serializable]
     [DataContract]
     public partial class PostType : Record
     {

@@ -8,8 +8,8 @@
     <ProjectGuid>{806F2979-1649-4B8E-AAD2-3EC618826545}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mimosa.Apartment.Business</RootNamespace>
-    <AssemblyName>Mimosa.Apartment.Business</AssemblyName>
+    <RootNamespace>RoomSearch.Business</RootNamespace>
+    <AssemblyName>RoomSearch.Business</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

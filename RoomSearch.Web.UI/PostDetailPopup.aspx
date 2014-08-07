@@ -1,65 +1,89 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="PostRoomPage.aspx.cs"
-    Inherits="RoomSearch.Web.UI.PostRoomPage" Title="Đăng Tin Cho Thuê Phòng" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PostDetailPopup.aspx.cs" Inherits="RoomSearch.Web.UI.PostDetailPopup" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
-<asp:Content ID="contentDefault" ContentPlaceHolderID="centreContentPlaceHolder"
-    runat="server">
+<%@ Register TagPrefix="local" TagName="ImagePanel" Src="~/UserControls/ImagePanel.ascx" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="head" runat="server">
+    <title>Chi tiết phòng</title>
     <link rel="stylesheet" type="text/css" href="Styles/CSS/appstyle.css" />
+    <link rel="stylesheet" type="text/css" href="Styles/CSS/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="Styles/CSS/menu.css"/>
     <script type="text/javascript" src="Styles/JS/utils.js"></script>
-    <telerik:RadScriptBlock runat="server" ID="scriptBlock">
-        <script type="text/javascript" language="javascript">
+    <script type="text/javascript" language="javascript">
 
-            function onDropDownCity_ClientIndexChanged(sender, eventArgs) {
-                var item = eventArgs.get_item();
-                $find("<%= PostRoomAjaxManager.ClientID %>").ajaxRequest("RebindDistrictListByCity-" + item.get_value());
-            }
+        function onDropDownCity_ClientIndexChanged(sender, eventArgs) {
+            var item = eventArgs.get_item();
+            $find("PostDetailsAjaxManager").ajaxRequest("RebindDistrictListByCity-" + item.get_value());
+        }
 
-        </script>
-    </telerik:RadScriptBlock>
+        function GetRadWindow() {
+            var oWindow = null;
+            if (window.radWindow)
+                oWindow = window.radWindow;
+            else if (window.frameElement.radWindow)
+                oWindow = window.frameElement.radWindow;
+            return oWindow;
+        }
+
+        function OnBtnCancelClientClicked(sender, eventArgs) {
+            var currentWindow = GetRadWindow();
+            var isReload = "No";
+            currentWindow.argument = isReload;
+            currentWindow.close();
+        }
+
+
+        function OnBtnSaveClientClicked() {
+            var currentWindow = GetRadWindow();
+            var isReload = "Yes";
+            currentWindow.argument = isReload;
+            currentWindow.close();
+        }
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
-    <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
-    <div>
-        <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="PostRoomAjaxManager"
+    
+    <div>     
+        <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="PostDetailsAjaxManager"
             OnAjaxRequest="OnMyAjaxManagerAjaxRequest">
             <AjaxSettings>
                 <telerik:AjaxSetting AjaxControlID="cbbCity">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict" LoadingPanelID="pnlRadAjaxLoading"/>
+                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+                <telerik:AjaxSetting AjaxControlID="panelImage">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="panelImage" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
                 <telerik:AjaxSetting AjaxControlID="btnSave">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="divMain" LoadingPanelID="pnlRadAjaxLoading"/>
-                        <telerik:AjaxUpdatedControl ControlID="divAfterPost" LoadingPanelID="pnlRadAjaxLoading"/>
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
-                <telerik:AjaxSetting AjaxControlID="OnBtnContinuePost_Clicked">
-                    <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="divMain" LoadingPanelID="pnlRadAjaxLoading"/>
-                        <telerik:AjaxUpdatedControl ControlID="divAfterPost" LoadingPanelID="pnlRadAjaxLoading"/>
+                        <telerik:AjaxUpdatedControl LoadingPanelID="pnlRadAjaxLoading" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
             </AjaxSettings>
         </telerik:RadAjaxManager>
+        
         <telerik:RadAjaxLoadingPanel ID="pnlRadAjaxLoading" runat="server" Height="75px"
                 Width="75px" Transparency="50">
                 <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
                     style="border: 0;" />
-            </telerik:RadAjaxLoadingPanel>
-        <asp:ValidationSummary runat="server" ID="sumValid" ShowMessageBox="true" ShowSummary="false"
-            ValidationGroup="PostRoomValidation" />
-        <div id="divMain" runat="server">
-            <table>
+        </telerik:RadAjaxLoadingPanel>
+
+         <table>
                 <tr>
-                    <td style="width: 160px">
+                    <td style="width: 170px">
                         <asp:Label ID="lblPersonName" runat="server" Text="Tên người đăng(*) :"></asp:Label>
                     </td>
                     <td>
                         <telerik:RadTextBox ID="txtPersonName" runat="server" Width="250px">
                         </telerik:RadTextBox>
-                        <asp:RequiredFieldValidator runat="server" ID="rfvPersonName" ControlToValidate="txtPersonName"
-                            ErrorMessage="Tên người đăng không hợp lệ." ValidationGroup="PostRoomValidation"
-                            Display="None" EnableClientScript="true"></asp:RequiredFieldValidator>
                     </td>
                     <td style="width: 10px">
                     </td>
@@ -79,9 +103,6 @@
                     <td>
                         <telerik:RadTextBox ID="txtPhoneNumber" runat="server" Width="250px">
                         </telerik:RadTextBox>
-                        <asp:RequiredFieldValidator runat="server" ID="rfvPhoneNumber" ControlToValidate="txtPhoneNumber"
-                            ErrorMessage="Số điện thoại không hợp lệ." ValidationGroup="PostRoomValidation"
-                            Display="None" EnableClientScript="true"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="3">
                     </td>
@@ -93,9 +114,6 @@
                     <td>
                         <telerik:RadTextBox ID="txtEmail" runat="server" Width="250px">
                         </telerik:RadTextBox>
-                        <asp:RegularExpressionValidator runat="server" ID="revEmail" ControlToValidate="txtEmail"
-                            Display="none" ErrorMessage="Email không hợp lệ." ValidationGroup="PostRoomValidation"
-                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                     </td>
                     <td colspan="3">
                     </td>
@@ -131,9 +149,6 @@
                     <td>
                         <telerik:RadTextBox ID="txtAddress" runat="server" Width="250px">
                         </telerik:RadTextBox>
-                        <asp:RequiredFieldValidator runat="server" ID="rfvAddress" ControlToValidate="txtAddress"
-                            ErrorMessage="Địa chỉ không hợp lệ." ValidationGroup="PostRoomValidation" Display="None"
-                            EnableClientScript="true"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="3">
                     </td>
@@ -192,49 +207,39 @@
                     </td>
                 </tr>
             </table>
-            <div style="text-align: left; width: 100%">
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <asp:Label ID="lblUploadImages" runat="server" Text="Hình ảnh :"></asp:Label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <telerik:RadUpload runat="server" ID="radUploadMulti" InputSize="66" Width="800px" MaxFileSize="1000000"
-                                ControlObjectsVisibility="AddButton" MaxFileInputsCount="5" InitialFileInputsCount="1"
-                                Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
-                            <telerik:RadProgressArea runat="server" ID="radProgress" ProgressIndicators="TotalProgressBar, FilesCountBar, TimeEstimated, TransferSpeed">
-                            </telerik:RadProgressArea>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div style="text-align: center; width: 100%">
-                <table style="width: 100%">
-                    <tr>
-                        <td align="center" style="width: 100%">
-                            <asp:Button runat="server" ID="btnSave" Text="Đăng Tin" CssClass="flatButton" Width="80"
-                                OnClick="OnBtnSave_Clicked" CausesValidation="true" ValidationGroup="PostRoomValidation" />&nbsp;
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div id="divAfterPost" runat="server">
-            <table style="width: 100%">
-                    <tr>
-                        <td align="left">
-                            <asp:Button runat="server" ID="btnContinuePost" Text="Đăng Tin Tiếp" CssClass="flatButton" Width="100"
-                                OnClick="OnBtnContinuePost_Clicked" />&nbsp;
-                        </td>
-                        <td align="left">
-                            <asp:Button runat="server" ID="btnSearchPost" Text="Tìm Phòng" CssClass="flatButton" Width="80"
-                                OnClick="OnBtnSearchPost_Clicked"  />&nbsp;
-                        </td>
-                        <td style="width: 100%"></td>
-                    </tr>
-                </table>
+         <div>
+            <table>
+                <tr>
+                    <td >
+                        <asp:Label ID="lblImages" runat="server" Text="Hình ảnh :" ></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>     
+                        <asp:Panel ID="panelImage" runat="server" ScrollBars="Auto" Direction="LeftToRight" Width="950px"></asp:Panel>    
+                        <%--<div id="divImage" runat="server" dir="ltr" style="width:1024px; display:table"  ></div>--%>
+                    </td>
+                </tr>                
+                <tr>
+                    <td>
+                        <telerik:RadUpload runat="server" ID="radUploadMulti" MaxFileSize="1000000" InputSize="66" Width="800px"
+                            ControlObjectsVisibility="AddButton" MaxFileInputsCount="5" InitialFileInputsCount="1"
+                            Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
+                    </td>
+                </tr>
+                <%--<tr>
+                    <td>     
+                        <local:ImagePanel ID="ucImagePanel" runat="server" OnDeleteClicked="OnImagePanel_DeleteClicked" />
+                    </td>
+                </tr> --%>
+            </table>
+         </div>
+        <div style="text-align:center">
+        
+            <asp:Button runat="server" ID="btnSave" Text="Lưu" CssClass="flatButton" Width="60" OnClick="OnBtnSaveClicked"/>&nbsp;
+            <asp:Button runat="server" ID="btnCancel" Text="Đóng" CssClass="flatButton" Width="60" OnClientClick="OnBtnCancelClientClicked()"/>
         </div>
     </div>
-</asp:Content>
+    </form>
+</body>
+</html>

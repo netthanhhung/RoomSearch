@@ -4,6 +4,7 @@ using System.ComponentModel;
 
 namespace RoomSearch.Common
 {
+    [Serializable]
     [DataContract]
 	public partial class District : Record
 	{

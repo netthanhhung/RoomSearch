@@ -10,7 +10,7 @@
 namespace RoomSearch.Web.UI {
     
     
-    public partial class SearchRoomPage {
+    public partial class SearcRoomPostPage {
         
         /// <summary>
         /// scriptBlock control.
@@ -40,13 +40,13 @@ namespace RoomSearch.Web.UI {
         protected global::Telerik.Web.UI.RadProgressManager Radprogressmanager1;
         
         /// <summary>
-        /// SearchRoomAjaxManager control.
+        /// SearcRoomPostAjaxManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxManager SearchRoomAjaxManager;
+        protected global::Telerik.Web.UI.RadAjaxManager SearcRoomPostAjaxManager;
         
         /// <summary>
         /// pnlRadAjaxLoading control.
@@ -67,148 +67,40 @@ namespace RoomSearch.Web.UI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCondition;
         
         /// <summary>
-        /// lblCity control.
+        /// lblEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCity;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
         
         /// <summary>
-        /// cbbCity control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cbbCity;
+        protected global::Telerik.Web.UI.RadTextBox txtEmail;
         
         /// <summary>
-        /// lblDistrict control.
+        /// lblPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDistrict;
+        protected global::System.Web.UI.WebControls.Label lblPhone;
         
         /// <summary>
-        /// cbbDistrict control.
+        /// txtPhoneNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cbbDistrict;
-        
-        /// <summary>
-        /// lblRoomType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRoomType;
-        
-        /// <summary>
-        /// cbbRoomType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cbbRoomType;
-        
-        /// <summary>
-        /// lblPriceFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPriceFrom;
-        
-        /// <summary>
-        /// txtPriceFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadNumericTextBox txtPriceFrom;
-        
-        /// <summary>
-        /// lblUnitFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUnitFrom;
-        
-        /// <summary>
-        /// lblPriceTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPriceTo;
-        
-        /// <summary>
-        /// txtPriceTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadNumericTextBox txtPriceTo;
-        
-        /// <summary>
-        /// lblUnitTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUnitTo;
-        
-        /// <summary>
-        /// lblDateFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDateFrom;
-        
-        /// <summary>
-        /// datDateFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker datDateFrom;
-        
-        /// <summary>
-        /// lblDateTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDateTo;
-        
-        /// <summary>
-        /// datDateTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker datDateTo;
+        protected global::Telerik.Web.UI.RadTextBox txtPhoneNumber;
         
         /// <summary>
         /// btnSearch control.

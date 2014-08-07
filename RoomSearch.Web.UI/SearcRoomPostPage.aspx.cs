@@ -11,58 +11,24 @@ using System.Collections;
 
 namespace RoomSearch.Web.UI
 {
-    public partial class SearchRoomPage : System.Web.UI.Page
+    public partial class SearcRoomPostPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                InitComboboxData();
-
+                
             }
-        }
-
-        void InitComboboxData()
-        {
-            cbbCity.DataValueField = "CityId";
-            cbbCity.DataTextField = "Name";
-            cbbCity.DataSource = Business.BusinessMethods.ListCity(232, null); //VietNam
-            cbbCity.DataBind();
-            cbbCity.SelectedValue = "1"; //Ho Chi Minh
-
-            BindDistrictListByCity(1);
-
-            cbbRoomType.DataValueField = "RoomTypeId";
-            cbbRoomType.DataTextField = "Name";
-            cbbRoomType.DataSource = Business.BusinessMethods.ListRoomType();
-            cbbRoomType.DataBind();
-            cbbRoomType.SelectedValue = "1";
-
-            DateTime today = DateTime.Today;
-            datDateFrom.SelectedDate = today.AddMonths(-3);
-            datDateTo.SelectedDate = today;
         }
 
         protected void OnMyAjaxManagerAjaxRequest(object sender, AjaxRequestEventArgs e)
         {
-            if (e.Argument.IndexOf("RebindDistrictListByCity") != -1)
+            if (e.Argument.IndexOf("RebindSearchResults") != -1)
             {
-                string[] param = e.Argument.Split('-');
-                if (param.Length == 2)
-                {
-                    SearchRoomAjaxManager.AjaxSettings.AddAjaxSetting(SearchRoomAjaxManager, cbbDistrict);
-                    BindDistrictListByCity(int.Parse(param[1]));
-                }
+                SearcRoomPostAjaxManager.AjaxSettings.AddAjaxSetting(SearcRoomPostAjaxManager, gridRoomResult);
+                GetGridRoomResultDataSource(null);
+                gridRoomResult.DataBind();
             }
-        }
-
-        private void BindDistrictListByCity(int cityId)
-        {
-            cbbDistrict.DataTextField = "Name";
-            cbbDistrict.DataValueField = "DistrictId";
-            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null);
-            cbbDistrict.DataBind();
-            cbbDistrict.SelectedIndex = 0;
         }
 
         protected void OnBtnSearch_Clicked(object sender, EventArgs e)
@@ -172,36 +138,19 @@ namespace RoomSearch.Web.UI
                 sortExpressInvert = "DateCreated ASC";
             }
 
-            int cityId = Convert.ToInt32(cbbCity.SelectedValue);
-            int districtId = Convert.ToInt32(cbbDistrict.SelectedValue);
-            int roomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
-            decimal? priceFrom = null;
-            if (txtPriceFrom.Value.HasValue)
+            
+            if (!string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(txtPhoneNumber.Text))
             {
-                priceFrom = Convert.ToDecimal(txtPriceFrom.Value);
-            }
-            decimal? priceTo = null;
-            if (txtPriceTo.Value.HasValue)
-            {
-                priceTo = Convert.ToDecimal(txtPriceTo.Value);
-            }
-            DateTime? dateFrom = null;
-            if (datDateFrom.SelectedDate.HasValue)
-            {
-                dateFrom = datDateFrom.SelectedDate.Value;
-            }
-            DateTime? dateTo = null;
-            if (datDateTo.SelectedDate.HasValue)
-            {
-                dateTo = datDateTo.SelectedDate.Value;
-                dateTo = dateTo.Value.AddDays(1).AddSeconds(-1);
+                string email = txtEmail.Text.ToLower();
+                string phoneNumber = txtPhoneNumber.Text.ToLower();
+                
+                gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.Room, null, null, null, null, null, null, phoneNumber, email, null,
+                    null, null, null, null, null, null, true);
+                List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.Room, null, null, null, null, null, null, phoneNumber, email, null,
+                    null, null, null, null, null, null, true, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
+                gridRoomResult.DataSource = searchResults;
             }
 
-            gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.Room, roomTypeId, null, 232, cityId, districtId, null, null, null, null,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, false);
-            List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.Room, roomTypeId, null, 232, cityId, districtId, null, null, null, null,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
-            gridRoomResult.DataSource = searchResults;
         }
 
         #endregion

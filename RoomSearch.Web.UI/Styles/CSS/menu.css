@@ -27,7 +27,8 @@ ol, ul {
 	margin: 0 auto;
 }
 
-.inner {
+.inner 
+{
 	margin: 0 auto;
 	max-width: 940px;
 	padding: 0 40px;
@@ -79,14 +80,17 @@ ol, ul {
 	padding: 2px 0;
 }
 
-#main-menu > li.parent {
-	background-image: url(../images/plus-gray.png);
-	background-size: 7px 7px;
+#main-menu > li.parent 	
+{
+    color: #23dbdb;
+	background-size: 8px 8px;
 	background-repeat: no-repeat;
 	background-position: left center;
 }
 
-#main-menu > li.parent > a {
+#main-menu > li.parent > a 
+{
+    color: #23dbdb;
 	padding-left: 14px;
 }
 

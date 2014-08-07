@@ -193,12 +193,14 @@ namespace RoomSearch.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public List<Post> SearchPost(int postTypeId,
                                     int? roomTypeId,
+                                    int? realestateId,
                                     int? countryId,
                                     int? cityId,
                                     int? districtId,
                                     string personName,
                                     string phoneNumber,
                                     string email,		
+                                    int? gender,
                                     decimal? priceFrom,	
                                     decimal? pPriceTo,	
                                     DateTime? dateFrom,
@@ -209,7 +211,7 @@ namespace RoomSearch.Data
         {
             List<Post> result = new List<Post>();
 
-            using (IDataReader reader = _db.ExecuteReader("procSearchPost", postTypeId, roomTypeId, countryId, cityId, districtId, personName, phoneNumber, email,
+            using (IDataReader reader = _db.ExecuteReader("procSearchPost", postTypeId, roomTypeId, realestateId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
                 priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy))
             {
                 Factory.FillPostList(result, reader);
@@ -221,12 +223,14 @@ namespace RoomSearch.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public int CountPost(int postTypeId,
                                     int? roomTypeId,
+                                    int? realestateTypeId,
                                     int? countryId,
                                     int? cityId,
                                     int? districtId,
                                     string personName,
                                     string phoneNumber,
                                     string email,
+                                    int? gender,
                                     decimal? priceFrom,
                                     decimal? pPriceTo,
                                     DateTime? dateFrom,
@@ -236,19 +240,21 @@ namespace RoomSearch.Data
                                     bool showLegacy)
         {
             
-            return Utilities.ToInt(_db.ExecuteScalar("procCountPost", postTypeId, roomTypeId, countryId, cityId, districtId, personName, phoneNumber, email,
+            return Utilities.ToInt(_db.ExecuteScalar("procCountPost", postTypeId, roomTypeId, realestateTypeId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
                 priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy));
         }
 
 
         public List<Post> SearchPostPaging(int postTypeId,
                                    int? roomTypeId,
+                                   int? realestateTypeId,
                                    int? countryId,
                                    int? cityId,
                                    int? districtId,
                                    string personName,
                                    string phoneNumber,
                                    string email,
+                                   int? gender,
                                    decimal? priceFrom,
                                    decimal? pPriceTo,
                                    DateTime? dateFrom,
@@ -266,8 +272,11 @@ namespace RoomSearch.Data
                               ,P.PersonName
                               ,P.PhoneNumber
                               ,P.Email
+                              ,P.Gender
                               ,P.RoomTypeId
                               ,RT.Name as RoomType
+                              ,P.RealestateTypeId
+                              ,RLT.Name as RealestateType
                               ,P.AvailableRooms
                               ,P.Description
                               ,P.MeterSquare
@@ -287,24 +296,27 @@ namespace RoomSearch.Data
                               ,P.CreatedBy
                               ,P.UpdatedBy
 	                        FROM	dbo.Post P
-	                        INNER JOIN dbo.RoomType RT on P.RoomTypeId = RT.RoomTypeId
-	                        INNER JOIN dbo.Country C on P.CountryId = C.CountryId
-	                        INNER JOIN dbo.City CT on P.CityId = CT.CityId
-	                        INNER JOIN dbo.District D on P.DistrictId = D.DistrictId
+	                        LEFT OUTER JOIN dbo.RoomType RT on P.RoomTypeId = RT.RoomTypeId
+	                        LEFT OUTER JOIN dbo.RealestateType RLT on P.RealestateTypeId = RLT.RealestateTypeId
+	                        LEFT OUTER JOIN dbo.Country C on P.CountryId = C.CountryId
+	                        LEFT OUTER JOIN dbo.City CT on P.CityId = CT.CityId
+	                        LEFT OUTER JOIN dbo.District D on P.DistrictId = D.DistrictId
 	                        WHERE	P.PostTypeId = @PostTypeId
 	                        AND	(@RoomTypeId IS NULL OR P.RoomTypeId = @RoomTypeId)
+                            AND	(@RealestateTypeId IS NULL OR P.RealestateTypeId = @RealestateTypeId)
 	                        AND	(@CountryId is null OR P.CountryId = @CountryId)
 	                        AND	(@CityId is null OR P.CityId = @CityId)
 	                        AND	(@DistrictId is null OR P.DistrictId = @DistrictId)
-	                        AND	(@PersonName = '' OR (P.PersonName like '%' + @PersonName + '%'))
-	                        AND	(@PhoneNumber = '' OR P.PhoneNumber = @PhoneNumber)
-	                        AND	(@Email = '' OR P.Email = @Email)
+	                        AND	(@PersonName is null  OR (P.PersonName like '%' + @PersonName + '%'))
+	                        AND	(@PhoneNumber is null  OR LOWER(P.PhoneNumber) = @PhoneNumber)
+	                        AND	(@Email is null  OR LOWER(P.Email) = @Email)
+                            AND	(@Gender IS NULL OR P.Gender = @Gender)
 	                        AND (@PriceFrom IS NULL OR P.Price IS NULL OR P.Price >= @PriceFrom)
 	                        AND (@PriceTo IS NULL OR P.Price IS NULL OR P.Price <= @PriceTo)
-	                        AND (P.DateUpdated >= @DateFrom)
+	                        AND (@DateFrom IS NULL OR P.DateUpdated >= @DateFrom)
 	                        AND (@DateTo IS NULL OR P.DateUpdated <= @DateTo)
-	                        AND (@MeterSquareFrom  = 0 OR P.MeterSquare IS NULL OR P.MeterSquare >= @MeterSquareFrom) 
-	                        AND (@MeterSquareTo  = 0 OR P.MeterSquare IS NULL OR P.MeterSquare <= @MeterSquareTo)
+	                        AND (@MeterSquareFrom  is null  OR P.MeterSquare IS NULL OR P.MeterSquare >= @MeterSquareFrom) 
+	                        AND (@MeterSquareTo  is null  OR P.MeterSquare IS NULL OR P.MeterSquare <= @MeterSquareTo)
 	                        AND (@ShowLegacy = 1 OR P.IsLegacy = 0)";
             
             sqlQuery += " order by " + sortOrder;
@@ -315,23 +327,53 @@ namespace RoomSearch.Data
                     + " Order by " + sortOrder;
 
             DbCommand dbCommand = _db.GetSqlStringCommand(sqlQuery);
-            dbCommand.Parameters.Add(new SqlParameter("@PostTypeId", postTypeId));
-            dbCommand.Parameters.Add(new SqlParameter("@RoomTypeId", roomTypeId));
-            dbCommand.Parameters.Add(new SqlParameter("@CountryId", countryId));
-            dbCommand.Parameters.Add(new SqlParameter("@CityId", cityId));
-            dbCommand.Parameters.Add(new SqlParameter("@DistrictId", districtId));
-            dbCommand.Parameters.Add(new SqlParameter("@PersonName", string.IsNullOrEmpty(personName) ? "" : personName));
-            dbCommand.Parameters.Add(new SqlParameter("@PhoneNumber", string.IsNullOrEmpty(phoneNumber) ? "" : phoneNumber));
-            dbCommand.Parameters.Add(new SqlParameter("@Email", string.IsNullOrEmpty(email) ? "" : email));
-            dbCommand.Parameters.Add(new SqlParameter("@PriceFrom", priceFrom));
-            dbCommand.Parameters.Add(new SqlParameter("@PriceTo", pPriceTo));
-            dbCommand.Parameters.Add(new SqlParameter("@DateFrom", dateFrom));
-            dbCommand.Parameters.Add(new SqlParameter("@DateTo", dateTo));
-            dbCommand.Parameters.Add(new SqlParameter("@MeterSquareFrom", meterSquareFrom.HasValue ? meterSquareFrom.Value : 0));
-            dbCommand.Parameters.Add(new SqlParameter("@MeterSquareTo", meterSquareTo.HasValue ? meterSquareTo.Value : 0));
-            dbCommand.Parameters.Add(new SqlParameter("@ShowLegacy", showLegacy));            
+            dbCommand.Parameters.Add(BuildSqlParameter("@PostTypeId", SqlDbType.Int, true, postTypeId));
+            dbCommand.Parameters.Add(BuildSqlParameter("@RoomTypeId", SqlDbType.Int, roomTypeId.HasValue, roomTypeId));
+            dbCommand.Parameters.Add(BuildSqlParameter("@RealestateTypeId", SqlDbType.Int, realestateTypeId.HasValue, realestateTypeId));
+            dbCommand.Parameters.Add(BuildSqlParameter("@CountryId", SqlDbType.Int, countryId.HasValue, countryId));
+            dbCommand.Parameters.Add(BuildSqlParameter("@CityId", SqlDbType.Int, cityId.HasValue, cityId));
+            dbCommand.Parameters.Add(BuildSqlParameter("@DistrictId", SqlDbType.Int, districtId.HasValue, districtId));
+            dbCommand.Parameters.Add(BuildSqlParameter("@PersonName", SqlDbType.NVarChar, !string.IsNullOrEmpty(personName), personName));
+            dbCommand.Parameters.Add(BuildSqlParameter("@PhoneNumber", SqlDbType.NVarChar, !string.IsNullOrEmpty(phoneNumber), phoneNumber));
+            dbCommand.Parameters.Add(BuildSqlParameter("@Email", SqlDbType.NVarChar, !string.IsNullOrEmpty(email), email));
+            dbCommand.Parameters.Add(BuildSqlParameter("@Gender", SqlDbType.Int, gender.HasValue, gender));
+            dbCommand.Parameters.Add(BuildSqlParameter("@PriceFrom", SqlDbType.Decimal, priceFrom.HasValue, priceFrom));
+            dbCommand.Parameters.Add(BuildSqlParameter("@PriceTo", SqlDbType.Decimal, pPriceTo.HasValue, pPriceTo));
+            dbCommand.Parameters.Add(BuildSqlParameter("@DateFrom", SqlDbType.DateTime, dateFrom.HasValue, dateFrom));
+            dbCommand.Parameters.Add(BuildSqlParameter("@DateTo", SqlDbType.DateTime, dateTo.HasValue, dateTo));
+            dbCommand.Parameters.Add(BuildSqlParameter("@MeterSquareFrom", SqlDbType.Decimal, meterSquareFrom.HasValue, meterSquareFrom));
+            dbCommand.Parameters.Add(BuildSqlParameter("@MeterSquareTo", SqlDbType.Decimal, meterSquareTo.HasValue, meterSquareTo));
+            dbCommand.Parameters.Add(BuildSqlParameter("@ShowLegacy", SqlDbType.Bit, true, showLegacy));
+        
 
             using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                Factory.FillPostList(result, reader);
+            }
+
+            return result;
+        }
+
+        private SqlParameter BuildSqlParameter(string paramName, SqlDbType paramType, bool hasValue, object value)
+        {
+            SqlParameter result = new SqlParameter(paramName, paramType);
+            if (hasValue)
+            {
+                result.Value = value;
+            }
+            else
+            {
+                result.Value = DBNull.Value;
+            }
+            return result;
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
+        public List<Post> GetPost(int postId)
+        {
+            List<Post> result = new List<Post>();
+
+            using (IDataReader reader = _db.ExecuteReader("procGetPost", postId))
             {
                 Factory.FillPostList(result, reader);
             }

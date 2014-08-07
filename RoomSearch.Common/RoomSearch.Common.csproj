@@ -8,8 +8,8 @@
     <ProjectGuid>{FCE18E85-6A08-4C2E-A04F-7E098B29DCAA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mimosa.Apartment.Common</RootNamespace>
-    <AssemblyName>Mimosa.Apartment.Common</AssemblyName>
+    <RootNamespace>RoomSearch.Common</RootNamespace>
+    <AssemblyName>RoomSearch.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -48,6 +48,8 @@
     <Compile Include="ContactType.cs" />
     <Compile Include="City.Generated.cs" />
     <Compile Include="City.SqlParameters.cs" />
+    <Compile Include="RealestateType.Generated.cs" />
+    <Compile Include="RealestateType.SqlParameters.cs" />
     <Compile Include="Post.Generated.cs" />
     <Compile Include="Post.SqlParameters.cs" />
     <Compile Include="PostType.Generated.cs" />

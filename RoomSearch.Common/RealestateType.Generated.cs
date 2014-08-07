@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace RoomSearch.Common
 {
-    public enum RoomTypes : int
+    public enum RealestateTypes : int
     {
         Standard = 1,
         Exclusive = 2,
@@ -12,11 +12,11 @@ namespace RoomSearch.Common
 
     [Serializable]
     [DataContract]
-    public partial class RoomType : Record
+    public partial class RealestateType : Record
     {
         #region Public Constructors
 
-        public RoomType() : base() { }
+        public RealestateType() : base() { }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace RoomSearch.Common
 
         public static class ColumnNames
         {
-            public const string RoomTypeId = "RoomTypeId";
+            public const string RealestateTypeId = "RealestateTypeId";
             public const string Name = "Name";
             public const string Description = "Description";
         }
@@ -33,9 +33,9 @@ namespace RoomSearch.Common
 
         #region Properties
 
-        private int _roomTypeId;
+        private int _realestateTypeId;
         [DataMember]
-        public int RoomTypeId { get { return _roomTypeId; } set { _roomTypeId = value; RaisePropertyChanged("RoomTypeId"); } }
+        public int RealestateTypeId { get { return _realestateTypeId; } set { _realestateTypeId = value; RaisePropertyChanged("RealestateTypeId"); } }
 
         private string _name;
         [DataMember]
