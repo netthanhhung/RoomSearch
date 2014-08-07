@@ -18,27 +18,23 @@
     </telerik:RadScriptBlock>
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
     <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
+
     <div>
         <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="PostRoomAjaxManager"
             OnAjaxRequest="OnMyAjaxManagerAjaxRequest">
             <AjaxSettings>
                 <telerik:AjaxSetting AjaxControlID="cbbCity">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict" LoadingPanelID="pnlRadAjaxLoading"/>
+                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict"/>
                     </UpdatedControls>
                 </telerik:AjaxSetting>
+                
                 <telerik:AjaxSetting AjaxControlID="btnSave">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="divMain" LoadingPanelID="pnlRadAjaxLoading"/>
-                        <telerik:AjaxUpdatedControl ControlID="divAfterPost" LoadingPanelID="pnlRadAjaxLoading"/>
+                        <telerik:AjaxUpdatedControl LoadingPanelID="pnlRadAjaxLoading"/>
                     </UpdatedControls>
                 </telerik:AjaxSetting>
-                <telerik:AjaxSetting AjaxControlID="OnBtnContinuePost_Clicked">
-                    <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="divMain" LoadingPanelID="pnlRadAjaxLoading"/>
-                        <telerik:AjaxUpdatedControl ControlID="divAfterPost" LoadingPanelID="pnlRadAjaxLoading"/>
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
+                
             </AjaxSettings>
         </telerik:RadAjaxManager>
         <telerik:RadAjaxLoadingPanel ID="pnlRadAjaxLoading" runat="server" Height="75px"

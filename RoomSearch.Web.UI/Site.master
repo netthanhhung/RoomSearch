@@ -40,8 +40,8 @@
 					<li class="parent">
 						<a >Ở Ghép</a>
 						<ul class="sub-menu">
-							<li><a ><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
-							<li><a ><i class="icon-credit-card"></i>Đăng Tin</a></li>
+							<li><a  href="PostCouplePage.aspx"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
+							<li><a  href="PostCouplePage.aspx"><i class="icon-credit-card"></i>Đăng Tin</a></li>
 							<%--<li>
 								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
 								<ul class="sub-menu">

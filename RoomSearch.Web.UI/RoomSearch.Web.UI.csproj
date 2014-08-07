@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PostCouplePage.aspx" />
     <Content Include="SearcRoomPostPage.aspx" />
     <Content Include="PostDetailPopup.aspx" />
     <Content Include="clientaccesspolicy.xml" />
@@ -150,6 +151,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="code\UtilityHelper.cs" />
+    <Compile Include="PostCouplePage.aspx.cs">
+      <DependentUpon>PostCouplePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostCouplePage.aspx.designer.cs">
+      <DependentUpon>PostCouplePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SearcRoomPostPage.aspx.cs">
       <DependentUpon>SearcRoomPostPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
