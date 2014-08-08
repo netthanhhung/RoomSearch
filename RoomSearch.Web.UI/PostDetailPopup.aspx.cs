@@ -19,6 +19,22 @@ namespace RoomSearch.Web.UI
             {
                 InitComboboxData();
 
+                int postTypeId = GetPostTypeId();
+                if (postTypeId == (int)PostTypes.Room)
+                {
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = lblRealestate.Visible = cbbRealestateType.Visible = false;
+                }
+                else if (postTypeId == (int)PostTypes.StayWith)
+                {
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = true;
+                    lblRealestate.Visible = cbbRealestateType.Visible = false;
+                }
+                else if (postTypeId == (int)PostTypes.House)
+                {
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = false;
+                    lblRealestate.Visible = cbbRealestateType.Visible = true;
+                }
+
                 string mode = "view";
                 if (!string.IsNullOrEmpty(Request.QueryString["Mode"]))
                 {
@@ -98,7 +114,8 @@ namespace RoomSearch.Web.UI
             txtMeterSQuare.Value = post.MeterSquare.HasValue ? Convert.ToDouble(post.MeterSquare.Value) : 0;
             txtPrice.Value = post.Price.HasValue ? Convert.ToDouble(post.Price.Value) : 0;
             cbbRoomType.SelectedValue = post.RoomTypeId.ToString();
-            txtDescription.Text = post.Description;           
+            txtDescription.Text = post.Description;
+            radMale.Checked = post.Gender == 1;
         }
 
         void BindReadonlyImageList(Post post)
@@ -209,7 +226,17 @@ namespace RoomSearch.Web.UI
             saveItem.AvailableRooms = txtAvailableRooms.Value.HasValue ? Convert.ToInt32(txtAvailableRooms.Value) : 1;
             saveItem.Price = Convert.ToDecimal(txtPrice.Value);
             saveItem.Description = txtDescription.Text;
-            
+            saveItem.PostTypeId = GetPostTypeId();
+
+            if (saveItem.PostTypeId == (int)PostTypes.StayWith)
+            {
+                saveItem.Gender = radMale.Checked ? 1 : 0;
+            }
+            else if (saveItem.PostTypeId == (int)PostTypes.House)
+            {
+                saveItem.RealestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue); ;
+            }
+
             foreach (UploadedFile file in radUploadMulti.UploadedFiles)
             {
                 string fileName = file.GetName();
@@ -254,6 +281,16 @@ namespace RoomSearch.Web.UI
 
             if (!ClientScript.IsClientScriptBlockRegistered("redirectUser"))
                 ClientScript.RegisterStartupScript(this.GetType(), "redirectUser", script);
+        }
+
+        protected int GetPostTypeId()
+        {
+            int postTypeId = 1; //Room
+            if (!string.IsNullOrEmpty(Request.QueryString["PostType"]))
+            {
+                postTypeId = Convert.ToInt32(Request.QueryString["PostType"]);
+            }
+            return postTypeId;
         }
     }
 }

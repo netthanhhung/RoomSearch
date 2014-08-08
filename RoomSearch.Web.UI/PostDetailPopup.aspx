@@ -78,6 +78,29 @@
 
          <table>
                 <tr>
+                    <td style="width: 160px">
+                        <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:RadioButton ID="radMale" runat="server" Checked="true" Text="Nam" GroupName="Gender" />
+                        <asp:RadioButton ID="radFemale" runat="server" Checked="false" Text="Nữ" GroupName="Gender" />
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblRealestate" runat="server" Text="Loại nhà/đất:"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="Office2007" Height="155px"
+                            Width="254px">
+                        </telerik:RadComboBox>
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
                     <td style="width: 170px">
                         <asp:Label ID="lblPersonName" runat="server" Text="Tên người đăng(*) :"></asp:Label>
                     </td>

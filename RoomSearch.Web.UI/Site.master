@@ -28,20 +28,23 @@
                         href="#"><i class="icon-reorder"></i></a>
                 <nav id="navigation">
 				<ul id="main-menu">
-					<li class="current-menu-item"><a href="SearchRoomPage.aspx">Tìm Phòng</a></li>
+					<%--<li class="current-menu-item"><a href="SearchRoomPage.aspx">Tìm Phòng</a></li>--%>
+
                     <li class="parent">
-                        <a>Đăng Cho Thuê</a>
+                        <a>Phòng trọ</a>
                         <ul class="sub-menu">
-							<li><a href="PostRoomPage.aspx"><i class="icon-wrench"></i>Đăng Tin</a></li>
-							<li><a href="SearcRoomPostPage.aspx"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
+                            <li><a href="SearchRoomPage.aspx"><i class="icon-wrench"></i>Tìm Phòng trọ</a></li>
+							<li><a href="PostRoomPage.aspx?PostType=1"><i class="icon-wrench"></i>Đăng Tin Cho Thuê</a></li>
+							<li><a href="SearchOldPostPage.aspx?PostType=1"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
 						</ul>
                     </li>
                     
 					<li class="parent">
 						<a >Ở Ghép</a>
 						<ul class="sub-menu">
-							<li><a  href="PostCouplePage.aspx"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
-							<li><a  href="PostCouplePage.aspx"><i class="icon-credit-card"></i>Đăng Tin</a></li>
+                            <li><a href="SearchCoupePage.aspx"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
+							<li><a href="PostRoomPage.aspx?PostType=2"><i class="icon-wrench"></i>Đăng Tin Ở Ghép</a></li>
+							<li><a href="SearchOldPostPage.aspx?PostType=2"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
 							<%--<li>
 								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
 								<ul class="sub-menu">
@@ -51,11 +54,20 @@
 							</li>--%>
 						</ul>
 					</li>
+
                     <li class="parent">
-						<a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html">Mua Bán Nhà</a>
+						<a >Mua bán nhà đất</a>
 						<ul class="sub-menu">
-							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-wrench"></i>Tìm Mua Nhà</a></li>
-							<li><a href="http://www.freshdesignweb.com/responsive-drop-down-menu-jquery-css3-using-icon-symbol.html"><i class="icon-credit-card"></i>Đăng Bán Nhà</a></li>
+                            <li><a href="SearchCoupePage.aspx"><i class="icon-wrench"></i>Tìm Nhà\Đất</a></li>
+							<li><a href="PostRoomPage.aspx?PostType=3"><i class="icon-wrench"></i>Đăng Tin Mua Bán</a></li>
+							<li><a href="SearchOldPostPage.aspx?PostType=3"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
+							<%--<li>
+								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
+								<ul class="sub-menu">
+									<li><a href="">Full Width</a></li>
+									<li><a href="">Left Sidebar</a></li>
+								</ul>
+							</li>--%>
 						</ul>
 					</li>
 				</ul>

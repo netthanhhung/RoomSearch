@@ -11,13 +11,12 @@ using System.Collections;
 
 namespace RoomSearch.Web.UI
 {
-    public partial class SearcRoomPostPage : System.Web.UI.Page
+    public partial class SearchOldPostPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                
             }
         }
 
@@ -143,16 +142,26 @@ namespace RoomSearch.Web.UI
             {
                 string email = txtEmail.Text.ToLower();
                 string phoneNumber = txtPhoneNumber.Text.ToLower();
-                
-                gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.Room, null, null, null, null, null, null, phoneNumber, email, null,
+
+                int postTypeId = GetPostTypeId();
+                gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost(postTypeId, null, null, null, null, null, null, phoneNumber, email, null,
                     null, null, null, null, null, null, true);
-                List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.Room, null, null, null, null, null, null, phoneNumber, email, null,
+                List<Post> searchResults = Business.BusinessMethods.SearchPostPaging(postTypeId, null, null, null, null, null, null, phoneNumber, email, null,
                     null, null, null, null, null, null, true, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
                 gridRoomResult.DataSource = searchResults;
             }
 
         }
 
+        protected int GetPostTypeId()
+        {
+            int postTypeId = 1; //Room
+            if (!string.IsNullOrEmpty(Request.QueryString["PostType"]))
+            {
+                postTypeId = Convert.ToInt32(Request.QueryString["PostType"]);
+            }
+            return postTypeId;
+        }
         #endregion
 
     }

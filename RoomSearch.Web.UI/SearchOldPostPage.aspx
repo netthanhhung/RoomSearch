@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="SearcRoomPostPage.aspx.cs"
-    Inherits="RoomSearch.Web.UI.SearcRoomPostPage" Title="Sửa Tin Đã Đăng" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="SearchOldPostPage.aspx.cs"
+    Inherits="RoomSearch.Web.UI.SearchOldPostPage" Title="Sửa Tin Đã Đăng" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
@@ -7,10 +7,18 @@
     <script type="text/javascript" src="Styles/JS/utils.js"></script>
     <telerik:RadScriptBlock runat="server" ID="scriptBlock">
         <script type="text/javascript" language="javascript">
-            
+
+            function GetQueryStringByParameter(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+                return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
             function OnUserViewDetailsClientClicked(postId) {
                 var radWindow = $find("<%= radWindowUser.ClientID %>")
-                var url = "PostDetailPopup.aspx?Mode=edit&PostId=" + postId;
+                var postTypeId = GetQueryStringByParameter("PostType");
+                var url = "PostDetailPopup.aspx?Mode=edit&PostId=" + postId + "&PostType=" + postTypeId;
                 radWindow.argument = "No";
                 radWindow.setUrl(url);
                 radWindow.show();
@@ -79,8 +87,8 @@
         <div id="divResult" runat="server" style="margin-top : 10px">
             <div>
                 <telerik:RadGrid ID="gridRoomResult" GridLines="None" Skin="Office2007" AllowMultiRowSelection="False" 
-                    MasterTableView-NoDetailRecordsText="Không tìm thấy phòng nào phù hợp"
-                    MasterTableView-NoMasterRecordsText="Không tìm thấy phòng nào phù hợp"
+                    MasterTableView-NoDetailRecordsText="Không tìm thấy kết quả nào phù hợp"
+                    MasterTableView-NoMasterRecordsText="Không tìm thấy kết quả nào phù hợp"
                     
                     EnableAjaxSkinRendering="true" runat="server" AllowPaging="True" AllowSorting="True" AllowCustomPaging="True"
                     PageSize="20" Width="100%" AutoGenerateColumns="false" OnPageSizeChanged="OnGridRoomResult_PageSizeChanged"

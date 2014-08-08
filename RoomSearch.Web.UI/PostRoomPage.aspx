@@ -18,34 +18,54 @@
     </telerik:RadScriptBlock>
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
     <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
-
     <div>
         <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="PostRoomAjaxManager"
             OnAjaxRequest="OnMyAjaxManagerAjaxRequest">
             <AjaxSettings>
                 <telerik:AjaxSetting AjaxControlID="cbbCity">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict"/>
+                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
-                
                 <telerik:AjaxSetting AjaxControlID="btnSave">
                     <UpdatedControls>
-                        <telerik:AjaxUpdatedControl LoadingPanelID="pnlRadAjaxLoading"/>
+                        <telerik:AjaxUpdatedControl LoadingPanelID="pnlRadAjaxLoading" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
-                
             </AjaxSettings>
         </telerik:RadAjaxManager>
         <telerik:RadAjaxLoadingPanel ID="pnlRadAjaxLoading" runat="server" Height="75px"
-                Width="75px" Transparency="50">
-                <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
-                    style="border: 0;" />
-            </telerik:RadAjaxLoadingPanel>
+            Width="75px" Transparency="50">
+            <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
+                style="border: 0;" />
+        </telerik:RadAjaxLoadingPanel>
         <asp:ValidationSummary runat="server" ID="sumValid" ShowMessageBox="true" ShowSummary="false"
             ValidationGroup="PostRoomValidation" />
         <div id="divMain" runat="server">
             <table>
+                <tr>
+                    <td style="width: 160px">
+                        <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:RadioButton ID="radMale" runat="server" Checked="true" Text="Nam" GroupName="Gender" />
+                        <asp:RadioButton ID="radFemale" runat="server" Checked="False" Text="Nữ" GroupName="Gender" />
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblRealestate" runat="server" Text="Loại nhà/đất:"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="Office2007" Height="155px"
+                            Width="254px">
+                        </telerik:RadComboBox>
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
                 <tr>
                     <td style="width: 160px">
                         <asp:Label ID="lblPersonName" runat="server" Text="Tên người đăng(*) :"></asp:Label>
@@ -197,9 +217,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <telerik:RadUpload runat="server" ID="radUploadMulti" InputSize="66" Width="800px" MaxFileSize="1000000"
-                                ControlObjectsVisibility="AddButton" MaxFileInputsCount="5" InitialFileInputsCount="1"
-                                Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
+                            <telerik:RadUpload runat="server" ID="radUploadMulti" InputSize="66" Width="800px"
+                                MaxFileSize="1000000" ControlObjectsVisibility="AddButton" MaxFileInputsCount="5"
+                                InitialFileInputsCount="1" Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
                             <telerik:RadProgressArea runat="server" ID="radProgress" ProgressIndicators="TotalProgressBar, FilesCountBar, TimeEstimated, TransferSpeed">
                             </telerik:RadProgressArea>
                         </td>
@@ -219,18 +239,19 @@
         </div>
         <div id="divAfterPost" runat="server">
             <table style="width: 100%">
-                    <tr>
-                        <td align="left">
-                            <asp:Button runat="server" ID="btnContinuePost" Text="Đăng Tin Tiếp" CssClass="flatButton" Width="100"
-                                OnClick="OnBtnContinuePost_Clicked" />&nbsp;
-                        </td>
-                        <td align="left">
-                            <asp:Button runat="server" ID="btnSearchPost" Text="Tìm Phòng" CssClass="flatButton" Width="80"
-                                OnClick="OnBtnSearchPost_Clicked"  />&nbsp;
-                        </td>
-                        <td style="width: 100%"></td>
-                    </tr>
-                </table>
+                <tr>
+                    <td align="left">
+                        <asp:Button runat="server" ID="btnContinuePost" Text="Đăng Tin Tiếp" CssClass="flatButton"
+                            Width="100" OnClick="OnBtnContinuePost_Clicked" />&nbsp;
+                    </td>
+                    <td align="left">
+                        <asp:Button runat="server" ID="btnSearchPost" Text="Tìm Phòng" CssClass="flatButton"
+                            Width="80" OnClick="OnBtnSearchPost_Clicked" />&nbsp;
+                    </td>
+                    <td style="width: 100%">
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </asp:Content>

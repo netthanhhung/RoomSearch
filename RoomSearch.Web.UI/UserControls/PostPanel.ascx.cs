@@ -15,11 +15,30 @@ namespace RoomSearch.Web.UI
 {
     public partial class PostPanel : System.Web.UI.UserControl
     {
+        public int PostType { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 InitComboboxData();
+
+                if (this.PostType == (int)PostTypes.Room)
+                {
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = lblRealestate.Visible = cbbRealestateType.Visible = false;
+                    btnSearchPost.Text = "Tìm phòng";
+                }
+                else if (this.PostType == (int)PostTypes.StayWith)
+                {
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = true;
+                    lblRealestate.Visible = cbbRealestateType.Visible = false;
+                    btnSearchPost.Text = "Tìm ở ghép";
+                }
+                else if (this.PostType == (int)PostTypes.House)
+                {
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = false;
+                    lblRealestate.Visible = cbbRealestateType.Visible = true;
+                    btnSearchPost.Text = "Tìm nhà/đất";
+                }
 
                 string[] allowedFileExtensions = new string[4] { ".jpg", ".jpeg", ".gif", ".png" };
                 radUploadMulti.AllowedFileExtensions = allowedFileExtensions;
@@ -84,7 +103,16 @@ namespace RoomSearch.Web.UI
             saveItem.AvailableRooms = txtAvailableRooms.Value.HasValue ? Convert.ToInt32(txtAvailableRooms.Value) : 1;
             saveItem.Price = Convert.ToDecimal(txtPrice.Value);
             saveItem.Description = txtDescription.Text;
-            saveItem.PostTypeId = (int)PostTypes.Room;
+            saveItem.PostTypeId = this.PostType;
+
+            if (this.PostType == (int)PostTypes.StayWith)
+            {
+                saveItem.Gender = radMale.Checked ? 1 : 0;
+            }
+            else if (this.PostType == (int)PostTypes.House)
+            {
+                saveItem.RealestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue); ;
+            }
 
             saveItem.ImageList = new List<Common.Image>();
             int displayIndex = 1;
@@ -142,7 +170,19 @@ namespace RoomSearch.Web.UI
 
         protected void OnBtnSearchPost_Clicked(object sender, EventArgs e)
         {
-            Response.Redirect("~/SearchRoomPage.aspx");
+            if (this.PostType == (int)PostTypes.Room)
+            {
+                Response.Redirect("~/SearchRoomPage.aspx");
+            }
+            else if (this.PostType == (int)PostTypes.StayWith)
+            {
+                Response.Redirect("~/SearchCouplePage.aspx");
+            }
+            else if (this.PostType == (int)PostTypes.House)
+            {
+                Response.Redirect("~/SearchHousePage.aspx");
+            }
+            
         }
 
     }

@@ -10,7 +10,7 @@
 namespace RoomSearch.Web.UI {
     
     
-    public partial class SearcRoomPostPage {
+    public partial class SearchOldPostPage {
         
         /// <summary>
         /// scriptBlock control.
