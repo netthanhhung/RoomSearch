@@ -175,6 +175,21 @@ namespace RoomSearch.Data
         }
         #endregion
 
+        #region RealestateType
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
+        public List<RealestateType> ListRealestateType()
+        {
+            List<RealestateType> result = new List<RealestateType>();
+
+            using (IDataReader reader = _db.ExecuteReader("procListRealestateType"))
+            {
+                Factory.FillRealestateTypeList(result, reader);
+            }
+            return result;
+        }
+        #endregion
+
+
         #region PostType
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public List<PostType> ListPostType()

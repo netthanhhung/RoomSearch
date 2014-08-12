@@ -123,12 +123,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SearchHousePage.aspx" />
+    <Content Include="SearchStayWithPage.aspx" />
     <Content Include="SearchOldPostPage.aspx" />
     <Content Include="PostDetailPopup.aspx" />
     <Content Include="clientaccesspolicy.xml" />
     <Content Include="SearchRoomPage.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="PostRoomPage.aspx" />
+    <Content Include="CreatePostPage.aspx" />
     <Content Include="Styles\CSS\appstyle.css" />
     <Content Include="Styles\Images\arrow.png" />
     <Content Include="Styles\Images\delete.png" />
@@ -150,6 +152,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="code\UtilityHelper.cs" />
+    <Compile Include="SearchHousePage.aspx.cs">
+      <DependentUpon>SearchHousePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchHousePage.aspx.designer.cs">
+      <DependentUpon>SearchHousePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchStayWithPage.aspx.cs">
+      <DependentUpon>SearchStayWithPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchStayWithPage.aspx.designer.cs">
+      <DependentUpon>SearchStayWithPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SearchOldPostPage.aspx.cs">
       <DependentUpon>SearchOldPostPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -182,12 +198,12 @@
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PostRoomPage.aspx.cs">
-      <DependentUpon>PostRoomPage.aspx</DependentUpon>
+    <Compile Include="CreatePostPage.aspx.cs">
+      <DependentUpon>CreatePostPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PostRoomPage.aspx.designer.cs">
-      <DependentUpon>PostRoomPage.aspx</DependentUpon>
+    <Compile Include="CreatePostPage.aspx.designer.cs">
+      <DependentUpon>CreatePostPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.master.cs">
       <DependentUpon>Site.master</DependentUpon>

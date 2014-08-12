@@ -328,22 +328,22 @@ namespace RoomSearch.Web.UI {
         protected global::System.Web.UI.WebControls.Label lblMeterSquare;
         
         /// <summary>
-        /// txtMeterSQuare control.
+        /// txtMeterSquare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadNumericTextBox txtMeterSQuare;
+        protected global::Telerik.Web.UI.RadNumericTextBox txtMeterSquare;
         
         /// <summary>
-        /// lblMeterQuare control.
+        /// lblMeterUni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMeterQuare;
+        protected global::System.Web.UI.WebControls.Label lblMeterUni;
         
         /// <summary>
         /// lblPrice control.

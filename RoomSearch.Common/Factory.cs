@@ -214,6 +214,42 @@ namespace RoomSearch.Common
         }
         #endregion
 
+        #region RealestateType
+
+        public static RealestateType RealestateType(System.Data.IDataReader reader)
+        {
+            RealestateType result = null;
+
+            if (null != reader && reader.Read())
+            {
+                result = new RealestateType();
+                PopulateRealestateType(result, reader);
+            }
+
+            return result;
+        }
+
+        public static void PopulateRealestateType(RealestateType input, System.Data.IDataReader reader)
+        {
+            PopulateRecord(input, reader);
+            input.RecordId = input.RealestateTypeId = Utilities.ToInt(reader[RoomSearch.Common.RealestateType.ColumnNames.RealestateTypeId]);
+            input.Name = Utilities.ToString(reader[RoomSearch.Common.RealestateType.ColumnNames.Name]);
+            input.Description = Utilities.ToString(reader[RoomSearch.Common.RealestateType.ColumnNames.Description]);
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
+        public static void FillRealestateTypeList(List<RealestateType> list, System.Data.IDataReader reader)
+        {
+            list.Clear();
+            RealestateType item;
+            while (true)
+            {
+                item = Factory.RealestateType(reader);
+                if (null == item) break;
+                list.Add(item);
+            }
+        }
+        #endregion
 
         #region PostType
 
@@ -316,6 +352,7 @@ namespace RoomSearch.Common
             input.PersonName = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.PersonName]);
             input.PhoneNumber = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.PhoneNumber]);
             input.Email = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.Email]);
+            input.Gender = Utilities.ToNInt(reader[RoomSearch.Common.Post.ColumnNames.Gender]);
             input.Floor = Utilities.ToNInt(reader[RoomSearch.Common.Post.ColumnNames.Floor]);
             input.Address = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.Address]);
             input.District = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.District]);
@@ -325,7 +362,10 @@ namespace RoomSearch.Common
             input.Country = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.Country]);
             input.CountryId = Utilities.ToNInt(reader[RoomSearch.Common.Post.ColumnNames.CountryId]);
             input.RoomTypeId = Utilities.ToNInt(reader[RoomSearch.Common.Post.ColumnNames.RoomTypeId]);
+            input.RealestateTypeId = Utilities.ToNInt(reader[RoomSearch.Common.Post.ColumnNames.RealestateTypeId]);
             input.RoomType = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.RoomType]);
+            input.RealestateType = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.RealestateType]);
+            input.AvailableRooms = Utilities.ToNInt(reader[RoomSearch.Common.Post.ColumnNames.AvailableRooms]);
             input.Description = Utilities.ToString(reader[RoomSearch.Common.Post.ColumnNames.Description]);
             input.MeterSquare = Utilities.ToNDecimal(reader[RoomSearch.Common.Post.ColumnNames.MeterSquare]);
             input.Price = Utilities.ToNDecimal(reader[RoomSearch.Common.Post.ColumnNames.Price]);

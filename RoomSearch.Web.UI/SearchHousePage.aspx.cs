@@ -11,23 +11,57 @@ using System.Collections;
 
 namespace RoomSearch.Web.UI
 {
-    public partial class SearchOldPostPage : System.Web.UI.Page
+    public partial class SearchHousePage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {                
+            {
+                InitComboboxData();
             }
+        }
+
+        void InitComboboxData()
+        {
+            cbbCity.DataValueField = "CityId";
+            cbbCity.DataTextField = "Name";
+            cbbCity.DataSource = Business.BusinessMethods.ListCity(232, null); //VietNam
+            cbbCity.DataBind();
+            cbbCity.SelectedValue = "1"; //Ho Chi Minh
+
+            BindDistrictListByCity(1);
+
+            cbbRealestateType.DataValueField = "RealestateTypeId";
+            cbbRealestateType.DataTextField = "Name";
+            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType();
+            cbbRealestateType.DataBind();
+            cbbRealestateType.SelectedValue = "1";
+
+            DateTime today = DateTime.Today;
+            datDateFrom.SelectedDate = today.AddMonths(-3);
+            datDateTo.SelectedDate = today;
         }
 
         protected void OnMyAjaxManagerAjaxRequest(object sender, AjaxRequestEventArgs e)
         {
-            if (e.Argument.IndexOf("RebindSearchResults") != -1)
+            if (e.Argument.IndexOf("RebindDistrictListByCity") != -1)
             {
-                SearcRoomPostAjaxManager.AjaxSettings.AddAjaxSetting(SearcRoomPostAjaxManager, gridRoomResult);
-                GetGridRoomResultDataSource(null);
-                gridRoomResult.DataBind();
+                string[] param = e.Argument.Split('-');
+                if (param.Length == 2)
+                {
+                    SearchRoomAjaxManager.AjaxSettings.AddAjaxSetting(SearchRoomAjaxManager, cbbDistrict);
+                    BindDistrictListByCity(int.Parse(param[1]));
+                }
             }
+        }
+
+        private void BindDistrictListByCity(int cityId)
+        {
+            cbbDistrict.DataTextField = "Name";
+            cbbDistrict.DataValueField = "DistrictId";
+            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null);
+            cbbDistrict.DataBind();
+            cbbDistrict.SelectedIndex = 0;
         }
 
         protected void OnBtnSearch_Clicked(object sender, EventArgs e)
@@ -137,31 +171,39 @@ namespace RoomSearch.Web.UI
                 sortExpressInvert = "DateCreated ASC";
             }
 
-            
-            if (!string.IsNullOrEmpty(txtEmail.Text) || !string.IsNullOrEmpty(txtPhoneNumber.Text))
+            int cityId = Convert.ToInt32(cbbCity.SelectedValue);
+            int districtId = Convert.ToInt32(cbbDistrict.SelectedValue);
+            int realestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue);
+            decimal? priceFrom = null;
+            if (txtPriceFrom.Value.HasValue)
             {
-                string email = txtEmail.Text.ToLower();
-                string phoneNumber = txtPhoneNumber.Text.ToLower();
-
-                int postTypeId = GetPostTypeId();
-                gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost(postTypeId, null, null, null, null, null, null, phoneNumber, email, null,
-                    null, null, null, null, null, null, true);
-                List<Post> searchResults = Business.BusinessMethods.SearchPostPaging(postTypeId, null, null, null, null, null, null, phoneNumber, email, null,
-                    null, null, null, null, null, null, true, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
-                gridRoomResult.DataSource = searchResults;
+                priceFrom = Convert.ToDecimal(txtPriceFrom.Value);
+            }
+            decimal? priceTo = null;
+            if (txtPriceTo.Value.HasValue)
+            {
+                priceTo = Convert.ToDecimal(txtPriceTo.Value);
+            }
+            DateTime? dateFrom = null;
+            if (datDateFrom.SelectedDate.HasValue)
+            {
+                dateFrom = datDateFrom.SelectedDate.Value;
+            }
+            DateTime? dateTo = null;
+            if (datDateTo.SelectedDate.HasValue)
+            {
+                dateTo = datDateTo.SelectedDate.Value;
+                dateTo = dateTo.Value.AddDays(1).AddSeconds(-1);
             }
 
+            int gender = radMale.Checked ? 1 : 0;
+            gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.House, null, realestateTypeId, 232, cityId, districtId, null, null, null, gender,
+                priceFrom, priceTo, dateFrom, dateTo, null, null, false);
+            List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.House, null, realestateTypeId, 232, cityId, districtId, null, null, null, gender,
+                priceFrom, priceTo, dateFrom, dateTo, null, null, false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
+            gridRoomResult.DataSource = searchResults;
         }
 
-        protected int GetPostTypeId()
-        {
-            int postTypeId = 1; //Room
-            if (!string.IsNullOrEmpty(Request.QueryString["PostType"]))
-            {
-                postTypeId = Convert.ToInt32(Request.QueryString["PostType"]);
-            }
-            return postTypeId;
-        }
         #endregion
 
     }

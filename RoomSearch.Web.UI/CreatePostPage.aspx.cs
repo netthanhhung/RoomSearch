@@ -25,18 +25,33 @@ namespace RoomSearch.Web.UI
                 {
                     lblGender.Visible = radFemale.Visible = radMale.Visible = lblRealestate.Visible = cbbRealestateType.Visible = false;
                     btnSearchPost.Text = "Tìm phòng";
+                    this.Page.Title = "Đăng tin cho thuê phòng";
                 }
                 else if (postTypeId == (int)PostTypes.StayWith)
                 {
                     lblGender.Visible = radFemale.Visible = radMale.Visible = true;
                     lblRealestate.Visible = cbbRealestateType.Visible = false;
                     btnSearchPost.Text = "Tìm ở ghép";
+                    lblAvailableRooms.Visible = txtAvailableRooms.Visible = false;
+                    this.Page.Title = "Đăng tin cần tìm ở ghép";
                 }
                 else if (postTypeId == (int)PostTypes.House)
                 {
-                    lblGender.Visible = radFemale.Visible = radMale.Visible = false;
+                    lblRoomType.Visible = cbbRoomType.Visible = false;
+                    lblGender.Visible = radFemale.Visible = radMale.Visible = true;
+                    lblGender.Text = "Cần";
+                    radMale.Text = "Mua";
+                    radFemale.Text = "Bán";
                     lblRealestate.Visible = cbbRealestateType.Visible = true;
                     btnSearchPost.Text = "Tìm nhà/đất";
+                    lblAvailableRooms.Visible = txtAvailableRooms.Visible = false;
+                    lblMeterSquare.Text = "Rộng";
+                    lblPrice.Text = "Giá";
+                    lblUnit.Text = "triệu đồng";
+                    txtPrice.Value = 500;
+                    txtMeterSquare.Value = 100;
+                    this.Page.Title = "Đăng tin cho mua bán nhà đất";
+
                 }
 
                 string[] allowedFileExtensions = new string[4] {".jpg", ".jpeg", ".gif", ".png"};
@@ -62,6 +77,10 @@ namespace RoomSearch.Web.UI
             cbbRoomType.DataBind();
             cbbRoomType.SelectedValue = "1";
 
+            cbbRealestateType.DataValueField = "RealestateTypeId";
+            cbbRealestateType.DataTextField = "Name";
+            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType();
+            cbbRealestateType.DataBind();
         }
 
         protected void OnMyAjaxManagerAjaxRequest(object sender, AjaxRequestEventArgs e)
@@ -96,20 +115,25 @@ namespace RoomSearch.Web.UI
             saveItem.CityId = Convert.ToInt32(cbbCity.SelectedValue);
             saveItem.DistrictId = Convert.ToInt32(cbbDistrict.SelectedValue);
             saveItem.Address = txtAddress.Text;
-            saveItem.RoomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
-            saveItem.MeterSquare = Convert.ToDecimal(txtMeterSQuare.Value);
+            saveItem.MeterSquare = Convert.ToDecimal(txtMeterSquare.Value);
             saveItem.AvailableRooms = txtAvailableRooms.Value.HasValue ? Convert.ToInt32(txtAvailableRooms.Value) : 1;
             saveItem.Price = Convert.ToDecimal(txtPrice.Value);
             saveItem.Description = txtDescription.Text;
 
             saveItem.PostTypeId = GetPostTypeId();
 
+            if (saveItem.PostTypeId == (int)PostTypes.Room)
+            {
+                saveItem.RoomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
+            }
             if (saveItem.PostTypeId == (int)PostTypes.StayWith)
             {
+                saveItem.RoomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
                 saveItem.Gender = radMale.Checked ? 1 : 0;
             }
             else if (saveItem.PostTypeId == (int)PostTypes.House)
             {
+                saveItem.Gender = radMale.Checked ? 1 : 0;
                 saveItem.RealestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue); ;
             }
 

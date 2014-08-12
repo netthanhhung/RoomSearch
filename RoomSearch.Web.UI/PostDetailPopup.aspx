@@ -208,7 +208,7 @@
                     <td>
                         <telerik:RadNumericTextBox ID="txtMeterSQuare" runat="server" Width="50px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="4.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            Value="10.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblMeterQuare" Text="mét vuông (m2)"></asp:Label>
                     </td>

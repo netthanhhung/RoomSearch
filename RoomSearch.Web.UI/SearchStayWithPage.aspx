@@ -1,5 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="SearchOldPostPage.aspx.cs"
-    Inherits="RoomSearch.Web.UI.SearchOldPostPage" Title="Sửa Tin Đã Đăng" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="SearchStayWithPage.aspx.cs"
+    Inherits="RoomSearch.Web.UI.SearchStayWithPage" Title="Tìm ở ghép" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
@@ -8,31 +8,18 @@
     <telerik:RadScriptBlock runat="server" ID="scriptBlock">
         <script type="text/javascript" language="javascript">
 
-            function GetQueryStringByParameter(name) {
-                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-                return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            function onDropDownCity_ClientIndexChanged(sender, eventArgs) {
+                var item = eventArgs.get_item();
+                $find("<%= SearchRoomAjaxManager.ClientID %>").ajaxRequest("RebindDistrictListByCity-" + item.get_value());
             }
 
             function OnUserViewDetailsClientClicked(postId) {
                 var radWindow = $find("<%= radWindowUser.ClientID %>")
-                var postTypeId = GetQueryStringByParameter("PostType");
-                var url = "PostDetailPopup.aspx?Mode=edit&PostId=" + postId + "&PostType=" + postTypeId;
-                radWindow.argument = "No";
+                var url = "PostDetailPopup.aspx?Mode=view&PostId=" + postId + "&PostType=2";
                 radWindow.setUrl(url);
                 radWindow.show();
 
                 return false;
-            }
-
-            function onClientPostDetailWindowClosed(window) {
-                if (window.argument != undefined && window.argument != null && window.argument != "") {
-                    var isReload = window.argument;
-                    if (isReload == "Yes") {
-                        $find("<%= SearcRoomPostAjaxManager.ClientID %>").ajaxRequest("RebindSearchResults");
-                    }
-                }
             }
 
         </script>
@@ -41,9 +28,14 @@
     <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
     
      <div>
-        <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="SearcRoomPostAjaxManager"
+        <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="SearchRoomAjaxManager"
             OnAjaxRequest="OnMyAjaxManagerAjaxRequest">
             <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="cbbCity">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="cbbDistrict" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
                 <telerik:AjaxSetting AjaxControlID="btnSearch">
                     <UpdatedControls>
                         <telerik:AjaxUpdatedControl ControlID="gridRoomResult" LoadingPanelID="pnlRadAjaxLoading"/>
@@ -56,29 +48,96 @@
                 Width="75px" Transparency="50">
                 <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
                     style="border: 0;" />
-        </telerik:RadAjaxLoadingPanel>
-
+            </telerik:RadAjaxLoadingPanel>
         <div id="divCondition" runat="server">
             <table>
                 <tr>
-                     <td>
-                        <asp:Label ID="lblEmail" runat="server" Text="Tìm theo Email :"></asp:Label>
-                    </td>
                     <td>
-                        <telerik:RadTextBox ID="txtEmail" runat="server" Width="250px">
-                        </telerik:RadTextBox>
+                        <asp:Label ID="lblCity" runat="server" Text="Thành Phố :"></asp:Label>
                     </td>
-                    
-                    <td>
-                        <asp:Label ID="lblPhone" runat="server" Text="Hoặc Số điện thoại :"></asp:Label>
-                    </td>
-                    <td>
-                        <telerik:RadTextBox ID="txtPhoneNumber" runat="server" Width="250px">
-                        </telerik:RadTextBox>
+                    <td colspan="3">
+                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="Office2007" Height="155px"
+                            Width="230px" OnClientSelectedIndexChanged="onDropDownCity_ClientIndexChanged">
+                        </telerik:RadComboBox>
                     </td>
 
+                    <td style="width:10px"></td>
+                    <td>
+                        <asp:Label ID="lblDistrict" runat="server" Text="Quận / Huyện :"></asp:Label>
+                    </td>
+                    <td colspan="3">
+                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="Office2007" Height="155px"
+                            Width="230px">
+                        </telerik:RadComboBox>
+                    </td>
+
+                    <td style="width:10px"></td>
+                    <td>
+                        <asp:Label ID="lblRoomType" runat="server" Text="Loại phòng :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="Office2007" Height="155px"
+                            Width="104px">
+                        </telerik:RadComboBox>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblPriceFrom" runat="server" Text="Giá từ :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="50px" Type="Number"
+                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Value="1.5" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                        <asp:Label runat="server" ID="lblUnitFrom" Text="(triệu)"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblPriceTo" runat="server" Text="Đến :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtPriceTo" runat="server" Width="50px" Type="Number"
+                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Value="3.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                        <asp:Label runat="server" ID="lblUnitTo" Text="(triệu)"></asp:Label>
+                    </td>
+
+                    <td></td>
+                    <td>
+                        <asp:Label ID="lblDateFrom" runat="server" Text="Đăng từ ngày :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadDatePicker ID="datDateFrom" runat="server" Width="95px"  Skin="Office2007"  Calendar-CultureInfo="en-US">
+                            <DateInput ID="dateInputCreationDate" runat="server" BackColor="White"
+                                  DateFormat="dd/MM/yyyy"
+                                  DisplayDateFormat="dd/MM/yyyy">
+                            </DateInput>
+                        </telerik:RadDatePicker> 
+                    </td>
+                        <td>
+                        <asp:Label ID="lblDateTo" runat="server" Text="Đến ngày :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadDatePicker ID="datDateTo" runat="server" Width="95px"  Skin="Office2007"  Calendar-CultureInfo="en-US">
+                            <DateInput ID="dateInput1" runat="server" BackColor="White"
+                                  DateFormat="dd/MM/yyyy"
+                                  DisplayDateFormat="dd/MM/yyyy">
+                            </DateInput>
+                        </telerik:RadDatePicker> 
+                    </td>
+                    
+                    <td></td>
+                    <td>
+                        <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:RadioButton ID="radMale" runat="server" Checked="true" Text="Nam" GroupName="Gender" />
+                        <asp:RadioButton ID="radFemale" runat="server" Checked="false" Text="Nữ" GroupName="Gender" />
+                    </td>
                     <td align="left">
-                            <asp:Button runat="server" ID="btnSearch" Text="Tìm kiếm" CssClass="flatButton" Width="100"
+                            <asp:Button runat="server" ID="btnSearch" Text="Tìm Phòng" CssClass="flatButton" Width="100"
                                 OnClick="OnBtnSearch_Clicked" CausesValidation="true"/>&nbsp;
                         </td>
                 </tr>
@@ -87,8 +146,8 @@
         <div id="divResult" runat="server" style="margin-top : 10px">
             <div>
                 <telerik:RadGrid ID="gridRoomResult" GridLines="None" Skin="Office2007" AllowMultiRowSelection="False" 
-                    MasterTableView-NoDetailRecordsText="Không tìm thấy kết quả nào phù hợp"
-                    MasterTableView-NoMasterRecordsText="Không tìm thấy kết quả nào phù hợp"
+                    MasterTableView-NoDetailRecordsText="Không tìm thấy phòng nào phù hợp"
+                    MasterTableView-NoMasterRecordsText="Không tìm thấy phòng nào phù hợp"
                     
                     EnableAjaxSkinRendering="true" runat="server" AllowPaging="True" AllowSorting="True" AllowCustomPaging="True"
                     PageSize="20" Width="100%" AutoGenerateColumns="false" OnPageSizeChanged="OnGridRoomResult_PageSizeChanged"
@@ -118,7 +177,7 @@
                              </telerik:GridTemplateColumn> 
 
                             <telerik:GridBoundColumn UniqueName="Price" SortExpression="Price" HeaderText="Giá" DataFormatString="{0:C2}"
-                                DataField="PriceString"  HeaderStyle-Width="80">
+                                DataField="PriceString"  HeaderStyle-Width="70">
                             </telerik:GridBoundColumn>
 
                             <telerik:GridTemplateColumn UniqueName="ViewDetails">
@@ -136,7 +195,7 @@
 
                 <telerik:RadWindow runat="server" ID="radWindowUser" Skin="Office2007" VisibleOnPageLoad="false" VisibleStatusbar="false"
                     Modal="true" OffsetElementID="offsetElement" Top="30" Left="30" NavigateUrl="PostDetailPopup.aspx"
-                    Title="Action" Height="650px" Width="1024px" OnClientClose="onClientPostDetailWindowClosed">
+                    Title="Thong tin chi tiết ở ghép" Height="650px" Width="1024px" >
                 </telerik:RadWindow>
             </div>
             

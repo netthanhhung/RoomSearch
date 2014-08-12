@@ -104,6 +104,14 @@ namespace RoomSearch.Business
         }
         #endregion
 
+        #region RoomType
+        public static List<RealestateType> ListRealestateType()
+        {
+            return new DataLayer().ListRealestateType();
+        }
+
+        #endregion
+
         #region PostType
         public static List<PostType> ListPostType()
         {

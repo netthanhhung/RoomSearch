@@ -34,7 +34,7 @@
                         <a>Phòng trọ</a>
                         <ul class="sub-menu">
                             <li><a href="SearchRoomPage.aspx"><i class="icon-wrench"></i>Tìm Phòng trọ</a></li>
-							<li><a href="PostRoomPage.aspx?PostType=1"><i class="icon-wrench"></i>Đăng Tin Cho Thuê</a></li>
+							<li><a href="CreatePostPage.aspx?PostType=1"><i class="icon-wrench"></i>Đăng Tin Cho Thuê</a></li>
 							<li><a href="SearchOldPostPage.aspx?PostType=1"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
 						</ul>
                     </li>
@@ -42,24 +42,17 @@
 					<li class="parent">
 						<a >Ở Ghép</a>
 						<ul class="sub-menu">
-                            <li><a href="SearchCoupePage.aspx"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
-							<li><a href="PostRoomPage.aspx?PostType=2"><i class="icon-wrench"></i>Đăng Tin Ở Ghép</a></li>
+                            <li><a href="SearchStayWithPage.aspx"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
+							<li><a href="CreatePostPage.aspx?PostType=2"><i class="icon-wrench"></i>Đăng Tin Ở Ghép</a></li>
 							<li><a href="SearchOldPostPage.aspx?PostType=2"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
-							<%--<li>
-								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
-								<ul class="sub-menu">
-									<li><a href="">Full Width</a></li>
-									<li><a href="">Left Sidebar</a></li>
-								</ul>
-							</li>--%>
 						</ul>
 					</li>
 
                     <li class="parent">
 						<a >Mua bán nhà đất</a>
 						<ul class="sub-menu">
-                            <li><a href="SearchCoupePage.aspx"><i class="icon-wrench"></i>Tìm Nhà\Đất</a></li>
-							<li><a href="PostRoomPage.aspx?PostType=3"><i class="icon-wrench"></i>Đăng Tin Mua Bán</a></li>
+                            <li><a href="SearchHousePage.aspx"><i class="icon-wrench"></i>Tìm Nhà\Đất</a></li>
+							<li><a href="CreatePostPage.aspx?PostType=3"><i class="icon-wrench"></i>Đăng Tin Mua Bán</a></li>
 							<li><a href="SearchOldPostPage.aspx?PostType=3"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
 							<%--<li>
 								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="PostRoomPage.aspx.cs"
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="CreatePostPage.aspx.cs"
     Inherits="RoomSearch.Web.UI.PostRoomPage" Title="Đăng Tin Cho Thuê Phòng" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
@@ -184,11 +184,11 @@
                         <asp:Label ID="lblMeterSquare" runat="server" Text="Phòng rộng :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadNumericTextBox ID="txtMeterSQuare" runat="server" Width="50px" Type="Number"
+                        <telerik:RadNumericTextBox ID="txtMeterSquare" runat="server" Width="50px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="4.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
-                        <asp:Label runat="server" ID="lblMeterQuare" Text="mét vuông (m2)"></asp:Label>
+                        <asp:Label runat="server" ID="lblMeterUni" Text="mét vuông (m2)"></asp:Label>
                     </td>
                     <td colspan="3">
                     </td>
