@@ -51,7 +51,7 @@
                     <li class="parent">
 						<a >Mua bán nhà đất</a>
 						<ul class="sub-menu">
-                            <li><a href="SearchHousePage.aspx"><i class="icon-wrench"></i>Tìm Nhà\Đất</a></li>
+                            <li><a href="SearchHousePage.aspx"><i class="icon-wrench"></i>Tìm Nhà Đất</a></li>
 							<li><a href="CreatePostPage.aspx?PostType=3"><i class="icon-wrench"></i>Đăng Tin Mua Bán</a></li>
 							<li><a href="SearchOldPostPage.aspx?PostType=3"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
 							<%--<li>
@@ -73,14 +73,14 @@
         <table>
             <tr>
                 <td style="width: 300px" align="left">
-                    <asp:Label ID="lblLeft" runat="server" Text="LEFT PANEL" />
+                    <img src="Styles/Images/FansipanLeft.jpg" alt="fresh design web" width="100%"/>
                 </td>
-                <td style="width: 70%" align="left">
+                <td style="width: 70%" align="left" valign="top">
                     <asp:ContentPlaceHolder ID="centreContentPlaceHolder" runat="server">
                     </asp:ContentPlaceHolder>
                 </td>
                 <td style="width: 300px" align="right">
-                    <asp:Label ID="lblRight" runat="server" Text="Right PANEL" />
+                    <img src="Styles/Images/FansipanRight.jpg" alt="fresh design web" width="100%"/>
                 </td>
             </tr>
         </table>

@@ -137,7 +137,7 @@
                         <asp:RadioButton ID="radFemale" runat="server" Checked="true" Text="Bán" GroupName="Gender" />
                     </td>
                     <td align="left">
-                            <asp:Button runat="server" ID="btnSearch" Text="Tìm kiếm" CssClass="flatButton" Width="100"
+                            <asp:Button runat="server" ID="btnSearch" Text="Tìm kiếm" CssClass="flatButton" Width="70"
                                 OnClick="OnBtnSearch_Clicked" CausesValidation="true"/>&nbsp;
                         </td>
                 </tr>

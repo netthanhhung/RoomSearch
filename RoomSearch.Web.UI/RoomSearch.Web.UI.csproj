@@ -134,6 +134,8 @@
     <Content Include="Styles\CSS\appstyle.css" />
     <Content Include="Styles\Images\arrow.png" />
     <Content Include="Styles\Images\delete.png" />
+    <Content Include="Styles\Images\FansipanLeft.jpg" />
+    <Content Include="Styles\Images\FansipanRight.jpg" />
     <Content Include="Styles\Images\HTLogo.png" />
     <Content Include="Styles\Images\MasterHeaderBackground.png" />
     <Content Include="Styles\Images\plus-gray.png" />

@@ -31,15 +31,6 @@ namespace RoomSearch.Web.UI {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lblLeft control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLeft;
-        
-        /// <summary>
         /// centreContentPlaceHolder control.
         /// </summary>
         /// <remarks>
@@ -47,14 +38,5 @@ namespace RoomSearch.Web.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder centreContentPlaceHolder;
-        
-        /// <summary>
-        /// lblRight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRight;
     }
 }
