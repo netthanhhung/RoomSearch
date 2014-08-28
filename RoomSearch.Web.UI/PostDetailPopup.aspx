@@ -246,7 +246,7 @@
                 <tr>
                     <td>
                         <telerik:RadUpload runat="server" ID="radUploadMulti" MaxFileSize="1000000" InputSize="66" Width="800px"
-                            ControlObjectsVisibility="AddButton" MaxFileInputsCount="5" InitialFileInputsCount="1"
+                            ControlObjectsVisibility="AddButton" MaxFileInputsCount="10" InitialFileInputsCount="3"
                             Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
                     </td>
                 </tr>

@@ -50,9 +50,17 @@ namespace RoomSearch.Business
             return new DataLayer().ListCity(countryid, cityId);
         }
 
-        public static List<District> ListDistrict(int? cityId, int? districtId)
+        public static List<District> ListDistrict(int? cityId, int? districtId, bool insertAllItem)
         {
-            return new DataLayer().ListDistrict(cityId, districtId);
+            List<District> result = new DataLayer().ListDistrict(cityId, districtId);
+            if (insertAllItem)
+            {
+                District rt = new District();
+                rt.Name = "Tất cả";
+                result.Insert(0, rt);
+            }
+            return result;
+            //return new DataLayer().ListDistrict(cityId, districtId);
         }
 
         public static List<ContactInformation> ListContactInformation(int? contactInfoId)
@@ -104,7 +112,7 @@ namespace RoomSearch.Business
         }
         #endregion
 
-        #region RoomType
+        #region RealestateType
         public static List<RealestateType> ListRealestateType()
         {
             return new DataLayer().ListRealestateType();

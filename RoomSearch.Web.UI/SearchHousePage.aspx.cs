@@ -59,7 +59,7 @@ namespace RoomSearch.Web.UI
         {
             cbbDistrict.DataTextField = "Name";
             cbbDistrict.DataValueField = "DistrictId";
-            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null);
+            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null, true);
             cbbDistrict.DataBind();
             cbbDistrict.SelectedIndex = 0;
         }
@@ -172,7 +172,11 @@ namespace RoomSearch.Web.UI
             }
 
             int cityId = Convert.ToInt32(cbbCity.SelectedValue);
-            int districtId = Convert.ToInt32(cbbDistrict.SelectedValue);
+            int? districtId = Convert.ToInt32(cbbDistrict.SelectedValue);
+            if (districtId <= 0)
+            {
+                districtId = null;
+            }
             int realestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue);
             decimal? priceFrom = null;
             if (txtPriceFrom.Value.HasValue)

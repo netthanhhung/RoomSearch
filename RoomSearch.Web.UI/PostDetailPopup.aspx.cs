@@ -114,7 +114,7 @@ namespace RoomSearch.Web.UI
         {
             cbbDistrict.DataTextField = "Name";
             cbbDistrict.DataValueField = "DistrictId";
-            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null);
+            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null, false);
             cbbDistrict.DataBind();
             //cbbDistrict.SelectedValue = CurrentPost != null ? CurrentPost.DistrictId.ToString() : "1";
         }

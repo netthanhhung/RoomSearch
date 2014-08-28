@@ -31,15 +31,6 @@ namespace RoomSearch.Web.UI {
         protected global::Telerik.Web.UI.RadScriptManager ScriptManager;
         
         /// <summary>
-        /// Radprogressmanager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadProgressManager Radprogressmanager1;
-        
-        /// <summary>
         /// SearcRoomPostAjaxManager control.
         /// </summary>
         /// <remarks>

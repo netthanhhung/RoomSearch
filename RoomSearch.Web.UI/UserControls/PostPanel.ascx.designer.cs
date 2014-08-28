@@ -373,15 +373,6 @@ namespace RoomSearch.Web.UI {
         protected global::Telerik.Web.UI.RadUpload radUploadMulti;
         
         /// <summary>
-        /// radProgress control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadProgressArea radProgress;
-        
-        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

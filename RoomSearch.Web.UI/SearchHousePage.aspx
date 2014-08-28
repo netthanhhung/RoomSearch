@@ -25,7 +25,7 @@
         </script>
     </telerik:RadScriptBlock>
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
-    <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
+    <%--<telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />--%>
     
      <div>
         <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="SearchRoomAjaxManager"

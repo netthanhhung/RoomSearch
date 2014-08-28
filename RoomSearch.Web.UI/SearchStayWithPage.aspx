@@ -13,6 +13,21 @@
                 $find("<%= SearchRoomAjaxManager.ClientID %>").ajaxRequest("RebindDistrictListByCity-" + item.get_value());
             }
 
+
+            function onDropDownRoomType_ClientIndexChanged(sender, eventArgs) {
+                var item = eventArgs.get_item();
+                var selectedRoomTypeId = item.get_value();
+                var txtPriceFrom = $find("<%= txtPriceFrom.ClientID %>");
+                var txtPriceTo = $find("<%= txtPriceTo.ClientID %>");
+                if (selectedRoomTypeId == 1) {
+                    txtPriceFrom.set_value(1.5);
+                    txtPriceTo.set_value(3);
+                } else {
+                    txtPriceFrom.set_value(3);
+                    txtPriceTo.set_value(10);
+                }
+            }
+
             function OnUserViewDetailsClientClicked(postId) {
                 var radWindow = $find("<%= radWindowUser.ClientID %>")
                 var url = "PostDetailPopup.aspx?Mode=view&PostId=" + postId + "&PostType=2";
@@ -25,7 +40,7 @@
         </script>
     </telerik:RadScriptBlock>
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
-    <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
+    <%--<telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />--%>
     
      <div>
         <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="SearchRoomAjaxManager"
@@ -77,7 +92,7 @@
                     </td>
                     <td>
                         <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="Office2007" Height="155px"
-                            Width="104px">
+                            Width="104px" OnClientSelectedIndexChanged="onDropDownRoomType_ClientIndexChanged">
                         </telerik:RadComboBox>
                     </td>
                     <td></td>
@@ -87,7 +102,7 @@
                         <asp:Label ID="lblPriceFrom" runat="server" Text="Giá từ :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="50px" Type="Number"
+                        <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="40px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="1.5" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
@@ -97,7 +112,7 @@
                         <asp:Label ID="lblPriceTo" runat="server" Text="Đến :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadNumericTextBox ID="txtPriceTo" runat="server" Width="50px" Type="Number"
+                        <telerik:RadNumericTextBox ID="txtPriceTo" runat="server" Width="40px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="3.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />

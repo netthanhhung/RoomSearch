@@ -215,10 +215,8 @@
                 <tr>
                     <td>
                         <telerik:RadUpload runat="server" ID="radUploadMulti" InputSize="66" Width="800px"
-                            MaxFileSize="1000000" ControlObjectsVisibility="AddButton" MaxFileInputsCount="5"
-                            InitialFileInputsCount="1" Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
-                        <telerik:RadProgressArea runat="server" ID="radProgress" ProgressIndicators="TotalProgressBar, FilesCountBar, TimeEstimated, TransferSpeed">
-                        </telerik:RadProgressArea>
+                            MaxFileSize="1000000" ControlObjectsVisibility="AddButton" MaxFileInputsCount="10"
+                            InitialFileInputsCount="3" Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
                     </td>
                 </tr>
             </table>

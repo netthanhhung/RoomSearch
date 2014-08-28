@@ -83,7 +83,7 @@ namespace RoomSearch.Web.UI
         {
             cbbDistrict.DataTextField = "Name";
             cbbDistrict.DataValueField = "DistrictId";
-            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null);
+            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null, false);
             cbbDistrict.DataBind();
             cbbDistrict.SelectedIndex = 0;
         }
@@ -146,11 +146,23 @@ namespace RoomSearch.Web.UI
 
         protected void OnBtnSave_Clicked(object sender, EventArgs e)
         {
+            string message = string.Empty;
+            string script1 = " alert(\"" + message + "\")";
+            if (string.IsNullOrEmpty(txtPersonName.Text)
+                || string.IsNullOrEmpty(txtPhoneNumber.Text)
+                || string.IsNullOrEmpty(txtAddress.Text))
+            {
+                message = "Xin vui lòng điền thông tin có dấu sao.";
+                script1 = " alert(\"" + message + "\")";
+                PostRoomAjaxManager.ResponseScripts.Add(script1);
+                return;
+            }
+
             Post savePost = GetSavePost();
             Business.BusinessMethods.SavePost(savePost);
 
-            string message = "Tin của bạn đã được đăng thành công.";
-            string script1 = " alert(\"" + message + "\")";
+            message = "Tin của bạn đã được đăng thành công.";
+            script1 = " alert(\"" + message + "\")";
             PostRoomAjaxManager.ResponseScripts.Add(script1);
 
             divMain.Visible = false;

@@ -17,7 +17,6 @@
         </script>
     </telerik:RadScriptBlock>
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
-    <telerik:RadProgressManager ID="Radprogressmanager1" runat="server" />
     <div>
         <telerik:RadAjaxManager EnableAJAX="true" runat="server" ID="PostRoomAjaxManager"
             OnAjaxRequest="OnMyAjaxManagerAjaxRequest">
@@ -27,18 +26,8 @@
                         <telerik:AjaxUpdatedControl ControlID="cbbDistrict" />
                     </UpdatedControls>
                 </telerik:AjaxSetting>
-                <telerik:AjaxSetting AjaxControlID="btnSave">
-                    <UpdatedControls>
-                        <telerik:AjaxUpdatedControl LoadingPanelID="pnlRadAjaxLoading" />
-                    </UpdatedControls>
-                </telerik:AjaxSetting>
             </AjaxSettings>
         </telerik:RadAjaxManager>
-        <telerik:RadAjaxLoadingPanel ID="pnlRadAjaxLoading" runat="server" Height="75px"
-            Width="75px" Transparency="50">
-            <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
-                style="border: 0;" />
-        </telerik:RadAjaxLoadingPanel>
         <asp:ValidationSummary runat="server" ID="sumValid" ShowMessageBox="true" ShowSummary="false"
             ValidationGroup="PostRoomValidation" />
         <div id="divMain" runat="server">
@@ -218,10 +207,8 @@
                     <tr>
                         <td>
                             <telerik:RadUpload runat="server" ID="radUploadMulti" InputSize="66" Width="800px"
-                                MaxFileSize="1000000" ControlObjectsVisibility="AddButton" MaxFileInputsCount="5"
-                                InitialFileInputsCount="1" Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
-                            <telerik:RadProgressArea runat="server" ID="radProgress" ProgressIndicators="TotalProgressBar, FilesCountBar, TimeEstimated, TransferSpeed">
-                            </telerik:RadProgressArea>
+                                MaxFileSize="1000000" ControlObjectsVisibility="AddButton" MaxFileInputsCount="10"
+                                InitialFileInputsCount="3" Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
                         </td>
                     </tr>
                 </table>
