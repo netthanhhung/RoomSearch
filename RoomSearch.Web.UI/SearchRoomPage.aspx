@@ -19,7 +19,7 @@
                 var txtPriceFrom = $find("<%= txtPriceFrom.ClientID %>");
                 var txtPriceTo = $find("<%= txtPriceTo.ClientID %>");
                 if (selectedRoomTypeId == 1) {
-                    txtPriceFrom.set_value(1.5);
+                    txtPriceFrom.set_value(1);
                     txtPriceTo.set_value(3);
                 } else {
                     txtPriceFrom.set_value(3);
@@ -103,7 +103,7 @@
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="40px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="1.5" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            Value="1.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitFrom" Text="(triệu)"></asp:Label>
                     </td>

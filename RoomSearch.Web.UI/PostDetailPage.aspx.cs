@@ -8,11 +8,10 @@ using Telerik.Web.UI;
 using System.IO;
 using RoomSearch.Common;
 using System.Collections;
-using System.Text;
 
 namespace RoomSearch.Web.UI
 {
-    public partial class PostDetailPopup : System.Web.UI.Page
+    public partial class PostDetailPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -122,10 +121,7 @@ namespace RoomSearch.Web.UI
 
         void BindData(Post post)
         {
-            btnLink.Text = HttpContext.Current.Request.Url.AbsoluteUri.Replace("PostDetailPopup", "PostDetailPage");
-            
-            //linkRealLink.NavigateUrl = HttpContext.Current.Request.Url.AbsoluteUri.Replace("PostDetailPopup", "PostDetailPage");
-            //+string.Format("/PostDetailPage?PostId={0}&PostType={1}", post.PostId, GetPostTypeId());
+            this.Page.Title = post.ShortTitle;
             txtPersonName.Text = post.PersonName;
             txtEmail.Text = post.Email;
             txtPhoneNumber.Text = post.PhoneNumber;
@@ -140,11 +136,6 @@ namespace RoomSearch.Web.UI
             radMale.Checked = post.Gender == 1;
             radFemale.Checked = post.Gender == 0;
             cbbRealestateType.SelectedValue = post.RealestateTypeId.ToString();
-        }
-
-        void btnLink_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         void BindReadonlyImageList(Post post)
@@ -227,7 +218,6 @@ namespace RoomSearch.Web.UI
             radUploadMulti.Visible = !readOnly;
             radFemale.Enabled = radMale.Enabled = !readOnly;
             cbbRealestateType.Enabled = !readOnly;
-            btnSave.Visible = !readOnly;
         }
 
         private Post GetSavePost()
@@ -302,18 +292,6 @@ namespace RoomSearch.Web.UI
 
         }
 
-        protected void OnBtnLinkClicked(object sender, EventArgs e)
-        {
-            string url = btnLink.Text;
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<script type = 'text/javascript'>");
-            sb.Append("window.open('");
-            sb.Append(url);
-            sb.Append("');");
-            sb.Append("</script>");
-            ClientScript.RegisterStartupScript(this.GetType(),
-                    "script", sb.ToString());
-        }
 
         protected void OnBtnSaveClicked(object sender, EventArgs e)
         {

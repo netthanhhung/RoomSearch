@@ -193,6 +193,27 @@ namespace RoomSearch.Business
                 priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy);
         }
 
+        public static void SavePostList(List<Post> postList)
+        {            
+            if (postList != null && postList.Count > 0)
+            {
+                DataLayer dataLayer = new DataLayer();
+                List<Post> oldPosts = dataLayer.SearchPost(postList[0].PostTypeId, null, null, null, null, null, null, null, null, null, null, null, 
+                    DateTime.Today, DateTime.Now, null, null, false);
+                foreach (Post saveItem in postList)
+                {
+                    if (oldPosts.Count(i => i.PersonName == saveItem.PersonName
+                                            && i.PhoneNumber == saveItem.PhoneNumber
+                                            && i.Address == saveItem.Address
+                                            && i.Price == saveItem.Price
+                                            && i.PostTypeId == saveItem.PostTypeId) == 0)
+                    {
+                        SavePost(saveItem);
+                    } 
+                }
+            }
+        }
+
         public static void SavePost(Post saveItem)
         {
             if (saveItem != null)

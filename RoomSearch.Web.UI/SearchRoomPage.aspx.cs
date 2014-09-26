@@ -77,10 +77,32 @@ namespace RoomSearch.Web.UI
         {
             cbbDistrict.DataTextField = "Name";
             cbbDistrict.DataValueField = "DistrictId";
-            cbbDistrict.DataSource = Business.BusinessMethods.ListDistrict(cityId, null, true);
+            List<District> districts = Business.BusinessMethods.ListDistrict(cityId, null, true);
+            cbbDistrict.DataSource = districts;
             cbbDistrict.DataBind();
             cbbDistrict.SelectedIndex = 0;
+
+            if (!string.IsNullOrEmpty(Request.QueryString["DistrictId"]))
+            {
+                int districtId = Convert.ToInt32(Request.QueryString["DistrictId"]);
+                District foundDis = districts.FirstOrDefault(i => i.DistrictId == districtId);
+                if (foundDis != null)
+                {
+                    cbbDistrict.SelectedValue = districtId.ToString();
+                    int name;
+                    if (int.TryParse(foundDis.Name, out name))
+                    {
+                        this.Page.Title += " Quận " + name;
+                    }
+                    else
+                    {
+                        this.Page.Title += " " + foundDis.Name;
+                    }
+
+                }
+            }
         }
+
 
         protected void OnBtnSearch_Clicked(object sender, EventArgs e)
         {

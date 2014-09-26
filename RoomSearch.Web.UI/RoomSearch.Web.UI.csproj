@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PostDetailPage.aspx" />
     <Content Include="SearchHousePage.aspx" />
     <Content Include="SearchStayWithPage.aspx" />
     <Content Include="SearchOldPostPage.aspx" />
@@ -133,9 +134,12 @@
     <Content Include="CreatePostPage.aspx" />
     <Content Include="Styles\CSS\appstyle.css" />
     <Content Include="Styles\Images\arrow.png" />
+    <Content Include="Styles\Images\Bitexco_Financial1.jpg" />
+    <Content Include="Styles\Images\Bitexco_Financial2.jpg" />
     <Content Include="Styles\Images\delete.png" />
     <Content Include="Styles\Images\FansipanLeft.jpg" />
     <Content Include="Styles\Images\FansipanRight.jpg" />
+    <Content Include="Styles\Images\home-icon.jpg" />
     <Content Include="Styles\Images\HTLogo.png" />
     <Content Include="Styles\Images\MasterHeaderBackground.png" />
     <Content Include="Styles\Images\plus-gray.png" />
@@ -146,6 +150,7 @@
     <Content Include="Styles\JS\function.js" />
     <Content Include="Styles\JS\jquery.js" />
     <Content Include="Styles\JS\utils.js" />
+    <Content Include="UserControls\DistrictPanel.ascx" />
     <Content Include="UserControls\PostPanel.ascx" />
     <Content Include="UserControls\ImagePanel.ascx" />
     <Content Include="Web.config">
@@ -153,7 +158,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="code\DistrictVM.cs" />
     <Compile Include="code\UtilityHelper.cs" />
+    <Compile Include="PostDetailPage.aspx.cs">
+      <DependentUpon>PostDetailPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PostDetailPage.aspx.designer.cs">
+      <DependentUpon>PostDetailPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SearchHousePage.aspx.cs">
       <DependentUpon>SearchHousePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,6 +226,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DistrictPanel.ascx.cs">
+      <DependentUpon>DistrictPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DistrictPanel.ascx.designer.cs">
+      <DependentUpon>DistrictPanel.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PostPanel.ascx.cs">
       <DependentUpon>PostPanel.ascx</DependentUpon>

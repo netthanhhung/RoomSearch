@@ -58,6 +58,24 @@ namespace RoomSearch.Web.UI {
         protected global::Telerik.Web.UI.RadAjaxLoadingPanel pnlRadAjaxLoading;
         
         /// <summary>
+        /// lblLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLink;
+        
+        /// <summary>
+        /// btnLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnLink;
+        
+        /// <summary>
         /// lblGender control.
         /// </summary>
         /// <remarks>

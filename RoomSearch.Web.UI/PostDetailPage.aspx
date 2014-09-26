@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PostDetailPopup.aspx.cs" Inherits="RoomSearch.Web.UI.PostDetailPopup" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="PostDetailPage.aspx.cs"
+    Inherits="RoomSearch.Web.UI.PostDetailPage" Title="Chi tiết phòng" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <%@ Register TagPrefix="local" TagName="ImagePanel" Src="~/UserControls/ImagePanel.ascx" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head id="head" runat="server">
-    <title>Chi tiết phòng</title>
+<asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
     <link rel="stylesheet" type="text/css" href="Styles/CSS/appstyle.css" />
     <link rel="stylesheet" type="text/css" href="Styles/CSS/font-awesome.css"/>
     <link rel="stylesheet" type="text/css" href="Styles/CSS/menu.css"/>
@@ -43,9 +41,6 @@
         }
 
     </script>
-</head>
-<body>
-    <form id="form1" runat="server">
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
     
     <div>     
@@ -77,14 +72,6 @@
         </telerik:RadAjaxLoadingPanel>
 
          <table>
-                <tr>
-                    <td style="width: 160px">
-                        <asp:Label ID="lblLink" runat="server" Text="Link :"></asp:Label>
-                    </td>
-                    <td colspan="4">
-                        <asp:LinkButton ID="btnLink" runat="server" OnClick="OnBtnLinkClicked"/>
-                    </td>
-                </tr>
                 <tr>
                     <td style="width: 160px">
                         <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
@@ -122,7 +109,7 @@
                         <asp:Label ID="lblDescription" runat="server" Text="Mô tả thêm :"></asp:Label>
                     </td>
                     <td rowspan="11">
-                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="430px" Rows="15" TextMode="multiLine"
+                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="450px" Rows="15" TextMode="multiLine"
                             Skin="Office2007" BackColor="White">
                         </telerik:RadTextBox>
                     </td>
@@ -265,12 +252,11 @@
                 </tr> --%>
             </table>
          </div>
-        <div style="text-align:center">
+       <%-- <div style="text-align:center">
         
             <asp:Button runat="server" ID="btnSave" Text="Lưu" CssClass="flatButton" Width="60" OnClick="OnBtnSaveClicked"/>&nbsp;
             <asp:Button runat="server" ID="btnCancel" Text="Đóng" CssClass="flatButton" Width="60" OnClientClick="OnBtnCancelClientClicked()"/>
-        </div>
+        </div>--%>
     </div>
-    </form>
-</body>
-</html>
+
+</asp:Content>

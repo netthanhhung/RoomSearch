@@ -20,7 +20,7 @@
                 var txtPriceFrom = $find("<%= txtPriceFrom.ClientID %>");
                 var txtPriceTo = $find("<%= txtPriceTo.ClientID %>");
                 if (selectedRoomTypeId == 1) {
-                    txtPriceFrom.set_value(1.5);
+                    txtPriceFrom.set_value(1);
                     txtPriceTo.set_value(3);
                 } else {
                     txtPriceFrom.set_value(3);
@@ -68,6 +68,28 @@
             <table>
                 <tr>
                     <td>
+                        <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:RadioButton ID="radMale" runat="server" Checked="false" Text="Nam" GroupName="Gender" />
+                        <asp:RadioButton ID="radFemale" runat="server" Checked="true" Text="Nữ" GroupName="Gender" />
+                    </td>
+                    <td colspan="2"></td>
+
+                    <td style="width:10px"></td>
+                    <td>
+                        <asp:Label ID="lblRoomType" runat="server" Text="Loại phòng :"></asp:Label>
+                    </td>
+                    <td colspan="3">
+                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="Office2007" Height="155px"
+                            Width="230px" OnClientSelectedIndexChanged="onDropDownRoomType_ClientIndexChanged">
+                        </telerik:RadComboBox>
+                    </td>
+
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:Label ID="lblCity" runat="server" Text="Thành Phố :"></asp:Label>
                     </td>
                     <td colspan="3">
@@ -85,16 +107,6 @@
                             Width="230px">
                         </telerik:RadComboBox>
                     </td>
-
-                    <td style="width:10px"></td>
-                    <td>
-                        <asp:Label ID="lblRoomType" runat="server" Text="Loại phòng :"></asp:Label>
-                    </td>
-                    <td>
-                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="Office2007" Height="155px"
-                            Width="104px" OnClientSelectedIndexChanged="onDropDownRoomType_ClientIndexChanged">
-                        </telerik:RadComboBox>
-                    </td>
                     <td></td>
                 </tr>
                 <tr>
@@ -104,7 +116,7 @@
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="40px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="1.5" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            Value="1.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitFrom" Text="(triệu)"></asp:Label>
                     </td>
@@ -144,15 +156,9 @@
                     </td>
                     
                     <td></td>
-                    <td>
-                        <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:RadioButton ID="radMale" runat="server" Checked="true" Text="Nam" GroupName="Gender" />
-                        <asp:RadioButton ID="radFemale" runat="server" Checked="false" Text="Nữ" GroupName="Gender" />
-                    </td>
+                    
                     <td align="left">
-                            <asp:Button runat="server" ID="btnSearch" Text="Tìm Phòng" CssClass="flatButton" Width="100"
+                            <asp:Button runat="server" ID="btnSearch" Text="Tìm Kiếm" CssClass="flatButton" Width="100"
                                 OnClick="OnBtnSearch_Clicked" CausesValidation="true"/>&nbsp;
                         </td>
                 </tr>

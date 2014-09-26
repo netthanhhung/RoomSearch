@@ -1,8 +1,10 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="RoomSearch.Web.UI.Site" %>
 
+<%@ Register TagPrefix="local" TagName="DistrictPanel" Src="~/UserControls/DistrictPanel.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="csstransforms no-csstransforms3d csstransitions">
 <head runat="server">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Styles/Images/home-icon.jpg" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <title>Tìm và cho thuê phòng trọ</title>
@@ -72,15 +74,18 @@
         </div>
         <table>
             <tr>
-                <td style="width: 300px" align="left">
-                    <img src="Styles/Images/FansipanLeft.jpg" alt="fresh design web" width="100%"/>
+                <td style="width: 160px" align="left" valign="top">
+                    <img src="Styles/Images/Bitexco_Financial1.JPG" alt="fresh design web" height="929px"/>
                 </td>
-                <td style="width: 70%" align="left" valign="top">
+                <td style="width: 80%" align="left" valign="top">
                     <asp:ContentPlaceHolder ID="centreContentPlaceHolder" runat="server">
                     </asp:ContentPlaceHolder>
                 </td>
-                <td style="width: 300px" align="right">
-                    <img src="Styles/Images/FansipanRight.jpg" alt="fresh design web" width="100%"/>
+                <td style="margin-left: 20px" align="center" valign="top">                    
+                    <div class="mainRightPanel">
+                        <local:DistrictPanel ID="ucDistrictPanel" runat="server" />
+                    </div>                    
+                    
                 </td>
             </tr>
         </table>

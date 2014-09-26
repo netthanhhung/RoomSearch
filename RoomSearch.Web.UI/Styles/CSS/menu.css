@@ -240,3 +240,15 @@ ul.sub-menu > li > a.parent {
 		background: #333 !important;
 	}
 }
+
+.mainRightPanel {
+	background-color: #eee;
+	background-image: url(../Images/Bitexco_Financial2.jpg);
+	color: #666;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	margin:0px;
+	padding:0px;
+	width:150px;
+	height:929px;
+}

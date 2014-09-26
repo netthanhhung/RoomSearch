@@ -10,42 +10,33 @@
 namespace RoomSearch.Web.UI {
     
     
-    public partial class Site {
+    public partial class DistrictPanel {
         
         /// <summary>
-        /// head control.
+        /// divMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMain;
         
         /// <summary>
-        /// form1 control.
+        /// lblSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lblSearch;
         
         /// <summary>
-        /// centreContentPlaceHolder control.
+        /// dataListLinks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder centreContentPlaceHolder;
-        
-        /// <summary>
-        /// ucDistrictPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::RoomSearch.Web.UI.DistrictPanel ucDistrictPanel;
+        protected global::System.Web.UI.WebControls.DataList dataListLinks;
     }
 }

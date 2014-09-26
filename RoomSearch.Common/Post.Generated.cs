@@ -156,7 +156,16 @@ namespace RoomSearch.Common
         {
             get
             {
-                return !string.IsNullOrEmpty(this.Description) && this.Description.Length > 74 ? (Description.Substring(0, 74) + "...."): Description;
+                return !string.IsNullOrEmpty(this.Description) && this.Description.Length > 170 ? (Description.Substring(0, 170) + "....") : Description;
+            }
+        }
+
+        [DataMember]
+        public string ShortTitle
+        {
+            get
+            {
+                return !string.IsNullOrEmpty(this.Description) && this.Description.Length > 100 ? (Description.Substring(0, 100) + "....") : Description;
             }
         }
 
