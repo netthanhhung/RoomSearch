@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Specialized;
 using HtmlAgilityPack;
+using System.Text.RegularExpressions;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace RoomSearch.CollectorEngine
 {
@@ -256,5 +259,275 @@ namespace RoomSearch.CollectorEngine
             }
         }
 
+        public static decimal ParsePrice(string description)
+        {
+            decimal price = 2.0M;
+            try
+            {
+                int index1 = description.IndexOf("giá:");
+                int index2 = description.IndexOf("giá :");
+                int index3 = description.IndexOf("triệu/tháng");
+                int index4 = description.IndexOf("trieu/thang");
+                int index5 = description.IndexOf("usd/thang");
+
+                if (!string.IsNullOrEmpty(description)
+                    && (index1 > 0 || index2 > 0 || index3 > 0 || index4 > 0))
+                {
+                    string subDescription = string.Empty;
+                    if (index1 > 0)
+                    {
+                        subDescription = description.Substring(index1 + 4);
+                    }
+                    if (index2 > 0)
+                    {
+                        subDescription = description.Substring(index2 + 4);
+                    }
+                    else if (index3 > 0)
+                    {
+                        subDescription = description.Substring(index3 - 4, 12);
+                    }
+                    else if (index4 > 0)
+                    {
+                        subDescription = description.Substring(index3 - 4, 12);
+                    }
+                    else if (index5 > 0)
+                    {
+                        subDescription = description.Substring(index5 - 4, 10);
+                    }
+
+                    if (subDescription.Length > 30)
+                    {
+                        subDescription = subDescription.Substring(0, 30);
+                    }
+                    if (Regex.IsMatch(subDescription, @"\d+tr\d+", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+tr\d*", RegexOptions.IgnoreCase);
+                        string[] stringSeparators = new string[] { "tr" };
+                        string[] values = match.Value.Split(stringSeparators, StringSplitOptions.None);
+                        if (values.Length > 0)
+                        {
+                            price = decimal.Parse(values[0]);
+                            if (values.Length > 1)
+                            {
+                                price = price + decimal.Parse(values[1].Substring(0, 1)) / 10;
+                            }
+                        }
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+.\d+tr", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+.\d+tr", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 2));
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+.\d+ triệu", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+.\d+ triệu", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+.\d+ trieu", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+.\d+ trieu", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+ triệu", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+ triệu", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+ trieu", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+ trieu", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+ usd", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+ usd", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 4));
+                        price = price * 0.022M;
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+usd", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+usd", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 3));
+                        price = price * 0.022M;
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+.\d{3}.\d{3}đ", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+.\d{3}.\d{3}đ", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        string[] array = value.Split('.');
+                        price = decimal.Parse(array[0]);
+                        price = price + decimal.Parse(array[1]) / 1000;
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+.\d{3}.\d{3}d", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+.\d{3}.\d{3}d", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        string[] array = value.Split('.');
+                        price = decimal.Parse(array[0]);
+                        price = price + decimal.Parse(array[1]) / 1000;
+                    }
+                    else if (Regex.IsMatch(subDescription, @"\d+tr", RegexOptions.IgnoreCase))
+                    {
+                        Match match = Regex.Match(subDescription, @"\d+tr", RegexOptions.IgnoreCase);
+                        string value = match.Value;
+                        price = decimal.Parse(value.Substring(0, value.Length - 2));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                price = 2.0M;
+            }
+            return price;
+        }
+
+
+        public static string GetStringFromAsciiHex(string input)
+        {
+            string result = string.Empty;
+
+            try
+            {
+                string[] array = input.Split(';');
+                foreach (string item in array)
+                {
+                    result += GetNumberFromHexCode(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return result;
+        }
+
+        public static string GetNumberFromHexCode(string input)
+        {
+            string result = string.Empty;            
+            if (input == "&#x20")
+            {
+                result = string.Empty;
+            }
+            else if (input == "&#x30")
+            {
+                result = "0"; 
+            }
+            else if (input == "&#x31")
+            {
+                result = "1";
+            }
+            else if (input == "&#x32")
+            {
+                result = "2";
+            }
+            else if (input == "&#x33")
+            {
+                result = "3";
+            }
+            else if (input == "&#x34")
+            {
+                result = "4";
+            }
+            else if (input == "&#x35")
+            {
+                result = "5";
+            }
+            else if (input == "&#x36")
+            {
+                result = "6";
+            }
+            else if (input == "&#x37")
+            {
+                result = "7";
+            }
+            else if (input == "&#x38")
+            {
+                result = "8";
+            }
+            else if (input == "&#x39")
+            {
+                result = "9";
+            }
+
+            return result;
+        }
+
+        public static MemoryStream ResizeFromStream(int maxSideSize, Stream inputBuffer)
+        {
+            int intNewWidth;
+            int intNewHeight;
+            System.Drawing.Image imgInput = System.Drawing.Image.FromStream(inputBuffer);
+
+            // GET IMAGE FORMAT
+            ImageFormat fmtImageFormat = imgInput.RawFormat;
+
+            // GET ORIGINAL WIDTH AND HEIGHT
+            int intOldWidth = imgInput.Width;
+            int intOldHeight = imgInput.Height;
+
+            // IS LANDSCAPE OR PORTRAIT ?? 
+            int intMaxSide;
+
+            if (intOldWidth >= intOldHeight)
+            {
+                intMaxSide = intOldWidth;
+            }
+            else
+            {
+                intMaxSide = intOldHeight;
+            }
+
+
+            if (intMaxSide > maxSideSize)
+            {
+                // SET NEW WIDTH AND HEIGHT
+                double dblCoef = maxSideSize / (double)intMaxSide;
+                intNewWidth = Convert.ToInt32(dblCoef * intOldWidth);
+                intNewHeight = Convert.ToInt32(dblCoef * intOldHeight);
+            }
+            else
+            {
+                intNewWidth = intOldWidth;
+                intNewHeight = intOldHeight;
+            }
+
+            MemoryStream outputStream = new MemoryStream();
+            using (System.Drawing.Image img = System.Drawing.Image.FromStream(inputBuffer))
+            {
+                using (Bitmap bitmap = new Bitmap(img, intNewWidth, intNewHeight))
+                {
+                    bitmap.Save(outputStream, ImageFormat.Jpeg);
+                }
+            }
+
+            return outputStream;
+        }
+
+
+        public static byte[] ResizeImageByteArray(int maxSideSize, byte[] originalImage)
+        {
+            MemoryStream stream = new MemoryStream(originalImage);
+            MemoryStream resizeedStream = ResizeFromStream(maxSideSize, stream);
+            return resizeedStream.ToArray();
+        }
+
+        public static string SplitLongStringIntoMultilines(string description)
+        {
+            if (!string.IsNullOrEmpty(description))
+            {
+                description = description.Replace("   ", "\n");
+                description = description.Replace(". ", ". \n");
+                description = description.Replace("-", "\n -");
+                description = description.Replace("+", "\n +");
+            }
+            return description;
+        }
     }
 }

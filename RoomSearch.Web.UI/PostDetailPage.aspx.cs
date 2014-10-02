@@ -56,7 +56,7 @@ namespace RoomSearch.Web.UI
                 if (!string.IsNullOrEmpty(Request.QueryString["PostId"]))
                 {
                     int postId = Convert.ToInt32(Request.QueryString["PostId"]);
-                    Post currentPost = Business.BusinessMethods.GetPost(postId, 2);
+                    Post currentPost = Business.BusinessMethods.GetPost(postId, 3);
                     if (mode != "view")
                     {
                         ViewState["CurrentPost"] = currentPost;
@@ -145,7 +145,14 @@ namespace RoomSearch.Web.UI
                 foreach (Common.Image imageData in post.ImageList)
                 {
                     System.Web.UI.WebControls.Image imageSource = new System.Web.UI.WebControls.Image();
-                    imageSource.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(imageData.ImageSmallContent);
+                    if (imageData.ImageContent != null)
+                    {
+                        imageSource.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(imageData.ImageContent);
+                    }
+                    else if (imageData.ImageSmallContent != null)
+                    {
+                        imageSource.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(imageData.ImageSmallContent);
+                    }
                     imageSource.Width = 400;
                     imageSource.Style.Add("margin-top", "5px");
                     imageSource.Style.Add("margin-left", "5px");

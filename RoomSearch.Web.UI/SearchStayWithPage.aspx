@@ -216,7 +216,7 @@
 
                 <telerik:RadWindow runat="server" ID="radWindowUser" Skin="Office2007" VisibleOnPageLoad="false" VisibleStatusbar="false"
                     Modal="true" OffsetElementID="offsetElement" Top="30" Left="30" NavigateUrl="PostDetailPopup.aspx"
-                    Title="Thong tin chi tiết ở ghép" Height="650px" Width="1024px" >
+                    Title="Thong tin chi tiết ở ghép" Height="650px" Width="1300px" >
                 </telerik:RadWindow>
             </div>
             

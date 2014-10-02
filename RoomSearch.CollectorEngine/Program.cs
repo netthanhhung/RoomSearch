@@ -23,6 +23,10 @@ namespace RoomSearch.CollectorEngine
 
             //BatDongSanJob job = new BatDongSanJob();
             //job.Execute(null);
+
+            //RongBayJob job = new RongBayJob();
+            //job.Execute(null);
+
         }
     }
 }

@@ -28,5 +28,10 @@ namespace RoomSearch.CollectorEngine.Configuration
         {
             get { return GetInstance().BatDongSan; }
         }
+
+        public static RongBayElement RongBay
+        {
+            get { return GetInstance().RongBay; }
+        }
     }
 }

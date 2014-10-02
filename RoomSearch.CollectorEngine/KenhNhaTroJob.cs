@@ -32,10 +32,10 @@ namespace RoomSearch.CollectorEngine
             try
             {
                 DateTime dateStart = DateTime.Today;
-                if (dateStart.DayOfWeek == DayOfWeek.Monday)
-                {
-                    dateStart = dateStart.AddDays(-2);
-                }
+                //if (dateStart.DayOfWeek == DayOfWeek.Monday)
+                //{
+                //    dateStart = dateStart.AddDays(-2);
+                //}
                 DateTime dateEnd = DateTime.Today;
                 
                 List<Post> result = new List<Post>();
@@ -350,6 +350,7 @@ namespace RoomSearch.CollectorEngine
                                 description = description.Substring(0, index2 - 5);
                             }
                         }
+                        description = RequestHelper.SplitLongStringIntoMultilines(description);
                         result.Description += description;
                         HtmlNode imageNode = RequestHelper.FindElementNodeByClassName(matrixResultsNode, "imgnhatro");
                         if (imageNode != null)
@@ -368,8 +369,8 @@ namespace RoomSearch.CollectorEngine
                                             {
                                                 byte[] imageFile = client.DownloadData(source);
                                                 Image newImage = new Image();
-                                                newImage.ImageSmallContent = imageFile;
-                                                newImage.ImageContent = imageFile;
+                                                newImage.ImageSmallContent = RequestHelper.ResizeImageByteArray(100, imageFile);
+                                                newImage.ImageContent = RequestHelper.ResizeImageByteArray(400, imageFile);
                                                 newImage.FileName = "noname";
                                                 newImage.ImageTypeId = (int)ImageType.Room;
                                                 newImage.CreatedBy = result.CreatedBy;

@@ -136,7 +136,7 @@
 
                 <telerik:RadWindow runat="server" ID="radWindowUser" Skin="Office2007" VisibleOnPageLoad="false" VisibleStatusbar="false"
                     Modal="true" OffsetElementID="offsetElement" Top="30" Left="30" NavigateUrl="PostDetailPopup.aspx"
-                    Title="Action" Height="650px" Width="1024px" OnClientClose="onClientPostDetailWindowClosed">
+                    Title="Action" Height="650px" Width="1300px" OnClientClose="onClientPostDetailWindowClosed">
                 </telerik:RadWindow>
             </div>
             

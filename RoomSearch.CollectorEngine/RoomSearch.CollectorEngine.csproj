@@ -58,6 +58,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
@@ -76,8 +77,10 @@
     <Compile Include="Configuration\CollectorConfiguration.cs" />
     <Compile Include="Configuration\CollectorConfigurationSection.cs" />
     <Compile Include="Configuration\BatDongSanElement.cs" />
+    <Compile Include="Configuration\RongBayElement.cs" />
     <Compile Include="Configuration\KenhNhaTroElement.cs" />
     <Compile Include="BatDongSanJob.cs" />
+    <Compile Include="RongBayJob.cs" />
     <Compile Include="KenhNhaTroJob.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Program.cs" />

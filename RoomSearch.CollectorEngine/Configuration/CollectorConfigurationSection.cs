@@ -19,5 +19,11 @@ namespace RoomSearch.CollectorEngine.Configuration
         {
             get { return (BatDongSanElement)this["BatDongSanSettings"]; }
         }
+
+        [ConfigurationProperty("RongBaySettings")]
+        public RongBayElement RongBay
+        {
+            get { return (RongBayElement)this["RongBaySettings"]; }
+        }
     }
 }

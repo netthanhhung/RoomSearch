@@ -20,7 +20,14 @@ namespace RoomSearch.Web.UI
         {
             if (!IsPostBack)
             {
-                imgImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(ImageDataItem.ImageSmallContent);
+                if (ImageDataItem.ImageContent != null)
+                {
+                    imgImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(ImageDataItem.ImageContent);
+                }
+                else if (ImageDataItem.ImageSmallContent != null)
+                {
+                    imgImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(ImageDataItem.ImageSmallContent);
+                }
                 btnDelete.Visible = this.CanEdit;                
             }
         }

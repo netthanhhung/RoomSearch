@@ -61,7 +61,5 @@ namespace RoomSearch.Web.UI
             return outputStream;
         }
 
-        
-
     }
 }

@@ -58,6 +58,17 @@ namespace RoomSearch.CollectorEngine
                 cronTrigger.StartTimeUtc = DateTime.UtcNow;
                 scheduler.ScheduleJob(jobDetail, cronTrigger);
 
+                // RongBayJob
+                jobDetail = new JobDetail("RongBayJob", null, typeof(RongBayJob));
+                cronEx = CollectorConfiguration.RongBay.RongBayCronTriggerExpression;
+                cronTrigger = new CronTrigger(
+                    "RongBayTrigger",
+                    null,
+                    cronEx
+                    );
+                cronTrigger.StartTimeUtc = DateTime.UtcNow;
+                scheduler.ScheduleJob(jobDetail, cronTrigger);
+
                 Logger.Log.Debug("Initialize Collector scheduler completely.");
             }
             catch (Exception ex)

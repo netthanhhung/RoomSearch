@@ -109,8 +109,8 @@
                         <asp:Label ID="lblDescription" runat="server" Text="Mô tả thêm :"></asp:Label>
                     </td>
                     <td rowspan="11">
-                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="450px" Rows="15" TextMode="multiLine"
-                            Skin="Office2007" BackColor="White">
+                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="650px" Rows="15" TextMode="multiLine" Wrap="true"
+                            BackColor="White">
                         </telerik:RadTextBox>
                     </td>
                 </tr>
@@ -234,7 +234,7 @@
                 </tr>
                 <tr>
                     <td>     
-                        <asp:Panel ID="panelImage" runat="server" ScrollBars="Auto" Direction="LeftToRight" Width="950px"></asp:Panel>    
+                        <asp:Panel ID="panelImage" runat="server" ScrollBars="Auto" Direction="LeftToRight" Width="1250px"></asp:Panel>    
                         <%--<div id="divImage" runat="server" dir="ltr" style="width:1024px; display:table"  ></div>--%>
                     </td>
                 </tr>                
