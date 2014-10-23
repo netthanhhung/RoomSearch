@@ -4,7 +4,7 @@
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
     <link rel="stylesheet" type="text/css" href="Styles/CSS/appstyle.css" />
-    <script>
+    <script type="text/javascript">
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
@@ -111,9 +111,19 @@
                     <MasterTableView DataKeyNames="PostId" DataMember="PersonName" AllowMultiColumnSorting="True"
                         Width="100%" EditMode="PopUp">
                         <Columns>
-                            <telerik:GridBoundColumn UniqueName="DateUpdated" SortExpression="DateUpdated" HeaderText="Ngày đăng tin" DataFormatString="{0:dd/MM/yyyy}"
+                            <%--<telerik:GridBoundColumn UniqueName="DateUpdated" SortExpression="DateUpdated" HeaderText="Ngày đăng tin" DataFormatString="{0:dd/MM/yyyy}"
                                 DataField="DateUpdated" HeaderStyle-Width="100px">
-                            </telerik:GridBoundColumn>
+                            </telerik:GridBoundColumn>--%>
+                            <telerik:GridTemplateColumn UniqueName="DateUpdated" HeaderText="Ngày đăng tin" HeaderStyle-Width="100px">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="lnkPostDetails" runat="server" Text='<%#Eval("DateUpdated", "{0:dd/MM/yyyy}") %>' 
+                                        NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?Mode=view&PostId={0}") %>'
+                                        ForeColor="Blue" Font-Underline="true">  
+                                    </asp:HyperLink>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                                <HeaderStyle Width="80px"></HeaderStyle>
+                            </telerik:GridTemplateColumn>
                             <telerik:GridBoundColumn UniqueName="District" SortExpression="District" HeaderText="Quận"
                                 DataField="District"  HeaderStyle-Width="100px">
                             </telerik:GridBoundColumn>

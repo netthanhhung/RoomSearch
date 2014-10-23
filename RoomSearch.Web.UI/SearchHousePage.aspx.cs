@@ -8,6 +8,7 @@ using Telerik.Web.UI;
 using System.IO;
 using RoomSearch.Common;
 using System.Collections;
+using System.Text;
 
 namespace RoomSearch.Web.UI
 {
@@ -33,9 +34,9 @@ namespace RoomSearch.Web.UI
 
             cbbRealestateType.DataValueField = "RealestateTypeId";
             cbbRealestateType.DataTextField = "Name";
-            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType();
+            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType(true);
             cbbRealestateType.DataBind();
-            cbbRealestateType.SelectedValue = "1";
+            cbbRealestateType.SelectedValue = "0";
 
             DateTime today = DateTime.Today;
             datDateFrom.SelectedDate = today.AddMonths(-3);
@@ -81,6 +82,7 @@ namespace RoomSearch.Web.UI
                         this.Page.Title += " " + foundDis.Name;
                     }
 
+                    this.Page.MetaKeywords = this.Page.Title;
                 }
             }
         }
@@ -198,7 +200,12 @@ namespace RoomSearch.Web.UI
             {
                 districtId = null;
             }
-            int realestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue);
+            int? realestateTypeId = Convert.ToInt32(cbbRealestateType.SelectedValue);
+            if (realestateTypeId <= 0)
+            {
+                realestateTypeId = null;
+            }
+
             decimal? priceFrom = null;
             if (txtPriceFrom.Value.HasValue)
             {
@@ -223,10 +230,19 @@ namespace RoomSearch.Web.UI
 
             int gender = radMale.Checked ? 1 : 0;
             gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.House, null, realestateTypeId, 232, cityId, districtId, null, null, null, gender,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, false);
+                priceFrom, priceTo, dateFrom, dateTo, null, null, UtilityHelper.FormatKeywords(txtKeywords.Text), false);
             List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.House, null, realestateTypeId, 232, cityId, districtId, null, null, null, gender,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
+                priceFrom, priceTo, dateFrom, dateTo, null, null, UtilityHelper.FormatKeywords(txtKeywords.Text), false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
             gridRoomResult.DataSource = searchResults;
+
+            //Build Meta Description for Google Search Engine :
+            StringBuilder builder = new StringBuilder();
+            foreach (Post post in searchResults)
+            {
+                builder.Append(post.Address + " giá : " + post.PriceString + ". \n");
+            }
+            this.Page.MetaDescription = builder.ToString();
+            
         }
 
         #endregion

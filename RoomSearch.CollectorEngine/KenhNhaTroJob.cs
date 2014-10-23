@@ -29,56 +29,46 @@ namespace RoomSearch.CollectorEngine
 
             Logger.Log.Debug("Start Importing KenhNhaTro Job...");
 
-            try
-            {
-                DateTime dateStart = DateTime.Today;
-                //if (dateStart.DayOfWeek == DayOfWeek.Monday)
-                //{
-                //    dateStart = dateStart.AddDays(-2);
-                //}
-                DateTime dateEnd = DateTime.Today;
-                
-                List<Post> result = new List<Post>();
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-1/tp-ho-chi-minh.html", "Quận 1", 1, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-2/tp-ho-chi-minh.html", "Quận 2", 2, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-3/tp-ho-chi-minh.html", "Quận 3", 3, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-4/tp-ho-chi-minh.html", "Quận 4", 4, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-5/tp-ho-chi-minh.html", "Quận 5", 5, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-6/tp-ho-chi-minh.html", "Quận 6", 6, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-7/tp-ho-chi-minh.html", "Quận 7", 7, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-8/tp-ho-chi-minh.html", "Quận 8", 8, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-9/tp-ho-chi-minh.html", "Quận 9", 9, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-10/tp-ho-chi-minh.html", "Quận 10", 10, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-11/tp-ho-chi-minh.html", "Quận 11", 11, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-12/tp-ho-chi-minh.html", "Quận 12", 12, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-phu-nhuan/tp-ho-chi-minh.html", "Quận Phú Nhuận", 13, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-binh-thanh/tp-ho-chi-minh.html", "Quận Bình Thạnh", 21, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-tan-binh/tp-ho-chi-minh.html", "Quận Tân Bình", 14, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-tan-phu/tp-ho-chi-minh.html", "Quận Tân Phú", 15, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-go-vap/tp-ho-chi-minh.html", "Quận Gò Vấp", 16, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-thu-duc/tp-ho-chi-minh.html", "Quận Thủ Đức", 17, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-binh-tan/tp-ho-chi-minh.html", "Quận Bình Tân", 79, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-binh-chanh/tp-ho-chi-minh.html", "Huyện Bình Chánh", 19, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-cu-chi/tp-ho-chi-minh.html", "Huyện Củ Chi", 80, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-nha-be/tp-ho-chi-minh.html", "Huyện Nhà Bè", 20, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-can-gio/tp-ho-chi-minh.html", "Huyện Cần Giờ", 80, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-hoc-mon/tp-ho-chi-minh.html", "Huyện Hóc Môn", 18, dateStart, dateEnd));
+            DateTime dateStart = DateTime.Today;
+            //if (dateStart.DayOfWeek == DayOfWeek.Monday)
+            //{
+            //    dateStart = dateStart.AddDays(-2);
+            //}
+            DateTime dateEnd = DateTime.Today;
 
-                if (result.Count > 0)
-                {
-                    BusinessMethods.SavePostList(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Log.Error(ex);
-            }
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-hoc-mon/tp-ho-chi-minh.html", "Huyện Hóc Môn", 18, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-can-gio/tp-ho-chi-minh.html", "Huyện Cần Giờ", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-nha-be/tp-ho-chi-minh.html", "Huyện Nhà Bè", 20, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-cu-chi/tp-ho-chi-minh.html", "Huyện Củ Chi", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/huyen-binh-chanh/tp-ho-chi-minh.html", "Huyện Bình Chánh", 19, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-binh-tan/tp-ho-chi-minh.html", "Quận Bình Tân", 79, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-thu-duc/tp-ho-chi-minh.html", "Quận Thủ Đức", 17, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-go-vap/tp-ho-chi-minh.html", "Quận Gò Vấp", 16, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-tan-phu/tp-ho-chi-minh.html", "Quận Tân Phú", 15, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-tan-binh/tp-ho-chi-minh.html", "Quận Tân Bình", 14, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-binh-thanh/tp-ho-chi-minh.html", "Quận Bình Thạnh", 21, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-phu-nhuan/tp-ho-chi-minh.html", "Quận Phú Nhuận", 13, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-12/tp-ho-chi-minh.html", "Quận 12", 12, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-11/tp-ho-chi-minh.html", "Quận 11", 11, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-10/tp-ho-chi-minh.html", "Quận 10", 10, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-9/tp-ho-chi-minh.html", "Quận 9", 9, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-8/tp-ho-chi-minh.html", "Quận 8", 8, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-7/tp-ho-chi-minh.html", "Quận 7", 7, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-6/tp-ho-chi-minh.html", "Quận 6", 6, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-5/tp-ho-chi-minh.html", "Quận 5", 5, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-4/tp-ho-chi-minh.html", "Quận 4", 4, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-3/tp-ho-chi-minh.html", "Quận 3", 3, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-2/tp-ho-chi-minh.html", "Quận 2", 2, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-1/tp-ho-chi-minh.html", "Quận 1", 1, dateStart, dateEnd);
 
-            //Logger.Log.Debug("End Importing KenhNhaTro Job...");
+            Logger.Log.Debug("End Importing KenhNhaTro Job...");
         }
 
-        private List<Post> GetPostForOneDistrict(string url, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
+        private void GetPostForOneDistrict(string url, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
         {
+
+            try
+            {
             List<Post> result = new List<Post>();
             List<string> allURLs = GetDetailsURLForOneDistrict(url, districtName, dateStart, dateEnd);
             foreach (string urlDetail in allURLs)
@@ -89,7 +79,16 @@ namespace RoomSearch.CollectorEngine
                     result.Add(post);
                 }
             }
-            return result;
+
+            if (result.Count > 0)
+            {
+                BusinessMethods.SavePostList(result);
+            }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.Error(ex);
+            }
         }
 
 

@@ -4,7 +4,7 @@
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
     <link rel="stylesheet" type="text/css" href="Styles/CSS/appstyle.css" />
-    <script>
+    <script type="text/javascript">
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                 (i[r].q = i[r].q || []).push(arguments)
@@ -65,7 +65,7 @@
             <table>
                 <tr>
                     <td>
-                        <asp:Label ID="lblCity" runat="server" Text="Thành Phố :"></asp:Label>
+                        <asp:Label ID="lblCity" runat="server" Text="Thành Phố :" Width="70px"></asp:Label>
                     </td>
                     <td colspan="3">
                         <telerik:RadComboBox ID="cbbCity" runat="server" Skin="Office2007" Height="155px"
@@ -75,7 +75,7 @@
 
                     <td style="width:10px"></td>
                     <td>
-                        <asp:Label ID="lblDistrict" runat="server" Text="Quận / Huyện :"></asp:Label>
+                        <asp:Label ID="lblDistrict" runat="server" Text="Quận / Huyện :" Width="90px"></asp:Label>
                     </td>
                     <td colspan="3">
                         <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="Office2007" Height="155px"
@@ -85,23 +85,23 @@
 
                     <td style="width:10px"></td>
                     <td>
-                        <asp:Label ID="lblRealestateType" runat="server" Text="Loại nhà/đất :"></asp:Label>
+                        <asp:Label ID="lblRealestateType" runat="server" Text="Loại nhà/đất :" Width="90px"></asp:Label>
                     </td>
                     <td>
                         <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="Office2007" Height="155px"
-                            Width="104px">
+                            Width="230px">
                         </telerik:RadComboBox>
                     </td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="lblPriceFrom" runat="server" Text="Giá từ :"></asp:Label>
+                        <asp:Label ID="lblPriceFrom" runat="server" Text="Giá từ :" Width="70px"></asp:Label>
                     </td>
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="50px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="500" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            Value="0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitFrom" Text="(triệu)"></asp:Label>
                     </td>
@@ -111,14 +111,14 @@
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceTo" runat="server" Width="50px" Type="Number"
                             Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="1000" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            Value="9000" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitTo" Text="(triệu)"></asp:Label>
                     </td>
 
                     <td></td>
                     <td>
-                        <asp:Label ID="lblDateFrom" runat="server" Text="Đăng từ ngày :"></asp:Label>
+                        <asp:Label ID="lblDateFrom" runat="server" Text="Đăng từ ngày :" Width="90px"></asp:Label>
                     </td>
                     <td>
                         <telerik:RadDatePicker ID="datDateFrom" runat="server" Width="95px"  Skin="Office2007"  Calendar-CultureInfo="en-US">
@@ -129,7 +129,7 @@
                         </telerik:RadDatePicker> 
                     </td>
                         <td>
-                        <asp:Label ID="lblDateTo" runat="server" Text="Đến ngày :"></asp:Label>
+                        <asp:Label ID="lblDateTo" runat="server" Text="Đến ngày :" Width="70px"></asp:Label>
                     </td>
                     <td>
                         <telerik:RadDatePicker ID="datDateTo" runat="server" Width="95px"  Skin="Office2007"  Calendar-CultureInfo="en-US">
@@ -153,6 +153,19 @@
                                 OnClick="OnBtnSearch_Clicked" CausesValidation="true"/>&nbsp;
                         </td>
                 </tr>
+                 <tr>
+                    <td>
+                        <asp:Label ID="lblKeywords" runat="server" Text="Theo từ khóa :" Width="90px"></asp:Label>
+                    </td>
+                    <td colspan="3">
+                        <asp:TextBox ID="txtKeywords" runat="server" Width="225px" Wrap="true" MaxLength="50"
+                            BackColor="White">
+                        </asp:TextBox>
+                    </td>
+                    <td colspan="9">
+                        <asp:Label ID="lblKeywordsDes" runat="server" Text=" (Tên đường hoặc tên chung cư hoặc khu vực ...)"></asp:Label>
+                    </td>
+                </tr>
             </table>
         </div>
         <div id="divResult" runat="server" style="margin-top : 10px">
@@ -170,14 +183,24 @@
                     <MasterTableView DataKeyNames="PostId" DataMember="PersonName" AllowMultiColumnSorting="True"
                         Width="100%" EditMode="PopUp">
                         <Columns>
-                            <telerik:GridBoundColumn UniqueName="DateUpdated" SortExpression="DateUpdated" HeaderText="Ngày đăng tin" DataFormatString="{0:dd/MM/yyyy}"
+                            <%--<telerik:GridBoundColumn UniqueName="DateUpdated" SortExpression="DateUpdated" HeaderText="Ngày đăng tin" DataFormatString="{0:dd/MM/yyyy}"
                                 DataField="DateUpdated" HeaderStyle-Width="100px">
-                            </telerik:GridBoundColumn>
+                            </telerik:GridBoundColumn>--%>
+                            <telerik:GridTemplateColumn UniqueName="DateUpdated" HeaderText="Ngày đăng tin">
+                                <ItemTemplate>
+                                    <asp:HyperLink ID="lnkPostDetails" runat="server" Text='<%#Eval("DateUpdated", "{0:dd/MM/yyyy}") %>' 
+                                        NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?Mode=view&PostId={0}") %>'
+                                        ForeColor="Blue" Font-Underline="true">  
+                                    </asp:HyperLink>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                                <HeaderStyle Width="95px"></HeaderStyle>
+                            </telerik:GridTemplateColumn>
                             <telerik:GridBoundColumn UniqueName="District" SortExpression="District" HeaderText="Quận"
-                                DataField="District"  HeaderStyle-Width="100px">
+                                DataField="District"  HeaderStyle-Width="80px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn UniqueName="Address" SortExpression="Address" HeaderText="Địa chỉ"
-                                DataField="Address"  HeaderStyle-Width="150px">
+                                DataField="Address"  HeaderStyle-Width="200px">
                             </telerik:GridBoundColumn>
                             <%--<telerik:GridBoundColumn UniqueName="Description" SortExpression="Description" HeaderText="Mô tả"
                                 DataField="ShortDescription" Tooltip="love">
@@ -192,7 +215,7 @@
                                 DataField="MeterSquare" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="100">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn UniqueName="Price" SortExpression="Price" HeaderText="Giá" DataFormatString="{0:C2}"
-                                DataField="PriceString" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="80">
+                                DataField="PriceString" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="70">
                             </telerik:GridBoundColumn>
 
                             <telerik:GridTemplateColumn UniqueName="ViewDetails">

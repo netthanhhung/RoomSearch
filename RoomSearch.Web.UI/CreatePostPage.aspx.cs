@@ -79,7 +79,7 @@ namespace RoomSearch.Web.UI
 
             cbbRealestateType.DataValueField = "RealestateTypeId";
             cbbRealestateType.DataTextField = "Name";
-            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType();
+            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType(false);
             cbbRealestateType.DataBind();
         }
 

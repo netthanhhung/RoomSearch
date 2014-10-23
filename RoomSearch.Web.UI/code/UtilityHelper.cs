@@ -61,5 +61,24 @@ namespace RoomSearch.Web.UI
             return outputStream;
         }
 
+        public static string FormatKeywords(string keywords)
+        {
+            if (string.IsNullOrEmpty(keywords))
+            {
+                return null;
+            }
+
+            keywords = keywords.Trim().ToLower();
+            keywords = keywords.Replace("select", " ");
+            keywords = keywords.Replace("drop", " ");
+            keywords = keywords.Replace("delete", " ");
+            keywords = keywords.Replace("alter", " ");
+            keywords = keywords.Replace("update", " ");
+            keywords = keywords.Replace("table", " ");
+            keywords = keywords.Replace("*", " ");
+            keywords = keywords.Replace("?", " ");
+
+            return keywords;
+        }
     }
 }

@@ -252,11 +252,12 @@ namespace RoomSearch.Data
                                     DateTime? dateTo,
                                     decimal? meterSquareFrom,
                                     decimal? meterSquareTo,
+                                    string keywords,
                                     bool showLegacy)
         {
             
             return Utilities.ToInt(_db.ExecuteScalar("procCountPost", postTypeId, roomTypeId, realestateTypeId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
-                priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy));
+                priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, keywords, showLegacy));
         }
 
 
@@ -276,6 +277,7 @@ namespace RoomSearch.Data
                                    DateTime? dateTo,
                                    decimal? meterSquareFrom,
                                    decimal? meterSquareTo,
+                                   string keywords,
                                    bool showLegacy,
                                    int pageSize, int pageNumber, string sortOrder, string sortOrderInvert)
         {
@@ -332,6 +334,7 @@ namespace RoomSearch.Data
 	                        AND (@DateTo IS NULL OR P.DateUpdated <= @DateTo)
 	                        AND (@MeterSquareFrom  is null  OR P.MeterSquare IS NULL OR P.MeterSquare >= @MeterSquareFrom) 
 	                        AND (@MeterSquareTo  is null  OR P.MeterSquare IS NULL OR P.MeterSquare <= @MeterSquareTo)
+                            AND (@Keywords IS NULL OR SearchKeyWords like '%' + dbo.[ufnConvertToUnsignString](@Keywords) + '%')
 	                        AND (@ShowLegacy = 1 OR P.IsLegacy = 0)";
             
             sqlQuery += " order by " + sortOrder;
@@ -358,6 +361,7 @@ namespace RoomSearch.Data
             dbCommand.Parameters.Add(BuildSqlParameter("@DateTo", SqlDbType.DateTime, dateTo.HasValue, dateTo));
             dbCommand.Parameters.Add(BuildSqlParameter("@MeterSquareFrom", SqlDbType.Decimal, meterSquareFrom.HasValue, meterSquareFrom));
             dbCommand.Parameters.Add(BuildSqlParameter("@MeterSquareTo", SqlDbType.Decimal, meterSquareTo.HasValue, meterSquareTo));
+            dbCommand.Parameters.Add(BuildSqlParameter("@Keywords", SqlDbType.NVarChar, !string.IsNullOrEmpty(keywords), keywords));
             dbCommand.Parameters.Add(BuildSqlParameter("@ShowLegacy", SqlDbType.Bit, true, showLegacy));
         
 

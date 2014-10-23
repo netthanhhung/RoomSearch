@@ -28,68 +28,66 @@ namespace RoomSearch.CollectorEngine
         {
 
             Logger.Log.Debug("Start Importing BatDongSan Job...");
+            
+            DateTime dateStart = DateTime.Today;
+            //if (dateStart.DayOfWeek == DayOfWeek.Monday)
+            //{
+            //    dateStart = dateStart.AddDays(-2);
+            //}
+            DateTime dateEnd = DateTime.Today;
+                
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-hoc-mon", "Huyện Hóc Môn", 18, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-can-gio", "Huyện Cần Giờ", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-nha-be", "Huyện Nhà Bè", 20, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-cu-chi", "Huyện Củ Chi", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-chanh", "Huyện Bình Chánh", 19, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-tan", "Quận Bình Tân", 79, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-thu-duc", "Quận Thủ Đức", 17, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-go-vap", "Quận Gò Vấp", 16, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-phu", "Quận Tân Phú", 15, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-binh", "Quận Tân Bình", 14, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-thanh", "Quận Bình Thạnh", 21, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-phu-nhuan", "Quận Phú Nhuận", 13, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-12", "Quận 12", 12, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-11", "Quận 11", 11, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-10", "Quận 10", 10, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-9", "Quận 9", 9, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-8", "Quận 8", 8, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-7", "Quận 7", 7, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-6", "Quận 6", 6, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-5", "Quận 5", 5, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-4", "Quận 4", 4, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-3", "Quận 3", 3, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-2", "Quận 2", 2, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-1", "Quận 1", 1, dateStart, dateEnd);
+                            
+            Logger.Log.Debug("End Importing BatDongSan Job...");
+        }
 
+        private void GetPostForOneDistrict(string url, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
+        {
             try
             {
-                DateTime dateStart = DateTime.Today;
-                //if (dateStart.DayOfWeek == DayOfWeek.Monday)
-                //{
-                //    dateStart = dateStart.AddDays(-2);
-                //}
-                DateTime dateEnd = DateTime.Today;
-                
                 List<Post> result = new List<Post>();
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-1", "Quận 1", 1, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-2", "Quận 2", 2, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-3", "Quận 3", 3, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-4", "Quận 4", 4, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-5", "Quận 5", 5, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-6", "Quận 6", 6, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-7", "Quận 7", 7, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-8", "Quận 8", 8, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-9", "Quận 9", 9, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-10", "Quận 10", 10, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-11", "Quận 11", 11, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-12", "Quận 12", 12, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-phu-nhuan", "Quận Phú Nhuận", 13, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-thanh", "Quận Bình Thạnh", 21, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-binh", "Quận Tân Bình", 14, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-phu", "Quận Tân Phú", 15, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-go-vap", "Quận Gò Vấp", 16, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-thu-duc", "Quận Thủ Đức", 17, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-tan", "Quận Bình Tân", 79, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-chanh", "Huyện Bình Chánh", 19, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-cu-chi", "Huyện Củ Chi", 80, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-nha-be", "Huyện Nhà Bè", 20, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-can-gio", "Huyện Cần Giờ", 80, dateStart, dateEnd));
-                result.AddRange(GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-hoc-mon", "Huyện Hóc Môn", 18, dateStart, dateEnd));
+                List<string> allURLs = GetDetailsURLForOneDistrict(url, districtName, dateStart, dateEnd);
+                foreach (string urlDetail in allURLs)
+                {
+                    Post post = GetDetailPost(urlDetail, districtId);
+                    if (post != null)
+                    {
+                        result.Add(post);
+                    }
+                }
 
                 if (result.Count > 0)
                 {
-                    BusinessMethods.SavePostList(result);                    
+                    BusinessMethods.SavePostList(result);
                 }
             }
             catch (Exception ex)
             {
                 Logger.Log.Error(ex);
             }
-
-            //Logger.Log.Debug("End Importing BatDongSan Job...");
-        }
-
-        private List<Post> GetPostForOneDistrict(string url, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
-        {
-            List<Post> result = new List<Post>();
-            List<string> allURLs = GetDetailsURLForOneDistrict(url, districtName, dateStart, dateEnd);
-            foreach (string urlDetail in allURLs)
-            {
-                Post post = GetDetailPost(urlDetail, districtId);
-                if (post != null)
-                {
-                    result.Add(post);
-                }
-            }
-            return result;
         }
 
 
@@ -266,13 +264,16 @@ namespace RoomSearch.CollectorEngine
                                 using (var client = new WebClient())
                                 {
                                     byte[] imageFile = client.DownloadData(source);
-                                    Image newImage = new Image();
-                                    newImage.ImageSmallContent = RequestHelper.ResizeImageByteArray(100, imageFile);
-                                    newImage.ImageContent = RequestHelper.ResizeImageByteArray(400, imageFile);
-                                    newImage.FileName = "noname";
-                                    newImage.ImageTypeId = (int)ImageType.Room;
-                                    newImage.CreatedBy = result.CreatedBy;
-                                    result.ImageList.Add(newImage);
+                                    if (imageFile != null && imageFile.Length > 0)
+                                    {
+                                        Image newImage = new Image();
+                                        newImage.ImageSmallContent = RequestHelper.ResizeImageByteArray(100, imageFile);
+                                        newImage.ImageContent = RequestHelper.ResizeImageByteArray(400, imageFile);
+                                        newImage.FileName = "noname";
+                                        newImage.ImageTypeId = (int)ImageType.Room;
+                                        newImage.CreatedBy = result.CreatedBy;
+                                        result.ImageList.Add(newImage);
+                                    }
                                 }
                             }
                         }

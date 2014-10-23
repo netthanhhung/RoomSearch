@@ -6,8 +6,13 @@ namespace RoomSearch.Common
 {
     public enum RealestateTypes : int
     {
-        Standard = 1,
-        Exclusive = 2,
+        DatThocu = 1,
+        DatNenDuAn = 2,
+        DatTrangTrai = 3,
+        NhaChungCu = 4,
+        NhaPho = 5,
+        NhaBietThu = 6,
+        Khac = 7,
     }
 
     [Serializable]

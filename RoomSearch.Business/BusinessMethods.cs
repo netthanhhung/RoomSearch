@@ -113,9 +113,16 @@ namespace RoomSearch.Business
         #endregion
 
         #region RealestateType
-        public static List<RealestateType> ListRealestateType()
+        public static List<RealestateType> ListRealestateType(bool insertAllItem)
         {
-            return new DataLayer().ListRealestateType();
+            List<RealestateType> result = new DataLayer().ListRealestateType();
+            if (insertAllItem)
+            {
+                RealestateType rt = new RealestateType();
+                rt.Name = "Tất cả";
+                result.Insert(0, rt);
+            }
+            return result;
         }
 
         #endregion
@@ -273,10 +280,11 @@ namespace RoomSearch.Business
                                     DateTime? dateTo,
                                     decimal? meterSquareFrom,
                                     decimal? meterSquareTo,
+                                   string keywords,
                                     bool showLegacy)
         {
             return new DataLayer().CountPost(postTypeId, roomTypeId, realestateTypeId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
-                priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy);
+                priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, keywords, showLegacy);
         }
 
         public static List<Post> SearchPostPaging(int postTypeId,
@@ -295,11 +303,12 @@ namespace RoomSearch.Business
                                    DateTime? dateTo,
                                    decimal? meterSquareFrom,
                                    decimal? meterSquareTo,
+                                   string keywords,
                                    bool showLegacy,
                                    int pageSize, int pageNumber, string sortOrder, string sortOrderInvert)
         {
             return new DataLayer().SearchPostPaging(postTypeId, roomTypeId, realestateTypeId, countryId, cityId, districtId, personName, phoneNumber, email, gender,
-                priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, showLegacy,
+                priceFrom, pPriceTo, dateFrom, dateTo, meterSquareFrom, meterSquareTo, keywords, showLegacy,
                 pageSize, pageNumber, sortOrder, sortOrderInvert);
         }
 

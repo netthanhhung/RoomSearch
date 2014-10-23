@@ -92,7 +92,7 @@ namespace RoomSearch.Web.UI
 
             cbbRealestateType.DataValueField = "RealestateTypeId";
             cbbRealestateType.DataTextField = "Name";
-            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType();
+            cbbRealestateType.DataSource = Business.BusinessMethods.ListRealestateType(false);
             cbbRealestateType.DataBind();
         }
 
@@ -121,7 +121,21 @@ namespace RoomSearch.Web.UI
 
         void BindData(Post post)
         {
-            this.Page.Title = post.ShortTitle;
+            int postTypeId = GetPostTypeId();
+
+            if (postTypeId == (int)PostTypes.Room)
+            {
+                this.Page.Title = "Chi tiết phòng : " + post.ShortTitle;
+            }
+            else if (postTypeId == (int)PostTypes.StayWith)
+            {
+                this.Page.Title = "Thong tin chi tiết ở ghép : " + post.ShortTitle;
+            }
+            else if (postTypeId == (int)PostTypes.House)
+            {
+                this.Page.Title = "Thông tin chi tiết mua bán nhà đất : " + post.ShortTitle;
+            }
+
             txtPersonName.Text = post.PersonName;
             txtEmail.Text = post.Email;
             txtPhoneNumber.Text = post.PhoneNumber;

@@ -145,9 +145,9 @@ namespace RoomSearch.Web.UI
 
                 int postTypeId = GetPostTypeId();
                 gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost(postTypeId, null, null, null, null, null, null, phoneNumber, email, null,
-                    null, null, null, null, null, null, true);
+                    null, null, null, null, null, null, null, true);
                 List<Post> searchResults = Business.BusinessMethods.SearchPostPaging(postTypeId, null, null, null, null, null, null, phoneNumber, email, null,
-                    null, null, null, null, null, null, true, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
+                    null, null, null, null, null, null, null, true, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
                 gridRoomResult.DataSource = searchResults;
             }
 

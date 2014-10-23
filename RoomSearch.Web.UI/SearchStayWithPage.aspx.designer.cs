@@ -85,24 +85,6 @@ namespace RoomSearch.Web.UI {
         protected global::System.Web.UI.WebControls.RadioButton radFemale;
         
         /// <summary>
-        /// lblRoomType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRoomType;
-        
-        /// <summary>
-        /// cbbRoomType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox cbbRoomType;
-        
-        /// <summary>
         /// lblCity control.
         /// </summary>
         /// <remarks>
@@ -137,6 +119,24 @@ namespace RoomSearch.Web.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox cbbDistrict;
+        
+        /// <summary>
+        /// lblRoomType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRoomType;
+        
+        /// <summary>
+        /// cbbRoomType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox cbbRoomType;
         
         /// <summary>
         /// lblPriceFrom control.
@@ -236,6 +236,33 @@ namespace RoomSearch.Web.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// lblKeywords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblKeywords;
+        
+        /// <summary>
+        /// txtKeywords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtKeywords;
+        
+        /// <summary>
+        /// lblKeywordsDes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblKeywordsDes;
         
         /// <summary>
         /// divResult control.
