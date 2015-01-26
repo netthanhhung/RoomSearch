@@ -147,7 +147,7 @@ namespace RoomSearch.Common
         {
             get
             {
-                return Price.HasValue ? (Price.Value.ToString("0.0") + " (tr đ)") : string.Empty;
+                return Price.HasValue ? (Price.Value.ToString("0.0") + " (tr đ)") : "";
             }
         }
 

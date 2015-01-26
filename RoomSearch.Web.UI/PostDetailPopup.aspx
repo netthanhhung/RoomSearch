@@ -249,6 +249,18 @@
                     <td colspan="3">
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblPostDate" runat="server" Text="Ngày đăng :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadDatePicker ID="datPostDate" runat="server" Width="100px" 
+                            Skin="Office2007" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
             </table>
          <div>
             <table>

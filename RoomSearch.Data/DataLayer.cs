@@ -416,5 +416,72 @@ namespace RoomSearch.Data
         }
         #endregion
 
+        #region NoPrcie
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
+        public int CountNoPricePost()
+        {
+            return Utilities.ToInt(_db.ExecuteScalar("procCountNoPricePost"));
+        }
+
+        public List<Post> SearchNoPricePostPaging(int pageSize, int pageNumber, string sortOrder, string sortOrderInvert)
+        {
+            List<Post> result = new List<Post>();
+
+            string sqlQuery = @"SELECT	{0}
+		                        P.PostId
+                              ,P.PostTypeId
+                              ,P.PersonName
+                              ,P.PhoneNumber
+                              ,P.Email
+                              ,P.Gender
+                              ,P.RoomTypeId
+                              ,RT.Name as RoomType
+                              ,P.RealestateTypeId
+                              ,RLT.Name as RealestateType
+                              ,P.AvailableRooms
+                              ,P.Description
+                              ,P.MeterSquare
+                              ,P.Floor
+                              ,P.Address
+                              ,P.DistrictId
+                              ,D.Name as District
+                              ,P.CityId
+                              ,CT.Name as City
+                              ,P.CountryId
+                              ,C.Name as Country
+                              ,P.Price
+                              ,P.IsLegacy
+                              ,P.Concurrency
+                              ,P.DateCreated
+                              ,P.DateUpdated
+                              ,P.CreatedBy
+                              ,P.UpdatedBy
+	                        FROM	dbo.Post P
+	                        LEFT OUTER JOIN dbo.RoomType RT on P.RoomTypeId = RT.RoomTypeId
+	                        LEFT OUTER JOIN dbo.RealestateType RLT on P.RealestateTypeId = RLT.RealestateTypeId
+	                        LEFT OUTER JOIN dbo.Country C on P.CountryId = C.CountryId
+	                        LEFT OUTER JOIN dbo.City CT on P.CityId = CT.CityId
+	                        LEFT OUTER JOIN dbo.District D on P.DistrictId = D.DistrictId
+	                        WHERE P.DateUpdated > DATEADD(DD, -7, GETDATE())
+                            AND		P.Price IS NULL";
+
+            sqlQuery += " order by " + sortOrder;
+            sqlQuery = string.Format(sqlQuery, "top " + pageSize * pageNumber + " ");
+            sqlQuery = "(select top " + pageSize + " * from \n (" + sqlQuery + " ) As T1 \n"
+                    + " Order by " + sortOrderInvert;
+            sqlQuery = "select * from \n " + sqlQuery + " ) As T2 \n"
+                    + " Order by " + sortOrder;
+
+            DbCommand dbCommand = _db.GetSqlStringCommand(sqlQuery);
+
+            using (IDataReader reader = _db.ExecuteReader(dbCommand))
+            {
+                Factory.FillPostList(result, reader);
+            }
+
+            return result;
+        }
+        #endregion
+
     }
 }

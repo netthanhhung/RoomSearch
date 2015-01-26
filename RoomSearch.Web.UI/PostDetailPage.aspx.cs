@@ -15,6 +15,7 @@ namespace RoomSearch.Web.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Header.DataBind();
             if (!IsPostBack)
             {
                 InitComboboxData();
@@ -150,6 +151,7 @@ namespace RoomSearch.Web.UI
             radMale.Checked = post.Gender == 1;
             radFemale.Checked = post.Gender == 0;
             cbbRealestateType.SelectedValue = post.RealestateTypeId.ToString();
+            datPostDate.SelectedDate = post.DateUpdated;
         }
 
         void BindReadonlyImageList(Post post)
@@ -239,6 +241,7 @@ namespace RoomSearch.Web.UI
             radUploadMulti.Visible = !readOnly;
             radFemale.Enabled = radMale.Enabled = !readOnly;
             cbbRealestateType.Enabled = !readOnly;
+            datPostDate.Enabled = !readOnly;
         }
 
         private Post GetSavePost()

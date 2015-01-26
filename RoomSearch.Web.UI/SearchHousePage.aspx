@@ -189,7 +189,7 @@
                             <telerik:GridTemplateColumn UniqueName="DateUpdated" HeaderText="Ngày đăng tin">
                                 <ItemTemplate>
                                     <asp:HyperLink ID="lnkPostDetails" runat="server" Text='<%#Eval("DateUpdated", "{0:dd/MM/yyyy}") %>' 
-                                        NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?Mode=view&PostId={0}") %>'
+                                        NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?PostType=3&Mode=view&PostId={0}") %>'
                                         ForeColor="Blue" Font-Underline="true">  
                                     </asp:HyperLink>
                                 </ItemTemplate>

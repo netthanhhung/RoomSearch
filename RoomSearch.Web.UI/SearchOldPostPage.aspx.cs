@@ -156,10 +156,16 @@ namespace RoomSearch.Web.UI
         protected int GetPostTypeId()
         {
             int postTypeId = 1; //Room
-            if (!string.IsNullOrEmpty(Request.QueryString["PostType"]))
+            string rawURL = Request.RawUrl;
+            string sub = rawURL.Substring(rawURL.LastIndexOf("/"));
+            if (int.TryParse(sub, out postTypeId))
             {
-                postTypeId = Convert.ToInt32(Request.QueryString["PostType"]);
+                return postTypeId;
             }
+            //if (!string.IsNullOrEmpty(Request.QueryString["PostType"]))
+            //{
+            //    postTypeId = Convert.ToInt32(Request.QueryString["PostType"]);
+            //}
             return postTypeId;
         }
         #endregion

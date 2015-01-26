@@ -259,135 +259,236 @@ namespace RoomSearch.CollectorEngine
             }
         }
 
-        public static decimal ParsePrice(string description)
+        public static decimal? ParsePrice(string descriptionOrg)
         {
-            decimal price = 2.0M;
+            string description = descriptionOrg.ToLower();
+            decimal? price = null;
             try
             {
                 int index1 = description.IndexOf("giá:");
                 int index2 = description.IndexOf("giá :");
-                int index3 = description.IndexOf("triệu/tháng");
-                int index4 = description.IndexOf("trieu/thang");
-                int index5 = description.IndexOf("usd/thang");
+                int index20 = description.IndexOf("giá thuê");
+                int index21 = description.IndexOf("giá cho thuê");
+                int index3 = description.IndexOf("/tháng");
+                int index4 = description.IndexOf("/thang");
+                int index5 = description.IndexOf("/ tháng");
+                int index6 = description.IndexOf("/ thang");
+                int index7 = description.IndexOf("/ 1 tháng");
+                int index8 = description.IndexOf("/ 1 thang");
+                int index9 = description.IndexOf("/th ");
+                int index10 = description.IndexOf("/ th ");
+                int index11 = description.IndexOf("/1th ");
+                int index12 = description.IndexOf("/ 1th ");                
+                int index100 = description.IndexOf("giá ");
+                int index101 = description.IndexOf("gía ");
 
                 if (!string.IsNullOrEmpty(description)
-                    && (index1 > 0 || index2 > 0 || index3 > 0 || index4 > 0))
+                    && (index1 > 0 || index2 > 0 || index21 > 0 || index3 > 0 || index4 > 0
+                    || index5 > 0 || index6 > 0 || index7 > 0 || index8 > 0
+                    || index9 > 0 || index10 > 0 || index11 > 0 || index12 > 0))
                 {
                     string subDescription = string.Empty;
                     if (index1 > 0)
                     {
-                        subDescription = description.Substring(index1 + 4);
+                        subDescription = description.Substring(index1, 30);
                     }
-                    if (index2 > 0)
+                    else if (index2 > 0)
                     {
-                        subDescription = description.Substring(index2 + 4);
+                        subDescription = description.Substring(index2, 30);
+                    }
+                    else if (index20 > 0)
+                    {
+                        subDescription = description.Substring(index20, 30);
+                    }
+                    else if (index21 > 0)
+                    {
+                        subDescription = description.Substring(index21, 30);
                     }
                     else if (index3 > 0)
                     {
-                        subDescription = description.Substring(index3 - 4, 12);
+                        subDescription = description.Substring(index3 - 15, 15);
                     }
                     else if (index4 > 0)
                     {
-                        subDescription = description.Substring(index3 - 4, 12);
+                        subDescription = description.Substring(index4 - 15, 15);
                     }
                     else if (index5 > 0)
                     {
-                        subDescription = description.Substring(index5 - 4, 10);
+                        subDescription = description.Substring(index5 - 15, 15);
                     }
+                    else if (index6 > 0)
+                    {
+                        subDescription = description.Substring(index6 - 15, 15);
+                    }
+                    else if (index7 > 0)
+                    {
+                        subDescription = description.Substring(index7 - 15, 15);
+                    }
+                    else if (index8 > 0)
+                    {
+                        subDescription = description.Substring(index8 - 15, 15);
+                    }
+                    else if (index9 > 0)
+                    {
+                        subDescription = description.Substring(index9 - 15, 15);
+                    }
+                    else if (index10 > 0)
+                    {
+                        subDescription = description.Substring(index10 - 15, 15);
+                    }
+                    else if (index11 > 0)
+                    {
+                        subDescription = description.Substring(index11 - 15, 15);
+                    }
+                    else if (index12 > 0)
+                    {
+                        subDescription = description.Substring(index12 - 15, 15);
+                    }
+                    else if (index100 > 0)
+                    {
+                        subDescription = description.Substring(index100, 30);
+                    }
+                    else if (index101 > 0)
+                    {
+                        subDescription = description.Substring(index101, 30);
+                    }
+                    
 
                     if (subDescription.Length > 30)
                     {
                         subDescription = subDescription.Substring(0, 30);
                     }
-                    if (Regex.IsMatch(subDescription, @"\d+tr\d+", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+tr\d*", RegexOptions.IgnoreCase);
-                        string[] stringSeparators = new string[] { "tr" };
-                        string[] values = match.Value.Split(stringSeparators, StringSplitOptions.None);
-                        if (values.Length > 0)
-                        {
-                            price = decimal.Parse(values[0]);
-                            if (values.Length > 1)
-                            {
-                                price = price + decimal.Parse(values[1].Substring(0, 1)) / 10;
-                            }
-                        }
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+.\d+tr", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+.\d+tr", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 2));
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+.\d+ triệu", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+.\d+ triệu", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 6));
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+.\d+ trieu", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+.\d+ trieu", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 6));
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+ triệu", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+ triệu", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 6));
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+ trieu", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+ trieu", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 6));
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+ usd", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+ usd", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 4));
-                        price = price * 0.022M;
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+usd", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+usd", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 3));
-                        price = price * 0.022M;
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+.\d{3}.\d{3}đ", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+.\d{3}.\d{3}đ", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        string[] array = value.Split('.');
-                        price = decimal.Parse(array[0]);
-                        price = price + decimal.Parse(array[1]) / 1000;
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+.\d{3}.\d{3}d", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+.\d{3}.\d{3}d", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        string[] array = value.Split('.');
-                        price = decimal.Parse(array[0]);
-                        price = price + decimal.Parse(array[1]) / 1000;
-                    }
-                    else if (Regex.IsMatch(subDescription, @"\d+tr", RegexOptions.IgnoreCase))
-                    {
-                        Match match = Regex.Match(subDescription, @"\d+tr", RegexOptions.IgnoreCase);
-                        string value = match.Value;
-                        price = decimal.Parse(value.Substring(0, value.Length - 2));
-                    }
+
+                    price = ParseNumberOnly(subDescription);
+
+                    //if (Regex.IsMatch(subDescription, @"\d+tr\d+", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+tr\d*", RegexOptions.IgnoreCase);
+                    //    string[] stringSeparators = new string[] { "tr" };
+                    //    string[] values = match.Value.Split(stringSeparators, StringSplitOptions.None);
+                    //    if (values.Length > 0)
+                    //    {
+                    //        price = decimal.Parse(values[0]);
+                    //        if (values.Length > 1)
+                    //        {
+                    //            price = price + decimal.Parse(values[1].Substring(0, 1)) / 10;
+                    //        }
+                    //    }
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+.\d+tr", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+.\d+tr", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 2));
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+.\d+ triệu", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+.\d+ triệu", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+.\d+ trieu", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+.\d+ trieu", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+ triệu", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+ triệu", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+ trieu", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+ trieu", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 6));
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+ usd", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+ usd", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 4));
+                    //    price = price * 0.022M;
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+usd", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+usd", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 3));
+                    //    price = price * 0.022M;
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+.\d{3}.\d{3}đ", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+.\d{3}.\d{3}đ", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    string[] array = value.Split('.');
+                    //    price = decimal.Parse(array[0]);
+                    //    price = price + decimal.Parse(array[1]) / 1000;
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+.\d{3}.\d{3}d", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+.\d{3}.\d{3}d", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    string[] array = value.Split('.');
+                    //    price = decimal.Parse(array[0]);
+                    //    price = price + decimal.Parse(array[1]) / 1000;
+                    //}
+                    //else if (Regex.IsMatch(subDescription, @"\d+tr", RegexOptions.IgnoreCase))
+                    //{
+                    //    Match match = Regex.Match(subDescription, @"\d+tr", RegexOptions.IgnoreCase);
+                    //    string value = match.Value;
+                    //    price = decimal.Parse(value.Substring(0, value.Length - 2));
+                    //}
                 }
             }
             catch (Exception ex)
             {
-                price = 2.0M;
+                price = null;
             }
             return price;
         }
 
+        public static decimal? ParseNumberOnly(string description)
+        {
+            char[] array = description.ToArray();
+            string result = string.Empty;
+            decimal? price = null;
+            for (int i = 0; i < description.Length; i++)
+            {
+                char character = array[i];
+                if (char.IsDigit(character))
+                {
+                    result += character;
+                }
+                else if (character == '.' && !result.Contains("."))
+                {
+                    result += character;
+                }
+                else if (character == ',' && !result.Contains("."))
+                {
+                    result += ".";
+                }
+                else if (!string.IsNullOrEmpty(result))
+                {
+                    break;
+                }
+            }
+            if (!string.IsNullOrEmpty(result))
+            {
+                price = decimal.Parse(result);
+                if (description.Contains("$") || description.Contains("usd"))
+                {
+                    if (price < 100)
+                    {
+                        price = price * 1000;
+                    }
+                    price = price * 0.022M;
+                }
+            }
+            return price;
+        }
 
         public static string GetStringFromAsciiHex(string input)
         {

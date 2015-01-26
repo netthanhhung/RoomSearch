@@ -3,7 +3,7 @@
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
-    <link rel="stylesheet" type="text/css" href="Styles/CSS/appstyle.css" />
+    <link rel="stylesheet" type="text/css" href="<%# ResolveUrl("~/Styles/CSS/appstyle.css")%>"   />
     <script type="text/javascript">
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -16,7 +16,7 @@
             ga('send', 'pageview');
 
     </script>
-    <script type="text/javascript" src="Styles/JS/utils.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/Styles/JS/utils.js")%>"  ></script>
     <telerik:RadScriptBlock runat="server" ID="scriptBlock">
         <script type="text/javascript" language="javascript">
 
@@ -198,7 +198,7 @@
                             <telerik:GridTemplateColumn UniqueName="DateUpdated" HeaderText="Ngày đăng tin">
                                 <ItemTemplate>
                                     <asp:HyperLink ID="lnkPostDetails" runat="server" Text='<%#Eval("DateUpdated", "{0:dd/MM/yyyy}") %>' 
-                                        NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?Mode=view&PostId={0}") %>'
+                                        NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?PostType=1&Mode=view&PostId={0}") %>'
                                         ForeColor="Blue" Font-Underline="true">  
                                     </asp:HyperLink>
                                 </ItemTemplate>

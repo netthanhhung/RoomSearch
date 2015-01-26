@@ -2,12 +2,12 @@
     Inherits="RoomSearch.Web.UI.PostDetailPage" Title="Chi tiết phòng" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
-<%@ Register TagPrefix="local" TagName="ImagePanel" Src="~/UserControls/ImagePanel.ascx" %>
+<%@ Register TagPrefix="local" TagName="ImagePanel" Src="~/UserControls/ImagePanel.ascx"  %>
 
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">
-    <link rel="stylesheet" type="text/css" href="Styles/CSS/appstyle.css" />
-    <link rel="stylesheet" type="text/css" href="Styles/CSS/font-awesome.css"/>
-    <link rel="stylesheet" type="text/css" href="Styles/CSS/menu.css"/>
+    <link rel="stylesheet" type="text/css" href="<%# ResolveUrl("~/Styles/CSS/appstyle.css")%>" />
+    <link rel="stylesheet" type="text/css" href="<%# ResolveUrl("~/Styles/CSS/font-awesome.css")%>" />
+    <link rel="stylesheet" type="text/css" href="<%# ResolveUrl("~/Styles/CSS/menu.css")%>" />
     <script type="text/javascript">
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
@@ -20,7 +20,7 @@
         ga('send', 'pageview');
 
     </script>
-    <script type="text/javascript" src="Styles/JS/utils.js"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/Styles/JS/utils.js")%>" ></script>
     <script type="text/javascript" language="javascript">
 
         function onDropDownCity_ClientIndexChanged(sender, eventArgs) {
@@ -79,7 +79,7 @@
         
         <telerik:RadAjaxLoadingPanel ID="pnlRadAjaxLoading" runat="server" Height="75px"
                 Width="75px" Transparency="50">
-                <img alt="Loading..." src='<%= RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
+                <img alt="Loading..." src='<%# RadAjaxLoadingPanel.GetWebResourceUrl(Page, "Telerik.Web.UI.Skins.Default.Ajax.loading.gif") %>'
                     style="border: 0;" />
         </telerik:RadAjaxLoadingPanel>
 
@@ -232,6 +232,18 @@
                             Value="2.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnit" Text="triệu đồng 1 tháng"></asp:Label>
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <asp:Label ID="lblPostDate" runat="server" Text="Ngày đăng :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadDatePicker ID="datPostDate" runat="server" Width="100px" 
+                            Skin="Office2007" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                     </td>
                     <td colspan="3">
                     </td>

@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NoPricePage.aspx" />
     <Content Include="PostDetailPage.aspx" />
     <Content Include="SearchHousePage.aspx" />
     <Content Include="SearchStayWithPage.aspx" />
@@ -160,6 +161,13 @@
   <ItemGroup>
     <Compile Include="code\DistrictVM.cs" />
     <Compile Include="code\UtilityHelper.cs" />
+    <Compile Include="NoPricePage.aspx.cs">
+      <DependentUpon>NoPricePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoPricePage.aspx.designer.cs">
+      <DependentUpon>NoPricePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="PostDetailPage.aspx.cs">
       <DependentUpon>PostDetailPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

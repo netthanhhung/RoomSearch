@@ -140,12 +140,13 @@ namespace RoomSearch.Web.UI
             radMale.Checked = post.Gender == 1;
             radFemale.Checked = post.Gender == 0;
             cbbRealestateType.SelectedValue = post.RealestateTypeId.ToString();
+            datPostDate.SelectedDate = post.DateUpdated;
         }
 
-        void btnLink_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        //void btnLink_Click(object sender, EventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         void BindReadonlyImageList(Post post)
         {
@@ -235,6 +236,8 @@ namespace RoomSearch.Web.UI
             radFemale.Enabled = radMale.Enabled = !readOnly;
             cbbRealestateType.Enabled = !readOnly;
             btnSave.Visible = !readOnly;
+            datPostDate.Visible = readOnly;
+            datPostDate.Enabled = !readOnly;
         }
 
         private Post GetSavePost()

@@ -16,6 +16,7 @@ namespace RoomSearch.Web.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Header.DataBind();
             if (!IsPostBack)
             {
                 InitComboboxData();

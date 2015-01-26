@@ -337,6 +337,24 @@ namespace RoomSearch.Web.UI {
         protected global::System.Web.UI.WebControls.Label lblUnit;
         
         /// <summary>
+        /// lblPostDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPostDate;
+        
+        /// <summary>
+        /// datPostDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker datPostDate;
+        
+        /// <summary>
         /// lblImages control.
         /// </summary>
         /// <remarks>

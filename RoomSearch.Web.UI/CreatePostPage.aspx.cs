@@ -121,8 +121,9 @@ namespace RoomSearch.Web.UI
             saveItem.Price = Convert.ToDecimal(txtPrice.Value);
             saveItem.Description = txtDescription.Text;
 
+            
             saveItem.PostTypeId = GetPostTypeId();
-
+            
             if (saveItem.PostTypeId == (int)PostTypes.Room)
             {
                 saveItem.RoomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
@@ -185,6 +186,7 @@ namespace RoomSearch.Web.UI
             Post savePost = GetSavePost();
             Business.BusinessMethods.SavePost(savePost);
 
+            //message = Request.RawUrl;
             message = "Tin của bạn đã được đăng thành công.";
             script1 = " alert(\"" + message + "\")";
             PostRoomAjaxManager.ResponseScripts.Add(script1);
@@ -213,7 +215,7 @@ namespace RoomSearch.Web.UI
             }
             else if (postTypeId == (int)PostTypes.StayWith)
             {
-                Response.Redirect("~/SearchStayWithPage.aspx");
+                Response.Redirect("~/SearchHStayWithPage.aspx");
             }
             else if (postTypeId == (int)PostTypes.House)
             {

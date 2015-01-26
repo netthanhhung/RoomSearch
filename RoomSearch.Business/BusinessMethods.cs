@@ -325,6 +325,17 @@ namespace RoomSearch.Business
         }
         #endregion
 
+        #region NoPrice
+        public static int CountNoPricePost()
+        {
+            return new DataLayer().CountNoPricePost();
+        }
+
+        public static List<Post> SearchNoPricePostPaging(int pageSize, int pageNumber, string sortOrder, string sortOrderInvert)
+        {
+            return new DataLayer().SearchNoPricePostPaging(pageSize, pageNumber, sortOrder, sortOrderInvert);
+        }
+        #endregion
     }
 }
 

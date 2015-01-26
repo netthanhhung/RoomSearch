@@ -2,7 +2,6 @@
 
 body {
 	background-color: #eee;
-	background-image: url(../images/patterns/light_toast.png);
 	color: #666;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
@@ -157,8 +156,8 @@ ul.sub-menu > li:last-child > a {
 	border-radius: 0 0 2px 2px;
 }
 
-ul.sub-menu > li > a.parent {
-	background-image: url(../images/arrow.png);
+ul.sub-menu > li > a.parent 
+{
 	background-size: 5px 9px;
 	background-repeat: no-repeat;
 	background-position: 95% center;
@@ -243,7 +242,7 @@ ul.sub-menu > li > a.parent {
 
 .mainRightPanel {
 	background-color: #eee;
-	background-image: url(../Images/Bitexco_Financial2.jpg);
+	background-image: url(/Styles/Images/Bitexco_Financial2.jpg);	
 	color: #666;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
