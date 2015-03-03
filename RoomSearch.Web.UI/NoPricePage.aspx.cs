@@ -12,7 +12,7 @@ using System.Text;
 
 namespace RoomSearch.Web.UI
 {
-    public partial class SearchRoomPage : System.Web.UI.Page
+    public partial class NoPricePage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -133,12 +133,6 @@ namespace RoomSearch.Web.UI
                 {
                     buttonDetails.OnClientClick = string.Format("return OnUserViewDetailsClientClicked('{0}')", postId);
                 }
-
-                LinkButton buttonDetailsNewTab = dataItem["ViewDetailsNewTab"].Controls[1] as LinkButton;
-                if (buttonDetailsNewTab != null)
-                {
-                    buttonDetailsNewTab.OnClientClick = string.Format("return OnUserDetailsNewTabClientClicked('{0}')", postId);
-                }
             }
         }
         
@@ -220,39 +214,9 @@ namespace RoomSearch.Web.UI
                 sortExpressInvert = "DateCreated ASC";
             }
 
-            int cityId = Convert.ToInt32(cbbCity.SelectedValue);
-            int? districtId = Convert.ToInt32(cbbDistrict.SelectedValue);
-            if (districtId <= 0)
-            {
-                districtId = null;
-            }
-            int roomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
-            decimal? priceFrom = null;
-            if (txtPriceFrom.Value.HasValue)
-            {
-                priceFrom = Convert.ToDecimal(txtPriceFrom.Value);
-            }
-            decimal? priceTo = null;
-            if (txtPriceTo.Value.HasValue)
-            {
-                priceTo = Convert.ToDecimal(txtPriceTo.Value);
-            }
-            DateTime? dateFrom = null;
-            if (datDateFrom.SelectedDate.HasValue)
-            {
-                dateFrom = datDateFrom.SelectedDate.Value;
-            }
-            DateTime? dateTo = null;
-            if (datDateTo.SelectedDate.HasValue)
-            {
-                dateTo = datDateTo.SelectedDate.Value;
-                dateTo = dateTo.Value.AddDays(1).AddSeconds(-1);
-            }
 
-            gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.Room, roomTypeId, null, 232, cityId, districtId, null, null, null, null,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, UtilityHelper.FormatKeywords(txtKeywords.Text), false);
-            List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.Room, roomTypeId, null, 232, cityId, districtId, null, null, null, null,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, UtilityHelper.FormatKeywords(txtKeywords.Text), false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
+            gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountNoPricePost();
+            List<Post> searchResults = Business.BusinessMethods.SearchNoPricePostPaging(gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
             gridRoomResult.DataSource = searchResults;
 
             //Build Meta Description for Google Search Engine :

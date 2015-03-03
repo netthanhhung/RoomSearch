@@ -1,13 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="RoomSearch.Web.UI.Site" %>
 
 <%@ Register TagPrefix="local" TagName="DistrictPanel" Src="~/UserControls/DistrictPanel.ascx" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" class="csstransforms no-csstransforms3d csstransitions">
 <head id="Head1" runat="server">
     <link rel="shortcut icon" type="image/x-icon" href="<%# ResolveUrl("~/Styles/Images/home-icon.jpg")%>" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Tìm và cho thuê phòng trọ</title>
     <link rel="stylesheet" type="text/css" href="<%# ResolveUrl("~/Styles/CSS/font-awesome.css")%>" />
     <link rel="stylesheet" type="text/css" href="<%# ResolveUrl("~/Styles/CSS/menu.css")%>" />
@@ -23,96 +22,80 @@
         ga('send', 'pageview');
 
     </script>
-    <script type="text/javascript" src="<%# ResolveUrl("~/Styles/JS/jquery.js")%>" ></script>
-    <script type="text/javascript" src="<%# ResolveUrl("~/Styles/JS/function.js")%>" ></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/Styles/JS/jquery.js")%>"></script>
+    <script type="text/javascript" src="<%# ResolveUrl("~/Styles/JS/function.js")%>"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="margin:0px;padding:0px">
-        
+    <div style="margin: 0px; padding: 0px">
         <table width="100%">
             <tr>
-                <td style="margin:0px;padding:0px;border:0px">
-                    <img src="<%=ResolveUrl("~/Styles/Images/MasterHeaderBackground.png")%>" alt="fresh design web" style="max-height:80px;width:100%;margin:0px;padding:0px"/>            
-                    <div id="wrap" style="margin:0px;padding:0px;border:0px">
+                <td style="margin: 0px; padding: 0px; border: 0px">
+                    <img src="<%=ResolveUrl("~/Styles/Images/MasterHeaderBackground.png")%>" alt="fresh design web"
+                        style="max-height: 80px; width: 100%; margin: 0px; padding: 0px" />
+                                            
+                    <div id="wrap" style="margin: 0px; padding: 0px; border: 0px; background-color:#3E454D;">
                         <header>
-                        <div class="inner relative">
-                            <a class="logo">
-                                <img src="<%=ResolveUrl("~/Styles/Images/HTLogo.png")%>"  height="50px" alt="fresh design web"/></a> <a id="menu-toggle" class="button dark"
-                                    href="#"><i class="icon-reorder"></i></a>
-                            <nav id="navigation">
-				            <ul id="main-menu">
-					            <%--<li class="current-menu-item"><a href="SearchRoomPage.aspx">Tìm Phòng</a></li>--%>
 
-                                <li class="parent">
-                                    <a>Phòng trọ</a>
+                            <div id="wrapper">
+                              <nav>
+                                <ul class="menu">
+                                  <li><a href="#"><img src="<%=ResolveUrl("~/Styles/Images/HTLogo.png")%>"  alt="Tìm Phòng Trọ" width="150px"/></a>
+                                  </li>
+                                  <li><a href="#"><span>Phòng trọ</span></a>
                                     <ul class="sub-menu">
-                                        <li><a href="/SearchRoomPage.aspx"><i class="icon-wrench"></i>Tìm Phòng trọ</a></li>
-							            <li><a href="/CreatePostPage.aspx?PostType=1"><i class="icon-wrench"></i>Đăng Tin Cho Thuê</a></li>
-							            <li><a href="/SearchOldPostPage.aspx?PostType=1"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
-						            </ul>
-                                </li>
-                    
-					            <li class="parent">
-						            <a >Ở Ghép</a>
-						            <ul class="sub-menu">
-                                        <li><a href="/SearchStayWithPage.aspx"><i class="icon-wrench"></i>Tìm Ở Ghép</a></li>
-							            <li><a href="/CreatePostPage.aspx?PostType=2"><i class="icon-wrench"></i>Đăng Tin Ở Ghép</a></li>
-							            <li><a href="/SearchOldPostPage.aspx?PostType=2"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
-						            </ul>
-					            </li>
-
-                                <li class="parent">
-						            <a >Mua bán nhà đất</a>
-						            <ul class="sub-menu">
-                                        <li><a href="/SearchHousePage.aspx"><i class="icon-wrench"></i>Tìm Nhà Đất</a></li>
-							            <li><a href="/CreatePostPage.aspx?PostType=3"><i class="icon-wrench"></i>Đăng Tin Mua Bán</a></li>
-							            <li><a href="/SearchOldPostPage.aspx?PostType=3"><i class="icon-credit-card"></i>Sửa Tin Đã Đăng</a></li>
-							            <%--<li>
-								            <a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
-								            <ul class="sub-menu">
-									            <li><a href="">Full Width</a></li>
-									            <li><a href="">Left Sidebar</a></li>
-								            </ul>
-							            </li>--%>
-						            </ul>
-					            </li>
-				            </ul>
-			                </nav>
-                            <div class="clear">
+                                    <li><a href="/SearchRoomPage.aspx">Tìm Phòng trọ</a></li>
+                                    <li><a href="/CreatePostPage.aspx?PostType=1">Đăng Tin Cho Thuê</a></li>
+							        <li><a href="/SearchOldPostPage.aspx?PostType=1">Sửa Tin Đã Đăng</a></li>
+                                    </ul>
+                                  </li>
+                                  <li><a href="#"><span>Ở Ghép</span></a>
+                                    <ul class="sub-menu">
+                                    <li><a href="/SearchStayWithPage.aspx">Tìm Ở Ghép</a></li>
+							        <li><a href="/CreatePostPage.aspx?PostType=2">Đăng Tin Ở Ghép</a></li>
+							        <li><a href="/SearchOldPostPage.aspx?PostType=2">Sửa Tin Đã Đăng</a></li>
+                                    </ul>
+                                  </li>
+                                  <li><a href="#"><span>Mua Bán Nhà Đất</span></a>
+                                    <ul class="sub-menu">
+                                    <li><a href="/SearchHousePage.aspx">Tìm Nhà Đất</a></li>
+							        <li><a href="/CreatePostPage.aspx?PostType=3">Đăng Tin Nhà Đất</a></li>
+							        <li><a href="/SearchOldPostPage.aspx?PostType=3">Sửa Tin Đã Đăng</a></li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </nav>
                             </div>
-                        </div>
+
+                        
                         </header>
                     </div>
                 </td>
             </tr>
             <tr>
-                <td style="margin:0px;padding:0px;border:0px">
+                <td style="margin: 0px; padding: 0px; border: 0px">
                     <table>
                         <tr>
                             <td style="width: 160px" align="left" valign="top">
-                                <img src="<%=ResolveUrl("~/Styles/Images/Bitexco_Financial1.JPG")%>"  alt="fresh design web" height="929px"/>
+                                <img src="<%=ResolveUrl("~/Styles/Images/Bitexco_Financial1.JPG")%>" alt="fresh design web"
+                                    height="929px" />
                             </td>
                             <td style="width: 80%" align="left" valign="top">
                                 <asp:ContentPlaceHolder ID="centreContentPlaceHolder" runat="server">
                                 </asp:ContentPlaceHolder>
                             </td>
-                            <td style="margin-left: 20px" align="center" valign="top">   
+                            <td style="margin-left: 20px" align="center" valign="top">
                                 <div class="mainRightPanel">
-                                        <local:DistrictPanel ID="ucDistrictPanel" runat="server" />
-                                </div>                                                    
+                                    <local:DistrictPanel ID="ucDistrictPanel" runat="server" />
+                                </div>
                             </td>
                         </tr>
                     </table>
                 </td>
             </tr>
         </table>
-        
-        
-        
-        
     </div>
     </form>
 </body>

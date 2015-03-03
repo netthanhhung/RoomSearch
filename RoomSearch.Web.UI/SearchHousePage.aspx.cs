@@ -113,6 +113,12 @@ namespace RoomSearch.Web.UI
                 {
                     buttonDetails.OnClientClick = string.Format("return OnUserViewDetailsClientClicked('{0}')", postId);
                 }
+
+                LinkButton buttonDetailsNewTab = dataItem["ViewDetailsNewTab"].Controls[1] as LinkButton;
+                if (buttonDetailsNewTab != null)
+                {
+                    buttonDetailsNewTab.OnClientClick = string.Format("return OnUserDetailsNewTabClientClicked('{0}')", postId);
+                }
             }
         }
         

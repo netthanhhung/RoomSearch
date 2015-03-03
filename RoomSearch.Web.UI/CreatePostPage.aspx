@@ -60,7 +60,7 @@
                         <asp:Label ID="lblRealestate" runat="server" Text="Loại nhà/đất:"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px">
                         </telerik:RadComboBox>
                     </td>
@@ -85,7 +85,7 @@
                     </td>
                     <td rowspan="11">
                         <telerik:RadTextBox ID="txtDescription" runat="server" Width="430px" Rows="15" TextMode="multiLine"
-                            Skin="Office2007" BackColor="White">
+                            Skin="WebBlue" BackColor="White">
                         </telerik:RadTextBox>
                     </td>
                 </tr>
@@ -122,7 +122,7 @@
                         <asp:Label ID="lblCity" runat="server" Text="Thành Phố :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px" OnClientSelectedIndexChanged="onDropDownCity_ClientIndexChanged">
                         </telerik:RadComboBox>
                     </td>
@@ -134,7 +134,7 @@
                         <asp:Label ID="lblDistrict" runat="server" Text="Quận / Huyện :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px">
                         </telerik:RadComboBox>
                     </td>
@@ -160,7 +160,7 @@
                         <asp:Label ID="lblRoomType" runat="server" Text="Loại phòng :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px">
                         </telerik:RadComboBox>
                     </td>
@@ -173,7 +173,7 @@
                     </td>
                     <td>
                         <telerik:RadNumericTextBox ID="txtAvailableRooms" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="0" NumberFormat-PositivePattern="n"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="0" NumberFormat-PositivePattern="n"
                             Value="1" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                     </td>
@@ -186,7 +186,7 @@
                     </td>
                     <td>
                         <telerik:RadNumericTextBox ID="txtMeterSquare" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="4.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblMeterUni" Text="mét vuông (m2)"></asp:Label>
@@ -200,7 +200,7 @@
                     </td>
                     <td>
                         <telerik:RadNumericTextBox ID="txtPrice" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="2.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnit" Text="triệu đồng 1 tháng"></asp:Label>
@@ -220,7 +220,7 @@
                         <td>
                             <telerik:RadUpload runat="server" ID="radUploadMulti" InputSize="66" Width="800px"
                                 MaxFileSize="1000000" ControlObjectsVisibility="AddButton" MaxFileInputsCount="10"
-                                InitialFileInputsCount="3" Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
+                                InitialFileInputsCount="3" Skin="WebBlue" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
                         </td>
                     </tr>
                 </table>

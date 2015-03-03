@@ -35,8 +35,7 @@
 	cursor: default;
 	text-decoration: none;
 	
-	background-color: #CEE1EF;
-	color: #224466;
+	color: White;
 	border-top-color: #80b5d0;
 	border-right-color: #80b5d0;
 	border-bottom-color: #80b5d0;
@@ -56,7 +55,7 @@
 	border-right-color-ltr-source: physical;
 	border-right-color-rtl-source: physical;
 	
-	background-color: #CEE1EF;
+	background-color: #965EFF;
 	border-top-color: #80b5d0;
 	border-right-color: #80b5d0;
 	border-bottom-color: #80b5d0;
@@ -64,10 +63,56 @@
 	border-left-color-ltr-source: physical;
 	border-left-color-rtl-source: physical;
 	border-right-color-ltr-source: physical;
-	border-right-color-rtl-source: physical;
+	border-right-color-rtl-source: physical;	
+}
+
+.flatButton:hover, .css_button:focus {
+    background: #C9D5FF;
+    border: 1px solid #186ca4;
 }
 
 .float-left
 {
 float: left;
+}
+
+
+.css_button {
+margin-left: 10px;
+background-color: #9028FF;
+height: 26px;
+color: White;
+border: 1px solid #2c398d;
+font-family: Verdana, Arial, Helvetica, sans-serif;
+padding-top: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+font-size: 13px;	
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+-border-radius: 3px;	
+-moz-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 5px 0 #3a79a4, 0 6px 0 #593a11, 0 13px 0 #ccc;
+-webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 5px 0 #3a79a4, 0 6px 0 #593a11, 0 13px 0 #ccc;
+-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.6), 0 5px 0 #3a79a4, 0 6px 0 #593a11, 0 13px 0 #ccc;
+-webkit-transition: background 0.2s ease-out;
+}
+
+
+.css_button:hover, .css_button:focus {
+background: #649eac;
+border: 1px solid #186ca4;
+-moz-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.7), inset 0 2px 1px rgba(255, 255, 255, 0.5), 0 5px 0 #4886b1, 0 6px 0 #593a11, 0 13px 0 #ccc;
+-webkit-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.7), inset 0 2px 1px rgba(255, 255, 255, 0.5), 0 5px 0 #4886b1, 0 6px 0 #593a11, 0 13px 0 #ccc;
+-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.7), inset 0 2px 1px rgba(255, 255, 255, 0.5), 0 5px 0 #4886b1, 0 6px 0 #593a11, 0 13px 0 #ccc;
+}
+	
+.css_button:active {
+background: #4a86a4;
+border: 1px solid #183ea4;
+position: relative;
+top: 5px;
+-moz-box-shadow: inset 0 0 0px rgba(255, 255, 255, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 3px 0 #205993, 0 4px 0 #593a11, 0 8px 0 #ccc;
+-webkit-box-shadow: inset 0 0 0px rgba(255, 255, 255, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 3px 0 #205993, 0 4px 0 #593a11, 0 8px 0 #ccc;
+-box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.5), 0 3px 0 #205993, 0 4px 0 #593a11, 0 8px 0 #ccc;
 }

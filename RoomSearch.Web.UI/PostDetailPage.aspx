@@ -92,7 +92,7 @@
                         <asp:RadioButton ID="radMale" runat="server" Checked="true" Text="Nam" GroupName="Gender" />
                         <asp:RadioButton ID="radFemale" runat="server" Checked="false" Text="Nữ" GroupName="Gender" />
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                     </td>
                 </tr>
                 <tr>
@@ -100,11 +100,11 @@
                         <asp:Label ID="lblRealestate" runat="server" Text="Loại nhà/đất:"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px">
                         </telerik:RadComboBox>
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                     </td>
                 </tr>
                 <tr>
@@ -115,16 +115,16 @@
                         <telerik:RadTextBox ID="txtPersonName" runat="server" Width="250px">
                         </telerik:RadTextBox>
                     </td>
-                    <td style="width: 10px">
+                    <td></td>                    
+                    <td>
+                        <asp:Label ID="lblRoomType" runat="server" Text="Loại phòng :"></asp:Label>
                     </td>
-                    <td style="width: 100px">
-                        <asp:Label ID="lblDescription" runat="server" Text="Mô tả thêm :"></asp:Label>
+                    <td>
+                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="WebBlue" Height="155px"
+                            Width="254px">
+                        </telerik:RadComboBox>
                     </td>
-                    <td rowspan="11">
-                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="650px" Rows="15" TextMode="multiLine" Wrap="true"
-                            BackColor="White">
-                        </telerik:RadTextBox>
-                    </td>
+                    <td></td>                    
                 </tr>
                 <tr>
                     <td>
@@ -134,8 +134,17 @@
                         <telerik:RadTextBox ID="txtPhoneNumber" runat="server" Width="250px">
                         </telerik:RadTextBox>
                     </td>
-                    <td colspan="3">
+                    <td></td>                    
+                    <td>
+                        <asp:Label ID="lblAvailableRooms" runat="server" Text="Số phòng trống :"></asp:Label>
                     </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtAvailableRooms" runat="server" Width="50px" Type="Number"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="0" NumberFormat-PositivePattern="n"
+                            Value="1" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                    </td>                
+                    <td></td>                    
                 </tr>
                 <tr>
                     <td>
@@ -145,32 +154,60 @@
                         <telerik:RadTextBox ID="txtEmail" runat="server" Width="250px">
                         </telerik:RadTextBox>
                     </td>
-                    <td colspan="3">
+                    <td></td>                    
+                    <td>
+                        <asp:Label ID="lblMeterSquare" runat="server" Text="Phòng rộng :"></asp:Label>
                     </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtMeterSQuare" runat="server" Width="50px" Type="Number"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Value="10.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                        <asp:Label runat="server" ID="lblMeterQuare" Text="mét vuông (m2)"></asp:Label>
+                    </td>
+                    <td></td>                    
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="lblCity" runat="server" Text="Thành Phố :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px" OnClientSelectedIndexChanged="onDropDownCity_ClientIndexChanged">
                         </telerik:RadComboBox>
                     </td>
-                    <td colspan="3">
+                    <td></td>                    
+                    <td>
+                        <asp:Label ID="lblPrice" runat="server" Text="Giá thuê :"></asp:Label>
                     </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtPrice" runat="server" Width="50px" Type="Number"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Value="2.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                        <asp:Label runat="server" ID="lblUnit" Text="triệu đồng 1 tháng"></asp:Label>
+                    </td>
+                    <td></td>                    
                 </tr>
                 <tr>
                     <td>
                         <asp:Label ID="lblDistrict" runat="server" Text="Quận / Huyện :"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="WebBlue" Height="155px"
                             Width="254px">
                         </telerik:RadComboBox>
                     </td>
-                    <td colspan="3">
+                    <td></td>                    
+                    <td>
+                        <asp:Label ID="lblPostDate" runat="server" Text="Ngày đăng :"></asp:Label>
                     </td>
+                    <td>
+                        <telerik:RadDatePicker ID="datPostDate" runat="server" Width="100px" 
+                            Skin="WebBlue" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                    </td>
+                    <td></td>                    
                 </tr>
                 <tr>
                     <td>
@@ -180,74 +217,21 @@
                         <telerik:RadTextBox ID="txtAddress" runat="server" Width="250px">
                         </telerik:RadTextBox>
                     </td>
-                    <td colspan="3">
+                    <td colspan="4">
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblRoomType" runat="server" Text="Loại phòng :"></asp:Label>
+
+                <tr>                    
+                    <td style="width: 100px">
+                        <asp:Label ID="lblDescription" runat="server" Text="Mô tả thêm :"></asp:Label>
                     </td>
-                    <td>
-                        <telerik:RadComboBox ID="cbbRoomType" runat="server" Skin="Office2007" Height="155px"
-                            Width="254px">
-                        </telerik:RadComboBox>
-                    </td>
-                    <td colspan="3">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblAvailableRooms" runat="server" Text="Số phòng trống :"></asp:Label>
-                    </td>
-                    <td>
-                        <telerik:RadNumericTextBox ID="txtAvailableRooms" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="0" NumberFormat-PositivePattern="n"
-                            Value="1" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
-                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
-                    </td>
-                    <td colspan="3">
+                    <td rowspan="11" colspan="5">
+                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="1000px" Rows="15" TextMode="multiLine" Wrap="true" ReadOnlyStyle-Width="1000"
+                            BackColor="White" Font-Size="Small">
+                        </telerik:RadTextBox>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblMeterSquare" runat="server" Text="Phòng rộng :"></asp:Label>
-                    </td>
-                    <td>
-                        <telerik:RadNumericTextBox ID="txtMeterSQuare" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="10.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
-                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
-                        <asp:Label runat="server" ID="lblMeterQuare" Text="mét vuông (m2)"></asp:Label>
-                    </td>
-                    <td colspan="3">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblPrice" runat="server" Text="Giá thuê :"></asp:Label>
-                    </td>
-                    <td>
-                        <telerik:RadNumericTextBox ID="txtPrice" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="2.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
-                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
-                        <asp:Label runat="server" ID="lblUnit" Text="triệu đồng 1 tháng"></asp:Label>
-                    </td>
-                    <td colspan="3">
-                    </td>
-                </tr>
-                 <tr>
-                    <td>
-                        <asp:Label ID="lblPostDate" runat="server" Text="Ngày đăng :"></asp:Label>
-                    </td>
-                    <td>
-                        <telerik:RadDatePicker ID="datPostDate" runat="server" Width="100px" 
-                            Skin="Office2007" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
-                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
-                    </td>
-                    <td colspan="3">
-                    </td>
-                </tr>
+
             </table>
          <div>
             <table>
@@ -266,7 +250,7 @@
                     <td>
                         <telerik:RadUpload runat="server" ID="radUploadMulti" MaxFileSize="1000000" InputSize="66" Width="800px"
                             ControlObjectsVisibility="AddButton" MaxFileInputsCount="10" InitialFileInputsCount="3"
-                            Skin="Office2007" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
+                            Skin="WebBlue" Localization-Add="Thêm hình" Localization-Select="Chọn hình" />
                     </td>
                 </tr>
                 <%--<tr>

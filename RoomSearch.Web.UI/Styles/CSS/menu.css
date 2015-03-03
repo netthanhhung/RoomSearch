@@ -1,5 +1,17 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+.mainRightPanel {
+	background-color: #eee;
+	background-image: url(/Styles/Images/Bitexco_Financial2.jpg);	
+	color: #666;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12px;
+	margin:0px;
+	padding:0px;
+	width:150px;
+	height:929px;
+}
+
 body {
 	background-color: #eee;
 	color: #666;
@@ -22,232 +34,128 @@ ol, ul {
 	padding:0px;
 	margin:0px;
 }
-#wrap {
-	margin: 0 auto;
+
+#wrapper {
+  margin-left: 0px;  
 }
 
-.inner 
+.menu,
+.sub-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  background-color: #3E454D;
+  cursor: pointer;
+  position: relative;
+  -moz-transition: background-color .5s;
+  -o-transition: background-color .5s;
+  -webkit-transition: background-color .5s;
+}
+
+.menu li:hover {
+  background-color: #353B41 !important; 
+}
+
+.menu a {
+  color: #23dbdb;
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  margin: 0 5px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu a:hover {
+  color: #FFF;
+}
+
+.menu {
+  height: 50px;
+}
+
+.menu > li 
 {
-	margin: 0 auto;
-	max-width: 940px;
-	padding: 0 40px;
+    display: inline-block;
+  float: left;
+  height: 100%;
+  width: 15%; 
+  width: calc((100% - 90px) / 5);
+  width: -moz-calc((100% - 90px) / 5);
+  width: -webkit-calc((100% - 90px) / 5);
 }
 
-.relative {
-	position: relative;
+.menu > li.home {
+  background: #3E454D;
+  width: 90px;
 }
 
-.right {
-	float: right;
+.menu > li.current {
+  background-color: #F2762E !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
 }
 
-.left {
-	float: left;
+.menu > li:not(:first-child) {
+  -moz-box-shadow: inset 1px 0 0 0 #272B31, inset 2px 0 0 0 #434A52;
+  -webkit-box-shadow: inset 1px 0 0 0 #272B31, inset 2px 0 0 0 #434A52;
 }
 
-/* HEADER */
-#wrap > header {
-	background-color: #333;
-	padding-bottom: 20px;
-}
-.logo {
-	display: inline-block;
-	font-size: 0;
-	padding-top:5px;
-}
-#navigation {
-	position: absolute;
-	right: 40px;
-	bottom: 0px;
+.menu > li.home > a {
+  
 }
 
-#menu-toggle {
-	display: none;
-	float: right;
+.menu > li > a > span {
+  left: 0; 
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -ms-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
 }
 
-/* HEADER > MENU */
-#main-menu {
-	float: right;
-	font-size: 0;
-	margin: 10px 0;
-}
-
-#main-menu > li {
-	display: inline-block;
-	margin-left: 30px;
-	padding: 2px 0;
-}
-
-#main-menu > li.parent 	
+.sub-menu 
 {
-    color: #23dbdb;
-	background-size: 8px 8px;
-	background-repeat: no-repeat;
-	background-position: left center;
+  max-height: 0;
+  min-width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 100%;
+  -moz-transition: max-height .5s .2s;
+  -o-transition: max-height .5s .2s;
+  -webkit-transition: max-height .5s .2s;
+  z-index: 9999;
 }
 
-#main-menu > li.parent > a 
-{
-    color: #23dbdb;
-	padding-left: 14px;
+
+li:hover > .sub-menu {
+  max-height: 600px;
 }
 
-#main-menu > li > a {
-	color: #eee;
-	font-size: 14px;
-	line-height: 14px;
-	padding: 30px 0;
-	text-decoration:none;
+.sub-menu li {
+  height: 40px;
 }
 
-#main-menu > li:hover > a,
-#main-menu > li.current-menu-item > a {
-	color: #23dbdb;
+.sub-menu a {
+  line-height: 40px;
+  -moz-transition: color .5s;
+  -o-transition: color .5s;
+  -webkit-transition: color .5s;
+  white-space: nowrap;
+  text-align:left;
+  margin-left:20px;
 }
 
-/* HEADER > MENU > DROPDOWN */
-#main-menu li {
-	position: relative;
-}
-
-ul.sub-menu { /* level 2 */
-	display: none;
-	left: 0px;
-	top: 38px;
-	padding-top: 10px;
-	position: absolute;
-	width: 150px;
-	z-index: 9999;
-}
-
-ul.sub-menu ul.sub-menu { /* level 3+ */
-	margin-top: -1px;
-	padding-top: 0;
-	left: 149px;
-	top: 0px;
-}
-
-ul.sub-menu > li > a {
-	background-color: #333;
-	border: 1px solid #444;
-	border-top: none;
-	color: #bbb;
-	display: block;
-	font-size: 12px;
-	line-height: 15px;
-	padding: 10px 12px;
-}
-
-ul.sub-menu > li > a:hover {
-	background-color: #2a2a2a; 
-	color: #fff;
-}
-
-ul.sub-menu > li:first-child {
-	border-top: 3px solid #23dbdb;
-}
-
-ul.sub-menu ul.sub-menu > li:first-child {
-	border-top: 1px solid #444;
-}
-
-ul.sub-menu > li:last-child > a {
-	border-radius: 0 0 2px 2px;
-}
-
-ul.sub-menu > li > a.parent 
-{
-	background-size: 5px 9px;
-	background-repeat: no-repeat;
-	background-position: 95% center;
-}
-
-#main-menu li:hover > ul.sub-menu {
-	display: block; /* show the submenu */
-}
-
-@media all and (max-width: 700px) {
-
-	#navigation {
-		position: static;
-		margin-top: 20px;
-	}
-
-	#menu-toggle {
-		display: block;
-	}
-
-	#main-menu {
-		display: none;
-		float: none;
-	}
-
-	#main-menu li {
-		display: block;
-		margin: 0;
-		padding: 0;
-	}
-
-	#main-menu > li {
-		margin-top: -1px;
-	}
-
-	#main-menu > li:first-child {
-		margin-top: 0;
-	}
-
-	#main-menu > li > a {
-		background-color: #333;
-		border: 1px solid #444;
-		color: #bbb;
-		display: block;
-		font-size: 14px;
-		padding: 12px !important;
-		padding: 0;
-	}
-
-	#main-menu li > a:hover {
-		background-color: #444; 
-	}
-
-	#main-menu > li.parent {
-		background: none !important;
-		padding: 0;
-	}
-
-	#main-menu > li:hover > a,
-	#main-menu > li.current-menu-item > a {
-		border: 1px solid #444 !important;
-		color: #fff !important;
-	}
-
-	ul.sub-menu {
-		display: block;
-		margin-top: -1px;
-		margin-left: 20px;
-		position: static;
-		padding: 0;
-		width: inherit;
-	}
-
-	ul.sub-menu > li:first-child {
-		border-top: 1px solid #444 !important;
-	}
-
-	ul.sub-menu > li > a.parent {
-		background: #333 !important;
-	}
-}
-
-.mainRightPanel {
-	background-color: #eee;
-	background-image: url(/Styles/Images/Bitexco_Financial2.jpg);	
-	color: #666;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 12px;
-	margin:0px;
-	padding:0px;
-	width:150px;
-	height:929px;
+.sub-menu li.current a,
+.sub-menu a:hover {
+  color: #F2762E !important;
 }

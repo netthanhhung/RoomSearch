@@ -98,7 +98,7 @@
         </div>
         <div id="divResult" runat="server" style="margin-top : 10px">
             <div>
-                <telerik:RadGrid ID="gridRoomResult" GridLines="None" Skin="Office2007" AllowMultiRowSelection="False" 
+                <telerik:RadGrid ID="gridRoomResult" GridLines="None" Skin="WebBlue" AllowMultiRowSelection="False" 
                     MasterTableView-NoDetailRecordsText="Không tìm thấy kết quả nào phù hợp"
                     MasterTableView-NoMasterRecordsText="Không tìm thấy kết quả nào phù hợp"
                     
@@ -156,7 +156,7 @@
                     </MasterTableView>
                 </telerik:RadGrid>
 
-                <telerik:RadWindow runat="server" ID="radWindowUser" Skin="Office2007" VisibleOnPageLoad="false" VisibleStatusbar="false"
+                <telerik:RadWindow runat="server" ID="radWindowUser" Skin="WebBlue" VisibleOnPageLoad="false" VisibleStatusbar="false"
                     Modal="true" OffsetElementID="offsetElement" Top="30" Left="30" NavigateUrl="PostDetailPopup.aspx"
                     Title="Action" Height="650px" Width="1300px" OnClientClose="onClientPostDetailWindowClosed">
                 </telerik:RadWindow>

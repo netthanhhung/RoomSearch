@@ -34,6 +34,12 @@
                 return false;
             }
 
+            function OnUserDetailsNewTabClientClicked(postId) {
+                var url = "PostDetailPage.aspx?PostType=2&Mode=view&PostId=" + postId;
+                window.open(url);
+
+                return false;
+            }
         </script>
     </telerik:RadScriptBlock>
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
@@ -68,7 +74,7 @@
                         <asp:Label ID="lblCity" runat="server" Text="Thành Phố :" Width="70px"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbCity" runat="server" Skin="WebBlue" Height="155px"
                             Width="230px" OnClientSelectedIndexChanged="onDropDownCity_ClientIndexChanged">
                         </telerik:RadComboBox>
                     </td>
@@ -78,7 +84,7 @@
                         <asp:Label ID="lblDistrict" runat="server" Text="Quận / Huyện :" Width="90px"></asp:Label>
                     </td>
                     <td colspan="3">
-                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbDistrict" runat="server" Skin="WebBlue" Height="155px"
                             Width="230px">
                         </telerik:RadComboBox>
                     </td>
@@ -88,7 +94,7 @@
                         <asp:Label ID="lblRealestateType" runat="server" Text="Loại nhà/đất :" Width="90px"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="Office2007" Height="155px"
+                        <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="WebBlue" Height="155px"
                             Width="230px">
                         </telerik:RadComboBox>
                     </td>
@@ -100,7 +106,7 @@
                     </td>
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceFrom" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitFrom" Text="(triệu)"></asp:Label>
@@ -110,7 +116,7 @@
                     </td>
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceTo" runat="server" Width="50px" Type="Number"
-                            Skin="Office2007" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
                             Value="9000" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitTo" Text="(triệu)"></asp:Label>
@@ -121,7 +127,7 @@
                         <asp:Label ID="lblDateFrom" runat="server" Text="Đăng từ ngày :" Width="90px"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadDatePicker ID="datDateFrom" runat="server" Width="95px"  Skin="Office2007"  Calendar-CultureInfo="en-US">
+                        <telerik:RadDatePicker ID="datDateFrom" runat="server" Width="95px"  Skin="WebBlue"  Calendar-CultureInfo="en-US">
                             <DateInput ID="dateInputCreationDate" runat="server" BackColor="White"
                                   DateFormat="dd/MM/yyyy"
                                   DisplayDateFormat="dd/MM/yyyy">
@@ -132,7 +138,7 @@
                         <asp:Label ID="lblDateTo" runat="server" Text="Đến ngày :" Width="70px"></asp:Label>
                     </td>
                     <td>
-                        <telerik:RadDatePicker ID="datDateTo" runat="server" Width="95px"  Skin="Office2007"  Calendar-CultureInfo="en-US">
+                        <telerik:RadDatePicker ID="datDateTo" runat="server" Width="95px"  Skin="WebBlue"  Calendar-CultureInfo="en-US">
                             <DateInput ID="dateInput1" runat="server" BackColor="White"
                                   DateFormat="dd/MM/yyyy"
                                   DisplayDateFormat="dd/MM/yyyy">
@@ -170,7 +176,7 @@
         </div>
         <div id="divResult" runat="server" style="margin-top : 10px">
             <div>
-                <telerik:RadGrid ID="gridRoomResult" GridLines="None" Skin="Office2007" AllowMultiRowSelection="False" 
+                <telerik:RadGrid ID="gridRoomResult" GridLines="None" Skin="WebBlue" AllowMultiRowSelection="False" 
                     MasterTableView-NoDetailRecordsText="Không tìm thấy phòng nào phù hợp"
                     MasterTableView-NoMasterRecordsText="Không tìm thấy phòng nào phù hợp"
                     
@@ -186,7 +192,7 @@
                             <%--<telerik:GridBoundColumn UniqueName="DateUpdated" SortExpression="DateUpdated" HeaderText="Ngày đăng tin" DataFormatString="{0:dd/MM/yyyy}"
                                 DataField="DateUpdated" HeaderStyle-Width="100px">
                             </telerik:GridBoundColumn>--%>
-                            <telerik:GridTemplateColumn UniqueName="DateUpdated" HeaderText="Ngày đăng tin">
+                            <telerik:GridTemplateColumn UniqueName="DateUpdated" HeaderText="Ngày đăng">
                                 <ItemTemplate>
                                     <asp:HyperLink ID="lnkPostDetails" runat="server" Text='<%#Eval("DateUpdated", "{0:dd/MM/yyyy}") %>' 
                                         NavigateUrl='<%# Eval("PostId","~/PostDetailPage.aspx?PostType=3&Mode=view&PostId={0}") %>'
@@ -197,7 +203,7 @@
                                 <HeaderStyle Width="95px"></HeaderStyle>
                             </telerik:GridTemplateColumn>
                             <telerik:GridBoundColumn UniqueName="District" SortExpression="District" HeaderText="Quận"
-                                DataField="District"  HeaderStyle-Width="80px">
+                                DataField="District"  HeaderStyle-Width="75px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn UniqueName="Address" SortExpression="Address" HeaderText="Địa chỉ"
                                 DataField="Address"  HeaderStyle-Width="200px">
@@ -211,27 +217,35 @@
                                </ItemTemplate> 
                              </telerik:GridTemplateColumn> 
 
-                             <telerik:GridBoundColumn UniqueName="MeterSquare" SortExpression="MeterSquare" HeaderText="Diện tích(m2)" DataFormatString="{0:0}"
-                                DataField="MeterSquare" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="100">
+                             <telerik:GridBoundColumn UniqueName="MeterSquare" SortExpression="MeterSquare" HeaderText="D.tích(m2)" DataFormatString="{0:0}"
+                                DataField="MeterSquare" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="80px">
                             </telerik:GridBoundColumn>
                             <telerik:GridBoundColumn UniqueName="Price" SortExpression="Price" HeaderText="Giá" DataFormatString="{0:C2}"
-                                DataField="PriceString" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="70">
+                                DataField="PriceString" ItemStyle-HorizontalAlign="Right"  HeaderStyle-Width="80px">
                             </telerik:GridBoundColumn>
 
                             <telerik:GridTemplateColumn UniqueName="ViewDetails">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lnkViewDetails" runat="server" Text="Xem chi tiết" CommandArgument='<%# Eval("PostId") %>' ForeColor="Blue" Font-Underline="true">  
+                                    <asp:LinkButton ID="lnkViewDetails" runat="server" Text="Xem nhanh" CommandArgument='<%# Eval("PostId") %>' ForeColor="Blue" Font-Underline="true">  
                                     </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" />
-                                <HeaderStyle Width="80px"></HeaderStyle>
-                            </telerik:GridTemplateColumn>
+                                <HeaderStyle Width="70px"></HeaderStyle>
+                            </telerik:GridTemplateColumn>                            
                             
+                            <telerik:GridTemplateColumn UniqueName="ViewDetailsNewTab">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkViewDetailsNewTab" runat="server" Text="Chi tiết" CommandArgument='<%# Eval("PostId") %>' ForeColor="Blue" Font-Underline="true">  
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" />
+                                <HeaderStyle Width="50px"></HeaderStyle>
+                            </telerik:GridTemplateColumn>
                         </Columns>
                     </MasterTableView>
                 </telerik:RadGrid>
 
-                <telerik:RadWindow runat="server" ID="radWindowUser" Skin="Office2007" VisibleOnPageLoad="false" VisibleStatusbar="false"
+                <telerik:RadWindow runat="server" ID="radWindowUser" Skin="WebBlue" VisibleOnPageLoad="false" VisibleStatusbar="false"
                     Modal="true" OffsetElementID="offsetElement" Top="30" Left="30" NavigateUrl="PostDetailPopup.aspx"
                     Title="Thong tin chi tiết nhà đất" Height="650px" Width="1300px" >
                 </telerik:RadWindow>
