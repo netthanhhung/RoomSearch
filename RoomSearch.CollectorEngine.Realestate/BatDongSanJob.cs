@@ -61,6 +61,16 @@ namespace RoomSearch.CollectorEngine.Realestate
             GetPostForOneDistrict("http://batdongsan.com.vn/{0}-quan-2", "Quận 2", 2, dateStart, dateEnd);
             GetPostForOneDistrict("http://batdongsan.com.vn/{0}-quan-7", "Quận 7", 7, dateStart, dateEnd);
 
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-cam-le-ddn", "Cam Le", 82, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-hai-chau-ddn", "Hai Chau", 83, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-lien-chieu-ddn", "Lien Chieu", 84, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-ngu-hanh-son-ddn", "Ngu Hanh Son", 85, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-son-tra-ddn", "Son Tra", 86, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-thanh-khe-ddn", "Thanh Khe", 87, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-hoa-vang-ddn", "Hoa Vang", 88, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-hoang-sa-ddn", "Hoang Sa", 89, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/{0}-nha-trang-kh", "Nha Trang", 90, dateStart, dateEnd);
+
             Logger.Log.Debug("End Importing BatDongSan Job...");
         }
 

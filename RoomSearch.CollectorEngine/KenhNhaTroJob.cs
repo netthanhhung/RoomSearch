@@ -61,6 +61,16 @@ namespace RoomSearch.CollectorEngine
             GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-2/tp-ho-chi-minh.html", "Quận 2", 2, dateStart, dateEnd);
             GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-1/tp-ho-chi-minh.html", "Quận 1", 1, dateStart, dateEnd);
 
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-cam-le/da-nang.html", "Cam Le", 82, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-hai-chau/da-nang.html", "Hai Chau", 83, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-lien-chieu/da-nang.html", "Lien Chieu", 84, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-ngu-hanh-son/da-nang.html", "Ngu Hanh Son", 85, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-son-tra/da-nang.html", "Son Tra", 86, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-thanh-khe/da-nang.html", "Thanh Khe", 87, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-hoa-vang/da-nang.html", "Hoa Vang", 88, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/quan-hoang-sa/da-nang.html", "Hoang Sa", 89, dateStart, dateEnd);
+            GetPostForOneDistrict("http://kenhnhatro.com/cho-thue-phong-tro-nha-tro/thanh-pho-nha-trang/khanh-hoa.html", "Nha Trang", 90, dateStart, dateEnd);
+
             Logger.Log.Debug("End Importing KenhNhaTro Job...");
         }
 

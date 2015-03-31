@@ -126,15 +126,15 @@ namespace RoomSearch.Web.UI
 
             if (postTypeId == (int)PostTypes.Room)
             {
-                this.Page.Title = "Chi tiết phòng : " + post.ShortTitle;
+                this.Page.Title = "Phòng trọ : " + post.ShortTitle;
             }
             else if (postTypeId == (int)PostTypes.StayWith)
             {
-                this.Page.Title = "Thong tin chi tiết ở ghép : " + post.ShortTitle;
+                this.Page.Title = "Ở ghép : " + post.ShortTitle;
             }
             else if (postTypeId == (int)PostTypes.House)
             {
-                this.Page.Title = "Thông tin chi tiết mua bán nhà đất : " + post.ShortTitle;
+                this.Page.Title = "Nhà đất : " + post.ShortTitle;
             }
 
             txtPersonName.Text = post.PersonName;

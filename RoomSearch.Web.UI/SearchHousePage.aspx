@@ -35,7 +35,7 @@
             }
 
             function OnUserDetailsNewTabClientClicked(postId) {
-                var url = "PostDetailPage.aspx?PostType=2&Mode=view&PostId=" + postId;
+                var url = "PostDetailPage.aspx?PostType=3&Mode=view&PostId=" + postId;
                 window.open(url);
 
                 return false;
