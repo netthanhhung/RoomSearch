@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="SearchHousePage.aspx.cs"
-    Inherits="RoomSearch.Web.UI.SearchHousePage" Title="Tìm nhà đất" %>
+    Inherits="RoomSearch.Web.UI.SearchHousePage" Title="Mua bán nhà đất" %>
 
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <asp:Content ID="contentDefault" ContentPlaceHolderId="centreContentPlaceHolder" runat="server">

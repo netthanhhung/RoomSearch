@@ -36,35 +36,35 @@ namespace RoomSearch.CollectorEngine
             //}
             DateTime dateEnd = DateTime.Today;
 
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d116.html", "H.Củ Chi", 80, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d119.html", "H.Nhà Bè", 20, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d120.html", "H.Cần Giờ", 80, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d118.html", "H.Bình Chánh", 19, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d117.html", "H.Hóc Môn", 18, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d114.html", "Q.Thủ Đức", 17, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d115.html", "Q.Bình Tân", 79, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d110.html", "Q.Tân Bình", 14, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d111.html", "Q.Tân Phú", 15, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d109.html", "Q.Gò Vấp", 16, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d113.html", "Q.Phú Nhuận", 13, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d112.html", "Q.Bình Thạnh", 21, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d107.html", "Quận 12", 12, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d106.html", "Quận 11", 11, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d105.html", "Quận 10", 10, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d104.html", "Quận 9", 9, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d103.html", "Quận 8", 8, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d101.html", "Quận 6", 6, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d100.html", "Quận 5", 5, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d99.html", "Quận 4", 4, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d98.html", "Quận 3", 3, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d97.html", "Quận 2", 2, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d96.html", "Quận 1", 1, dateStart, dateEnd);
-            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d102.html", "Quận 7", 7, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d116.html", 1, "H.Củ Chi", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d119.html", 1, "H.Nhà Bè", 20, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d120.html", 1, "H.Cần Giờ", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d118.html", 1, "H.Bình Chánh", 19, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d117.html", 1, "H.Hóc Môn", 18, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d114.html", 1, "Q.Thủ Đức", 17, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d115.html", 1, "Q.Bình Tân", 79, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d110.html", 1, "Q.Tân Bình", 14, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d111.html", 1, "Q.Tân Phú", 15, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d109.html", 1, "Q.Gò Vấp", 16, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d113.html", 1, "Q.Phú Nhuận", 13, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d112.html", 1, "Q.Bình Thạnh", 21, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d107.html", 1, "Quận 12", 12, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d106.html", 1, "Quận 11", 11, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d105.html", 1, "Quận 10", 10, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d104.html", 1, "Quận 9", 9, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d103.html", 1, "Quận 8", 8, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d101.html", 1, "Quận 6", 6, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d100.html", 1, "Quận 5", 5, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d99.html", 1, "Quận 4", 4, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d98.html", 1, "Quận 3", 3, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d97.html", 1, "Quận 2", 2, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d96.html", 1, "Quận 1", 1, dateStart, dateEnd);
+            GetPostForOneDistrict("http://rongbay.com/TP-HCM/Cho-thue-Nha-o-Nha-tro-Thue-va-cho-thue-nha-c272-t634-n242-d102.html", 1, "Quận 7", 7, dateStart, dateEnd);
 
             Logger.Log.Debug("End Importing RongBay Job...");
         }
 
-        private void GetPostForOneDistrict(string url, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
+        private void GetPostForOneDistrict(string url, int cityId, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace RoomSearch.CollectorEngine
                 foreach (string urlDetail in allURLs)
                 {
 
-                    Post post = GetDetailPost(urlDetail, districtId);
+                    Post post = GetDetailPost(urlDetail, cityId, districtId);
                     if (post != null)
                     {
                         if (string.IsNullOrEmpty(post.Address))
@@ -160,14 +160,14 @@ namespace RoomSearch.CollectorEngine
             return result;
         }
 
-        private Post GetDetailPost(string urlDetail, int districtId)
+        private Post GetDetailPost(string urlDetail, int cityId, int districtId)
         {
             Post result = null;
             try
             {
                 result = new Post();
                 result.PostTypeId = (int)PostTypes.Room;
-                result.CityId = 1;
+                result.CityId = cityId;
                 result.CountryId = 232;
                 result.DistrictId = districtId;
                 result.RoomTypeId = (int)RoomTypes.Standard;

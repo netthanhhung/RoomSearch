@@ -36,35 +36,35 @@ namespace RoomSearch.CollectorEngine
             //}
             DateTime dateEnd = DateTime.Today;
                 
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-hoc-mon", "Huyện Hóc Môn", 18, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-can-gio", "Huyện Cần Giờ", 80, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-nha-be", "Huyện Nhà Bè", 20, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-cu-chi", "Huyện Củ Chi", 80, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-chanh", "Huyện Bình Chánh", 19, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-tan", "Quận Bình Tân", 79, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-thu-duc", "Quận Thủ Đức", 17, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-go-vap", "Quận Gò Vấp", 16, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-phu", "Quận Tân Phú", 15, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-binh", "Quận Tân Bình", 14, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-thanh", "Quận Bình Thạnh", 21, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-phu-nhuan", "Quận Phú Nhuận", 13, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-12", "Quận 12", 12, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-11", "Quận 11", 11, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-10", "Quận 10", 10, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-9", "Quận 9", 9, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-8", "Quận 8", 8, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-7", "Quận 7", 7, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-6", "Quận 6", 6, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-5", "Quận 5", 5, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-4", "Quận 4", 4, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-3", "Quận 3", 3, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-2", "Quận 2", 2, dateStart, dateEnd);
-            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-1", "Quận 1", 1, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-hoc-mon", 1, "Huyện Hóc Môn", 18, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-can-gio", 1, "Huyện Cần Giờ", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-nha-be", 1, "Huyện Nhà Bè", 20, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-cu-chi", 1, "Huyện Củ Chi", 80, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-chanh", 1, "Huyện Bình Chánh", 19, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-tan", 1, "Quận Bình Tân", 79, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-thu-duc", 1, "Quận Thủ Đức", 17, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-go-vap", 1, "Quận Gò Vấp", 16, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-phu", 1, "Quận Tân Phú", 15, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-tan-binh", 1, "Quận Tân Bình", 14, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-binh-thanh", 1, "Quận Bình Thạnh", 21, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-phu-nhuan", 1, "Quận Phú Nhuận", 13, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-12", 1, "Quận 12", 12, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-11", 1, "Quận 11", 11, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-10", 1, "Quận 10", 10, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-9", 1, "Quận 9", 9, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-8", 1, "Quận 8", 8, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-7", 1, "Quận 7", 7, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-6", 1, "Quận 6", 6, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-5", 1, "Quận 5", 5, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-4", 1, "Quận 4", 4, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-3", 1, "Quận 3", 3, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-2", 1, "Quận 2", 2, dateStart, dateEnd);
+            GetPostForOneDistrict("http://batdongsan.com.vn/cho-thue-nha-tro-phong-tro-quan-1", 1, "Quận 1", 1, dateStart, dateEnd);
                             
             Logger.Log.Debug("End Importing BatDongSan Job...");
         }
 
-        private void GetPostForOneDistrict(string url, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
+        private void GetPostForOneDistrict(string url, int cityId, string districtName, int districtId, DateTime dateStart, DateTime dateEnd)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace RoomSearch.CollectorEngine
                 List<string> allURLs = GetDetailsURLForOneDistrict(url, districtName, dateStart, dateEnd);
                 foreach (string urlDetail in allURLs)
                 {
-                    Post post = GetDetailPost(urlDetail, districtId);
+                    Post post = GetDetailPost(urlDetail, cityId, districtId);
                     if (post != null)
                     {
                         result.Add(post);
@@ -162,14 +162,14 @@ namespace RoomSearch.CollectorEngine
             return result;
         }
 
-        private Post GetDetailPost(string urlDetail, int districtId)
+        private Post GetDetailPost(string urlDetail, int cityId, int districtId)
         {
             Post result = null;
             try
             {
                 result = new Post();
                 result.PostTypeId = (int)PostTypes.Room;
-                result.CityId = 1;
+                result.CityId = cityId;
                 result.CountryId = 232;
                 result.DistrictId = districtId;
                 result.RoomTypeId = (int)RoomTypes.Standard;
