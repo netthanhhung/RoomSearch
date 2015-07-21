@@ -93,7 +93,7 @@
                     <td>
                         <asp:Label ID="lblRealestateType" runat="server" Text="Loại nhà/đất :" Width="90px"></asp:Label>
                     </td>
-                    <td>
+                    <td colspan="3">
                         <telerik:RadComboBox ID="cbbRealestateType" runat="server" Skin="WebBlue" Height="155px"
                             Width="230px">
                         </telerik:RadComboBox>
@@ -150,10 +150,11 @@
                     <td>
                         <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>
                     </td>
-                    <td>
+                    <td colspan="3">
                         <asp:RadioButton ID="radMale" runat="server" Checked="false" Text="Mua" GroupName="Gender" />
                         <asp:RadioButton ID="radFemale" runat="server" Checked="true" Text="Bán" GroupName="Gender" />
                     </td>
+                    <td></td>
                     <td align="left">
                             <asp:Button runat="server" ID="btnSearch" Text="Tìm kiếm" CssClass="flatButton" Width="70"
                                 OnClick="OnBtnSearch_Clicked" CausesValidation="true"/>&nbsp;
@@ -168,9 +169,31 @@
                             BackColor="White">
                         </asp:TextBox>
                     </td>
-                    <td colspan="9">
+                    <td colspan="6">
                         <asp:Label ID="lblKeywordsDes" runat="server" Text=" (Tên đường hoặc tên chung cư hoặc khu vực ...)"></asp:Label>
                     </td>
+
+                    <td>
+                        <asp:Label ID="lblMeterSquareFrom" runat="server" Text="Diện tích từ" Width="70px"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtMeterSquareFrom" runat="server" Width="50px" Type="Number"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Value="0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                        <asp:Label runat="server" ID="Label2" Text="(m2)"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblMeterSquareTo" runat="server" Text="Đến :"></asp:Label>
+                    </td>
+                    <td>
+                        <telerik:RadNumericTextBox ID="txtMeterSquareTo" runat="server" Width="50px" Type="Number"
+                            Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
+                            Value="1000" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
+                        <asp:Label runat="server" ID="Label4" Text="(m2)"></asp:Label>
+                    </td>
+
                 </tr>
             </table>
         </div>

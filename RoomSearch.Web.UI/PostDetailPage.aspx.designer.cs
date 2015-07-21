@@ -316,7 +316,7 @@ namespace RoomSearch.Web.UI {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
         /// lblImages control.

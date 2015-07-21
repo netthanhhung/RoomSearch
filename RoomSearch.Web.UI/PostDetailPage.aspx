@@ -226,9 +226,12 @@
                         <asp:Label ID="lblDescription" runat="server" Text="Mô tả thêm :"></asp:Label>
                     </td>
                     <td rowspan="11" colspan="5">
-                        <telerik:RadTextBox ID="txtDescription" runat="server" Width="1000px" Rows="15" TextMode="multiLine" Wrap="true" ReadOnlyStyle-Width="1000"
+                        <%--<telerik:RadTextBox ID="txtDescription" runat="server" Width="1000px" Rows="15" TextMode="multiLine" Wrap="true" ReadOnlyStyle-Width="1000"
                             BackColor="White" Font-Size="Small">
-                        </telerik:RadTextBox>
+                        </telerik:RadTextBox>--%>
+                        <asp:TextBox ID="txtDescription" runat="server" Width="1000px" TextMode="MultiLine" Rows="15"
+                            BackColor="White" Font-Size="Small">
+                        </asp:TextBox>
                     </td>
                 </tr>
 

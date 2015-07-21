@@ -234,11 +234,22 @@ namespace RoomSearch.Web.UI
                 dateTo = dateTo.Value.AddDays(1).AddSeconds(-1);
             }
 
+            decimal? meterFrom = null;
+            if (txtMeterSquareFrom.Value.HasValue)
+            {
+                meterFrom = Convert.ToDecimal(txtMeterSquareFrom.Value);
+            }
+            decimal? meterTo = null;
+            if (txtMeterSquareTo.Value.HasValue)
+            {
+                meterTo = Convert.ToDecimal(txtMeterSquareTo.Value);
+            }
+
             int gender = radMale.Checked ? 1 : 0;
             gridRoomResult.VirtualItemCount = Business.BusinessMethods.CountPost((int)PostTypes.House, null, realestateTypeId, 232, cityId, districtId, null, null, null, gender,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, UtilityHelper.FormatKeywords(txtKeywords.Text), false);
+                priceFrom, priceTo, dateFrom, dateTo, meterFrom, meterTo, UtilityHelper.FormatKeywords(txtKeywords.Text), false);
             List<Post> searchResults = Business.BusinessMethods.SearchPostPaging((int)PostTypes.House, null, realestateTypeId, 232, cityId, districtId, null, null, null, gender,
-                priceFrom, priceTo, dateFrom, dateTo, null, null, UtilityHelper.FormatKeywords(txtKeywords.Text), false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
+                priceFrom, priceTo, dateFrom, dateTo, meterFrom, meterTo, UtilityHelper.FormatKeywords(txtKeywords.Text), false, gridRoomResult.PageSize, pageNumber, sortExpress, sortExpressInvert);
             gridRoomResult.DataSource = searchResults;
 
             //Build Meta Description for Google Search Engine :
