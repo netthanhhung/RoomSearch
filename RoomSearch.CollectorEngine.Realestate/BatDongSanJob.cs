@@ -202,6 +202,7 @@ namespace RoomSearch.CollectorEngine.Realestate
             Post result = null;
             try
             {
+                //urlDetail = "http://batdongsan.com.vn/ban-nha-mat-pho-duong-33-1-phuong-tan-kieng/gap-cap-4-tien-so-p-quan-7-pr7347466";
                 result = new Post();
                 result.PostTypeId = (int)PostTypes.House;
                 result.Gender = 0; //bán
@@ -286,31 +287,31 @@ namespace RoomSearch.CollectorEngine.Realestate
                         result.Description += description;
                     }
 
-                    //HtmlNode imgNode = RequestHelper.FindElementNodeByClassName(matrixResultsNode, "list-img");
-                    //if (imgNode != null)
-                    //{
-                    //    result.ImageList = new List<Image>();
-                    //    List<HtmlNode> nodes = RequestHelper.FindAllElementNodeByType(imgNode, "img");
-                    //    foreach (HtmlNode imgItem in nodes)
-                    //    {
-                    //        if (!string.IsNullOrEmpty(imgItem.Attributes["src"].Value))
-                    //        {
-                    //            string source = imgItem.Attributes["src"].Value;
-                    //            source = source.Replace("guestthumb80x60", "guestthumb745x510");
-                    //            using (var client = new WebClient())
-                    //            {
-                    //                byte[] imageFile = client.DownloadData(source);
-                    //                Image newImage = new Image();
-                    //                newImage.ImageSmallContent = RequestHelper.ResizeImageByteArray(100, imageFile);
-                    //                newImage.ImageContent = RequestHelper.ResizeImageByteArray(400, imageFile);
-                    //                newImage.FileName = "noname";
-                    //                newImage.ImageTypeId = (int)ImageType.Room;
-                    //                newImage.CreatedBy = result.CreatedBy;
-                    //                result.ImageList.Add(newImage);
-                    //            }
-                    //        }
-                    //    }
-                    //}
+                    HtmlNode imgNode = RequestHelper.FindElementNodeByClassName(matrixResultsNode, "list-img");
+                    if (imgNode != null)
+                    {
+                        result.ImageList = new List<Image>();
+                        List<HtmlNode> nodes = RequestHelper.FindAllElementNodeByType(imgNode, "img");
+                        foreach (HtmlNode imgItem in nodes)
+                        {
+                            if (!string.IsNullOrEmpty(imgItem.Attributes["src"].Value))
+                            {
+                                string source = imgItem.Attributes["src"].Value;
+                                source = source.Replace("80x60", "745x510");
+                                using (var client = new WebClient())
+                                {
+                                    byte[] imageFile = client.DownloadData(source);
+                                    Image newImage = new Image();
+                                    newImage.ImageSmallContent = RequestHelper.ResizeImageByteArray(100, imageFile);
+                                    newImage.ImageContent = RequestHelper.ResizeImageByteArray(400, imageFile);
+                                    newImage.FileName = "noname";
+                                    newImage.ImageTypeId = (int)ImageType.Room;
+                                    newImage.CreatedBy = result.CreatedBy;
+                                    result.ImageList.Add(newImage);
+                                }
+                            }
+                        }
+                    }
 
                     HtmlNode detailNode = RequestHelper.FindElementNodeByClassName(matrixResultsNode, "pm-content-detail");
                     if (detailNode != null)

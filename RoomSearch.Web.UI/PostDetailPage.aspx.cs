@@ -8,13 +8,14 @@ using Telerik.Web.UI;
 using System.IO;
 using RoomSearch.Common;
 using System.Collections;
+using System.Web.UI.HtmlControls;
 
 namespace RoomSearch.Web.UI
 {
     public partial class PostDetailPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             Page.Header.DataBind();
             if (!IsPostBack)
             {
@@ -169,7 +170,7 @@ namespace RoomSearch.Web.UI
                     {
                         imageSource.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String(imageData.ImageSmallContent);
                     }
-                    imageSource.Width = 400;
+                    imageSource.Width = 600;
                     imageSource.Style.Add("margin-top", "5px");
                     imageSource.Style.Add("margin-left", "5px");
                     imageSource.Style.Add("margin-right", "5px");

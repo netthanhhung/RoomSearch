@@ -9,6 +9,7 @@ using System.IO;
 using RoomSearch.Common;
 using System.Collections;
 using System.Text;
+using System.Web.UI.HtmlControls;
 
 namespace RoomSearch.Web.UI
 {
@@ -16,6 +17,26 @@ namespace RoomSearch.Web.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //lblFBShare.Text = "<a name=\"fb_share\" type=\"button\"></a>" +
+            //        "<script " +
+            //        "src=\"http://static.ak.fbcdn.net/connect.php/js/FB.Share\" " +
+            //        "type=\"text/javascript\"></script>";
+
+            //HtmlMeta tag = new HtmlMeta();
+            //tag.Name = "name";
+            //tag.Content = "Tìm phòng trọ - nhà đất";
+            //Page.Header.Controls.Add(tag);
+
+            //tag = new HtmlMeta();
+            //tag.Name = "description";
+            //tag.Content = "Tìm phòng trọ - nhà đất";
+            //Page.Header.Controls.Add(tag);
+
+            //HtmlLink link = new HtmlLink();
+            //link.Href = "http://www.murrayhilltech.com/images/LogoColorNoText.jpg";
+            //link.Attributes["rel"] = "image_src";
+            //Page.Header.Controls.Add(link);
+
             if (!IsPostBack)
             {
                 InitComboboxData();
@@ -45,13 +66,13 @@ namespace RoomSearch.Web.UI
                     lblAvailableRooms.Visible = txtAvailableRooms.Visible = false;
                     lblMeterSquare.Text = "Rộng";
                     lblPrice.Text = "Giá";
-                    lblUnit.Text = "triệu đồng";                    
+                    lblUnit.Text = "triệu đồng";
                 }
 
                 string mode = "view";
                 if (!string.IsNullOrEmpty(Request.QueryString["Mode"]))
                 {
-                    mode = Request.QueryString["Mode"];                    
+                    mode = Request.QueryString["Mode"];
                 }
 
                 if (!string.IsNullOrEmpty(Request.QueryString["PostId"]))
@@ -67,13 +88,13 @@ namespace RoomSearch.Web.UI
                         BindReadonlyImageList(currentPost);
                     }
                     BindData(currentPost);
-                                
+
                 }
 
                 DisableFields(mode);
             }
 
-            BindEditImageList();        
+            BindEditImageList();
         }
 
         void InitComboboxData()

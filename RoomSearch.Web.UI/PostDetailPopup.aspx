@@ -57,6 +57,15 @@
     </script>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));</script>
+
     <form id="form1" runat="server">
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
     
@@ -93,9 +102,14 @@
                     <td style="width: 160px">
                         <asp:Label ID="lblLink" runat="server" Text="Link :"></asp:Label>
                     </td>
-                    <td colspan="5">
+                    <td colspan="4">
                         <asp:LinkButton ID="btnLink" runat="server" ForeColor="#965EFF" Font-Underline="true" OnClick="OnBtnLinkClicked"/>
                     </td>
+                    <td>
+                        <%--<asp:Label ID="lblFBShare" runat="server" Text="Link :"></asp:Label>--%>
+                        <div class="fb-like" data-href="https://www.facebook.com/pages/Timphongcomvntim-phong-tro/830240707047791" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                    </td>
+
                 </tr>
                 
                  <tr>

@@ -52,12 +52,12 @@ namespace RoomSearch.Web.UI
             int roomTypeId = Convert.ToInt32(cbbRoomType.SelectedValue);
             if (roomTypeId == (int)RoomTypes.Standard)
             {
-                txtPriceFrom.Value = 1.5;
-                txtPriceTo.Value = 3;
+                txtPriceFrom.Value = 1;
+                txtPriceTo.Value = 5;
             }
             else
             {
-                txtPriceFrom.Value = 3;
+                txtPriceFrom.Value = 5;
                 txtPriceTo.Value = 10;
             }
         }

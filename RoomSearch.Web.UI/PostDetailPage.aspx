@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.master" CodeBehind="PostDetailPage.aspx.cs"
     Inherits="RoomSearch.Web.UI.PostDetailPage" Title="Chi tiết phòng" %>
-
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 <%@ Register TagPrefix="local" TagName="ImagePanel" Src="~/UserControls/ImagePanel.ascx"  %>
 
@@ -53,6 +52,8 @@
         }
 
     </script>
+
+
     <telerik:RadScriptManager ID="ScriptManager" runat="server" />
     
     <div>     
@@ -83,7 +84,7 @@
                     style="border: 0;" />
         </telerik:RadAjaxLoadingPanel>
 
-         <table>
+         <table>       
                 <tr>
                     <td style="width: 160px">
                         <asp:Label ID="lblGender" runat="server" Text="Tìm :"></asp:Label>

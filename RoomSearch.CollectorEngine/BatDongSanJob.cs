@@ -260,7 +260,7 @@ namespace RoomSearch.CollectorEngine
                             if (!string.IsNullOrEmpty(imgItem.Attributes["src"].Value))
                             {
                                 string source = imgItem.Attributes["src"].Value;
-                                source = source.Replace("guestthumb80x60", "guestthumb745x510");
+                                source = source.Replace("80x60", "745x510");
                                 using (var client = new WebClient())
                                 {
                                     byte[] imageFile = client.DownloadData(source);

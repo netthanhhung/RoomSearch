@@ -28,14 +28,24 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <div id="fb-root"></div>
+    <script>        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));</script>
+
     <form id="form1" runat="server">
     <div style="margin: 0px; padding: 0px">
         <table width="100%">
             <tr>
                 <td style="margin: 0px; padding: 0px; border: 0px">
+                                                     
                     <img src="<%=ResolveUrl("~/Styles/Images/MasterHeaderBackground.png")%>" alt="fresh design web"
-                        style="max-height: 80px; width: 100%; margin: 0px; padding: 0px" />
-                                            
+                        style="max-height: 80px; width: 100%; margin: 0px; padding: 0px" /> 
+                                         
                     <div id="wrap" style="margin: 0px; padding: 0px; border: 0px; background-color:#3E454D;">
                         <header>
 
@@ -65,10 +75,21 @@
 							        <li><a href="/SearchOldPostPage.aspx?PostType=3">Sửa Tin Đã Đăng</a></li>
                                     </ul>
                                   </li>
+                                  <li>
+                                    <div style="margin-top:0px; margin-left:0px">
+                                        <%--<asp:Label ID="lblFBShare" runat="server" Text="Share FB" Font-Size="X-Large"></asp:Label>--%>
+
+                                        <div class="fb-like" data-href="https://www.facebook.com/pages/Timphongcomvntim-phong-tro/830240707047791" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+                                    </div>
+                                  </li>
                                 </ul>
                               </nav>
-                            </div>
+                              
 
+
+                            </div>
+                            
                         
                         </header>
                     </div>

@@ -132,7 +132,7 @@
                     <td>
                         <telerik:RadNumericTextBox ID="txtPriceTo" runat="server" Width="40px" Type="Number"
                             Skin="WebBlue" NumberFormat-DecimalDigits="1" NumberFormat-PositivePattern="n"
-                            Value="3.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
+                            Value="5.0" EnabledStyle-HorizontalAlign="Right" NumberFormat-GroupSeparator=""
                             BorderStyle="Solid" BorderColor="#A8BEDA" BorderWidth="1" />
                         <asp:Label runat="server" ID="lblUnitTo" Text="(triệu)"></asp:Label>
                     </td>
