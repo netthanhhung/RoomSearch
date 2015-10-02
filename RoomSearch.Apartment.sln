@@ -10,10 +10,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomSearch.Web.UI", "RoomSearch.Web.UI\RoomSearch.Web.UI.csproj", "{06490B2E-4833-489F-87A4-4327814F21EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomSearch.CollectorEngine", "RoomSearch.CollectorEngine\RoomSearch.CollectorEngine.csproj", "{F1D6A4EF-AC21-4EC0-8E7D-36F80B0575C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{06490B2E-4833-489F-87A4-4327814F21EF} = {06490B2E-4833-489F-87A4-4327814F21EF}
+	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RoomSearch.CollectorEngine.Installer", "RoomSearch.CollectorEngine.Installer\RoomSearch.CollectorEngine.Installer.vdproj", "{3BCD4209-28E0-4AF1-9A5C-591649D38647}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomSearch.CollectorEngine.Realestate", "RoomSearch.CollectorEngine.Realestate\RoomSearch.CollectorEngine.Realestate.csproj", "{980D8495-5506-43E7-BADB-70E2FE29E7D2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{06490B2E-4833-489F-87A4-4327814F21EF} = {06490B2E-4833-489F-87A4-4327814F21EF}
+	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RoomSearch.CollectorEngine.Realestate.Installer", "RoomSearch.CollectorEngine.Realestate.Installer\RoomSearch.CollectorEngine.Realestate.Installer.vdproj", "{47C4A134-1B9C-4DB2-95B2-A153DF94F1C5}"
 EndProject

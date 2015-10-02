@@ -133,6 +133,7 @@
     <Content Include="SearchRoomPage.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="CreatePostPage.aspx" />
+    <Content Include="Services\RoomSearchService.svc" />
     <Content Include="Styles\CSS\appstyle.css" />
     <Content Include="Styles\Images\arrow.png" />
     <Content Include="Styles\Images\Bitexco_Financial1.jpg" />
@@ -227,6 +228,9 @@
     </Compile>
     <Compile Include="CreatePostPage.aspx.designer.cs">
       <DependentUpon>CreatePostPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\RoomSearchService.svc.cs">
+      <DependentUpon>RoomSearchService.svc</DependentUpon>
     </Compile>
     <Compile Include="Site.master.cs">
       <DependentUpon>Site.master</DependentUpon>

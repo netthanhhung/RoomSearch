@@ -28,6 +28,17 @@ namespace RoomSearch.Data
         #endregion
 
         #region Common
+
+        public void CleanupDatabase()
+        {
+            using (DbCommand cmd = this._db.GetStoredProcCommand("procCleanUpDatabase"))
+            {
+                cmd.CommandTimeout = _extendedTimeout;
+                _db.ExecuteNonQuery(cmd);
+            }
+
+        }
+
         private void AddParameters(System.Data.Common.DbCommand command, SqlParameter[] sqlParams)
         {
             foreach (SqlParameter param in sqlParams)

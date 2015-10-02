@@ -59,6 +59,7 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
@@ -74,6 +75,7 @@
     <Compile Include="CollectorService.Designer.cs">
       <DependentUpon>CollectorService.cs</DependentUpon>
     </Compile>
+    <Compile Include="RoomSearchServiceHelper.cs" />
     <Compile Include="Configuration\CollectorConfiguration.cs" />
     <Compile Include="Configuration\CollectorConfigurationSection.cs" />
     <Compile Include="Configuration\BatDongSanElement.cs" />
@@ -86,6 +88,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestHelper.cs" />
+    <Compile Include="Service References\RoomSearchService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoomSearch.Business\RoomSearch.Business.csproj">
@@ -104,6 +111,46 @@
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\RoomSearch.Common.City.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.ContactInformation.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.Country.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.District.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.Image.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.Post.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.PostType.datasource" />
+    <None Include="Properties\DataSources\RoomSearch.Common.RoomType.datasource" />
+    <None Include="Service References\RoomSearchService\RoomSearchService.wsdl" />
+    <None Include="Service References\RoomSearchService\RoomSearchService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoomSearchService\RoomSearchService1.wsdl" />
+    <None Include="Service References\RoomSearchService\RoomSearchService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoomSearchService\RoomSearchService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RoomSearchService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoomSearchService\RoomSearchService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoomSearchService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoomSearchService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RoomSearchService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

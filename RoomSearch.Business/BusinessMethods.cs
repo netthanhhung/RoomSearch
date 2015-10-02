@@ -11,6 +11,11 @@ namespace RoomSearch.Business
     public static class BusinessMethods
     {
         #region Common
+        public static void CleanupDatabase()
+        {
+            new DataLayer().CleanupDatabase();
+        }
+
         /// <summary>
         /// Calls the data layer to save the record object.
         /// The record's RecordId is used to determine if the save operation is an insert or an update.

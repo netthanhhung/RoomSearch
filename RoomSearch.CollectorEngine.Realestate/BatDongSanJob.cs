@@ -28,6 +28,7 @@ namespace RoomSearch.CollectorEngine.Realestate
         {
 
             Logger.Log.Debug("Start Importing BatDongSan Job...");
+            RoomSearchServiceHelper.CleanupDatabase();
 
             DateTime dateStart = DateTime.Today;
             //if (dateStart.DayOfWeek == DayOfWeek.Monday)
@@ -99,7 +100,7 @@ namespace RoomSearch.CollectorEngine.Realestate
 
                 if (result.Count > 0)
                 {
-                    BusinessMethods.SavePostList(result);
+                    RoomSearchServiceHelper.SavePostList(result);
                 }
             }
             catch (Exception ex)

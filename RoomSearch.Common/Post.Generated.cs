@@ -149,6 +149,7 @@ namespace RoomSearch.Common
             {
                 return Price.HasValue ? (Price.Value.ToString("0.0") + " (tr đ)") : "";
             }
+            set { }
         }
 
         [DataMember]
@@ -158,6 +159,7 @@ namespace RoomSearch.Common
             {
                 return !string.IsNullOrEmpty(this.Description) && this.Description.Length > 170 ? (Description.Substring(0, 170) + "....") : Description;
             }
+            set { }
         }
 
         [DataMember]
@@ -167,6 +169,7 @@ namespace RoomSearch.Common
             {
                 return !string.IsNullOrEmpty(this.Description) && this.Description.Length > 100 ? (Description.Substring(0, 100) + "....") : Description;
             }
+            set { }
         }
 
         private List<Image> _imageList;

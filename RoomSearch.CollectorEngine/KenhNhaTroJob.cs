@@ -92,7 +92,7 @@ namespace RoomSearch.CollectorEngine
 
             if (result.Count > 0)
             {
-                BusinessMethods.SavePostList(result);
+                RoomSearchServiceHelper.SavePostList(result);
             }
             }
             catch (Exception ex)
